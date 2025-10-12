@@ -1,0 +1,93 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{estimate\PYGZus{}m}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{:} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n+nb}{float}\PYG{p}{:}
+	\PYG{n}{N} \PYG{o}{=} \PYG{n}{arr}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+	\PYG{k}{return} \PYG{p}{(}\PYG{n}{arr} \PYG{o}{@} \PYG{n}{np}\PYG{o}{.}\PYG{n}{ones}\PYG{p}{(}\PYG{n}{N}\PYG{p}{))} \PYG{o}{/} \PYG{n}{N}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{estimate\PYGZus{}m\PYGZus{}var}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{:} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{):}
+	\PYG{n}{N} \PYG{o}{=} \PYG{n}{arr}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+	\PYG{n}{m} \PYG{o}{=} \PYG{n}{estimate\PYGZus{}m}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{)}
+	\PYG{k}{return} \PYG{n}{m}\PYG{p}{,} \PYG{p}{((}\PYG{n}{arr} \PYG{o}{\PYGZhy{}} \PYG{n}{m}\PYG{p}{)}\PYG{o}{.}\PYG{n}{T} \PYG{o}{@} \PYG{p}{(}\PYG{n}{arr} \PYG{o}{\PYGZhy{}} \PYG{n}{m}\PYG{p}{))} \PYG{o}{/} \PYG{p}{(}\PYG{n}{N} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{)}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{series\PYGZus{}test}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{:} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{):}
+	\PYG{n}{N} \PYG{o}{=} \PYG{n}{arr}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+	\PYG{n}{arr} \PYG{o}{=} \PYG{n}{arr}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:]} \PYG{o}{\PYGZhy{}} \PYG{n}{arr}\PYG{p}{[:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}
+
+	\PYG{n}{v}\PYG{p}{,} \PYG{n}{t\PYGZus{}list} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{p}{[]}
+	\PYG{n}{counter}\PYG{p}{,} \PYG{n}{elem\PYGZus{}sign} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sign}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])}
+	\PYG{k}{for} \PYG{n}{x} \PYG{o+ow}{in} \PYG{n}{np}\PYG{o}{.}\PYG{n}{nditer}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:]):}
+		\PYG{k}{if} \PYG{n}{elem\PYGZus{}sign} \PYG{o}{*} \PYG{n}{x} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{:}
+			\PYG{n}{counter} \PYG{o}{+=} \PYG{l+m+mi}{1}
+		\PYG{k}{else}\PYG{p}{:}
+			\PYG{n}{v} \PYG{o}{+=} \PYG{l+m+mi}{1}
+			\PYG{n}{t\PYGZus{}list}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{counter}\PYG{p}{)}
+			\PYG{n}{counter}\PYG{p}{,} \PYG{n}{elem\PYGZus{}sign} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sign}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}
+	\PYG{n}{t\PYGZus{}list}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{counter}\PYG{p}{)}
+	\PYG{n}{t} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{max}\PYG{p}{(}\PYG{n}{t\PYGZus{}list}\PYG{p}{)}
+	\PYG{k}{if} \PYG{n}{N} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{6}\PYG{p}{:}
+		\PYG{n}{tmax} \PYG{o}{=} \PYG{l+m+mi}{5}
+	\PYG{k}{elif} \PYG{n}{N} \PYG{o}{\PYGZlt{}=} \PYG{l+m+mi}{154} \PYG{o+ow}{and} \PYG{n}{N} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{6}\PYG{p}{:}
+		\PYG{n}{tmax} \PYG{o}{=} \PYG{l+m+mi}{6}
+	\PYG{k}{else}\PYG{p}{:}
+		\PYG{n}{tmax} \PYG{o}{=} \PYG{l+m+mi}{7}
+
+	\PYG{n}{no\PYGZus{}trend} \PYG{o}{=} \PYG{p}{(}\PYG{n}{v} \PYG{o}{\PYGZgt{}} \PYG{p}{((}\PYG{l+m+mi}{2} \PYG{o}{*} \PYG{p}{(}\PYG{n}{N} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{))} \PYG{o}{/} \PYG{l+m+mi}{3} \PYG{o}{\PYGZhy{}} \PYG{l+m+mf}{1.96} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sqrt}\PYG{p}{((}\PYG{l+m+mi}{16} \PYG{o}{*} \PYG{n}{N} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{29}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mi}{90}\PYG{p}{)))} \PYG{o+ow}{and} \PYG{n}{t} \PYG{o}{\PYGZlt{}} \PYG{n}{tmax}
+	\PYG{k}{return} \PYG{n}{no\PYGZus{}trend}\PYG{p}{,} \PYG{n}{v}\PYG{p}{,} \PYG{n}{t}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{trend\PYGZus{}test}\PYG{p}{(}\PYG{n}{y}\PYG{p}{,} \PYG{n}{title}\PYG{p}{):}
+	\PYG{n}{mus} \PYG{o}{=} \PYG{p}{[]}
+	\PYG{n+nb}{vars} \PYG{o}{=} \PYG{p}{[]}
+	\PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{):}
+	\PYG{n}{arr} \PYG{o}{=} \PYG{n}{y}\PYG{p}{[}\PYG{l+m+mi}{50} \PYG{o}{*} \PYG{n}{i}\PYG{p}{:} \PYG{l+m+mi}{50} \PYG{o}{*} \PYG{p}{(}\PYG{n}{i} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{)]}
+	\PYG{n}{mu}\PYG{p}{,} \PYG{n}{var} \PYG{o}{=} \PYG{n}{estimate\PYGZus{}m\PYGZus{}var}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{)}
+	\PYG{n}{mus}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{mu}\PYG{p}{)}
+	\PYG{n+nb}{vars}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{var}\PYG{p}{)}
+
+
+	\PYG{n}{no\PYGZus{}trend}\PYG{p}{,} \PYG{n}{\PYGZus{}}\PYG{p}{,} \PYG{n}{\PYGZus{}} \PYG{o}{=} \PYG{n}{series\PYGZus{}test}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{(}\PYG{n}{mus}\PYG{p}{))}
+	\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}По результату критерий серий \PYGZdq{}Тренд в m(}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{title}\PYG{o}{.}\PYG{n}{replace}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZdl{}\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{) отсутствует \PYGZhy{} }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{no\PYGZus{}trend}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZdq{}\PYGZsq{}}\PYG{p}{)}
+	\PYG{n}{no\PYGZus{}trend}\PYG{p}{,} \PYG{n}{\PYGZus{}}\PYG{p}{,} \PYG{n}{\PYGZus{}} \PYG{o}{=} \PYG{n}{series\PYGZus{}test}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{(}\PYG{n+nb}{vars}\PYG{p}{))}
+	\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}По результату критерий серий \PYGZdq{}Тренд в var(}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{title}\PYG{o}{.}\PYG{n}{replace}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZdl{}\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}\PYGZdq{}}\PYG{p}{)}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{) отсутствует \PYGZhy{} }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{no\PYGZus{}trend}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZdq{}\PYGZsq{}}\PYG{p}{)}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{mus}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}\PYGZdl{}\PYGZbs{}mu\PYGZus{}\PYGZob{}\PYGZdq{}} \PYG{o}{+} \PYG{n}{title} \PYG{o}{+} \PYG{l+s+s2}{\PYGZdq{}\PYGZcb{}\PYGZdl{}\PYGZdq{}}\PYG{p}{)}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n+nb}{vars}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}\PYGZdl{}\PYGZbs{}sigma\PYGZus{}\PYGZob{}\PYGZdq{}} \PYG{o}{+} \PYG{n}{title} \PYG{o}{+} \PYG{l+s+s2}{\PYGZdq{}\PYGZcb{}\PYGZca{}2\PYGZdl{}\PYGZdq{}}\PYG{p}{)}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{()}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Изменение параметров реализации }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{title}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{ со временем\PYGZsq{}}\PYG{p}{)}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Номер блока\PYGZsq{}}\PYG{p}{)}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{corr\PYGZus{}spectrum}\PYG{p}{(}\PYG{n}{y}\PYG{p}{,} \PYG{n}{title}\PYG{p}{):}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{acorr}\PYG{p}{(}\PYG{n}{y}\PYG{p}{,} \PYG{n}{maxlags}\PYG{o}{=}\PYG{l+m+mi}{30}\PYG{p}{,} \PYG{n}{normed}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Автокорреляционная функция }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{title}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}}\PYG{l+s+se}{\PYGZbs{}\PYGZbs{}}\PYG{l+s+s1}{tau\PYGZdl{}\PYGZsq{}}\PYG{p}{)}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+
+	\PYG{n}{f}\PYG{p}{,} \PYG{n}{Pxx} \PYG{o}{=} \PYG{n}{signal}\PYG{o}{.}\PYG{n}{periodogram}\PYG{p}{(}\PYG{n}{y}\PYG{o}{.}\PYG{n}{flatten}\PYG{p}{(),} \PYG{n}{scaling}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}density\PYGZsq{}}\PYG{p}{,} \PYG{n}{fs}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{n}{delta}\PYG{p}{)}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{f}\PYG{p}{,} \PYG{n}{Pxx}\PYG{p}{)}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Hz\PYGZsq{}}\PYG{p}{)}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}V\PYGZca{}2/Hz\PYGZdl{}\PYGZsq{}}\PYG{p}{)}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Спектральная мощность }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{title}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+
+\PYG{n}{trend\PYGZus{}test}\PYG{p}{(}\PYG{n}{y1}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}y\PYGZus{}1\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{corr\PYGZus{}spectrum}\PYG{p}{(}\PYG{n}{y1}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}y\PYGZus{}1\PYGZdl{}\PYGZsq{}}\PYG{p}{)}
+
+\PYG{n}{trend\PYGZus{}test}\PYG{p}{(}\PYG{n}{y3}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}y\PYGZus{}3\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{corr\PYGZus{}spectrum}\PYG{p}{(}\PYG{n}{y3}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}y\PYGZus{}3\PYGZdl{}\PYGZsq{}}\PYG{p}{)}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{print\PYGZus{}characteristics}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{:} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{):}
+	\PYG{n}{mu}\PYG{p}{,} \PYG{n}{var} \PYG{o}{=} \PYG{n}{estimate\PYGZus{}m\PYGZus{}var}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{)}
+	\PYG{n}{skew} \PYG{o}{=} \PYG{n}{stats}\PYG{o}{.}\PYG{n}{skew}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{)}
+	\PYG{n}{kurtosis} \PYG{o}{=} \PYG{n}{stats}\PYG{o}{.}\PYG{n}{kurtosis}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{)}
+	\PYG{n}{kstest} \PYG{o}{=} \PYG{n}{stats}\PYG{o}{.}\PYG{n}{kstest}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}norm\PYGZsq{}}\PYG{p}{,} \PYG{n}{alternative}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}two\PYGZhy{}sided\PYGZsq{}}\PYG{p}{)}
+
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Математическое ожидание \PYGZhy{} }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{mu}\PYG{l+s+si}{:}\PYG{l+s+s1}{.3f}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Дисперсия \PYGZhy{} }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{var}\PYG{l+s+si}{:}\PYG{l+s+s1}{.3f}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Асимметрия \PYGZhy{} }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{skew}\PYG{l+s+si}{:}\PYG{l+s+s1}{.3f}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Эксцесс \PYGZhy{} }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{kurtosis}\PYG{l+s+si}{:}\PYG{l+s+s1}{.3f}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Тест на нормальность Колмогорова\PYGZhy{}Смирнова \PYGZhy{} pvalue=}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{kstest}\PYG{o}{.}\PYG{n}{pvalue}\PYG{l+s+si}{:}\PYG{l+s+s1}{.1e}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Характеристики y1\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{print\PYGZus{}characteristics}\PYG{p}{(}\PYG{n}{y1}\PYG{p}{)}
+
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{Характеристики y3\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{print\PYGZus{}characteristics}\PYG{p}{(}\PYG{n}{y3}\PYG{p}{)}
+\end{MintedVerbatim}

@@ -1,0 +1,10 @@
+\babel@toc {russian}{}\relax 
+\babel@toc {russian}{}\relax 
+\contentsline {section}{\numberline {1} Предобработка и анализ стационарности временного ряда }{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1} Моделирование временного ряда }{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Обработка аномальных наблюдений}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Оценка стационарности}{4}{subsection.1.3}%
+\contentsline {section}{\numberline {2}Корреляционный и спектральный анализ ВР}{7}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Построение корреляционной функции}{7}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Построение спектральной плотности мощности}{9}{subsection.2.2}%
+\contentsline {section}{\numberline {А}Листинги}{14}{appendix.A}%

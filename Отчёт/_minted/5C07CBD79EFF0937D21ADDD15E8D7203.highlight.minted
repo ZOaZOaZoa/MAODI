@@ -1,0 +1,20 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+По результату критерий серий \PYGZdq{}Тренд в m(y\PYGZus{}1) отсутствует \PYGZhy{} True\PYGZdq{}
+По результату критерий серий \PYGZdq{}Тренд в var(y\PYGZus{}1) отсутствует \PYGZhy{} True\PYGZdq{}
+По результату критерий серий \PYGZdq{}Тренд в m(y\PYGZus{}3) отсутствует \PYGZhy{} True\PYGZdq{}
+По результату критерий серий \PYGZdq{}Тренд в var(y\PYGZus{}3) отсутствует \PYGZhy{} True\PYGZdq{}
+
+Характеристики y1
+Математическое ожидание \PYGZhy{} 0.024
+Дисперсия \PYGZhy{} 0.383
+Асимметрия \PYGZhy{} 0.179
+Эксцесс \PYGZhy{} 0.254
+Тест на нормальность Колмогорова\PYGZhy{}Смирнова \PYGZhy{} pvalue=9.5e\PYGZhy{}08
+
+Характеристики y3
+Математическое ожидание \PYGZhy{} 1.121
+Дисперсия \PYGZhy{} 3.844
+Асимметрия \PYGZhy{} 0.049
+Эксцесс \PYGZhy{} \PYGZhy{}0.132
+Тест на нормальность Колмогорова\PYGZhy{}Смирнова \PYGZhy{} pvalue=7.4e\PYGZhy{}64
+\end{MintedVerbatim}

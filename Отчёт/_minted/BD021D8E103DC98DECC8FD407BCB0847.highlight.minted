@@ -1,0 +1,73 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{periodogram}\PYG{p}{(}\PYG{n}{x}\PYG{p}{:} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{,} \PYG{n}{delta}\PYG{p}{):}
+	\PYG{n}{N} \PYG{o}{=} \PYG{n}{x}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+	\PYG{n}{I} \PYG{o}{=} \PYG{p}{[]}
+	
+	\PYG{n}{i} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{(}\PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{N}\PYG{p}{))}
+	\PYG{k}{for} \PYG{n}{k} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{N}\PYG{p}{)):}
+	\PYG{n}{alpha} \PYG{o}{=} \PYG{n}{x}\PYG{o}{.}\PYG{n}{T} \PYG{o}{@} \PYG{n}{np}\PYG{o}{.}\PYG{n}{cos}\PYG{p}{(} \PYG{p}{(}\PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{pi} \PYG{o}{*} \PYG{n}{k} \PYG{o}{*} \PYG{n}{i}\PYG{p}{)} \PYG{o}{/} \PYG{n}{N} \PYG{p}{)}
+	\PYG{n}{beta} \PYG{o}{=} \PYG{n}{x}\PYG{o}{.}\PYG{n}{T} \PYG{o}{@} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sin}\PYG{p}{(} \PYG{p}{(}\PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{pi} \PYG{o}{*} \PYG{n}{k} \PYG{o}{*} \PYG{n}{i}\PYG{p}{)} \PYG{o}{/} \PYG{n}{N} \PYG{p}{)}
+	\PYG{n}{I}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{delta} \PYG{o}{/} \PYG{n}{N} \PYG{o}{*} \PYG{p}{(}\PYG{n}{alpha} \PYG{o}{**} \PYG{l+m+mi}{2} \PYG{o}{+} \PYG{n}{beta} \PYG{o}{**} \PYG{l+m+mi}{2}\PYG{p}{))}
+	
+	\PYG{k}{return} \PYG{n}{I}
+
+\PYG{c+c1}{\PYGZsh{} spectral density}
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{esimate\PYGZus{}spe}\PYG{p}{(}\PYG{n}{x}\PYG{p}{:} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{,} \PYG{n}{delta}\PYG{p}{,} \PYG{n}{window}\PYG{p}{):}
+	\PYG{n}{N} \PYG{o}{=} \PYG{n}{x}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+	\PYG{n}{Sxx} \PYG{o}{=} \PYG{p}{[]}
+	\PYG{n}{I} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{(}\PYG{n}{periodogram}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{delta}\PYG{p}{))}
+	
+	\PYG{n}{j} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{N} \PYG{o}{/} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{N} \PYG{o}{/} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{)}
+	\PYG{k}{for} \PYG{n}{k} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{N} \PYG{o}{/} \PYG{l+m+mi}{2}\PYG{p}{)):}
+	\PYG{n}{indices} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{abs}\PYG{p}{(} \PYG{n}{np}\PYG{o}{.}\PYG{n}{astype}\PYG{p}{((}\PYG{n}{k} \PYG{o}{\PYGZhy{}} \PYG{n}{j}\PYG{p}{),} \PYG{n}{np}\PYG{o}{.}\PYG{n}{int16}\PYG{p}{)} \PYG{p}{)}
+	\PYG{n}{Sxx}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(} \PYG{n}{I}\PYG{p}{[}\PYG{n}{indices}\PYG{p}{]}\PYG{o}{.}\PYG{n}{T} \PYG{o}{@} \PYG{n}{window}\PYG{p}{(}\PYG{n}{j}\PYG{p}{)} \PYG{p}{)}
+	
+	\PYG{k}{return} \PYG{n}{Sxx}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{rect\PYGZus{}window}\PYG{p}{(}\PYG{n}{j}\PYG{p}{,} \PYG{n}{M} \PYG{o}{=} \PYG{l+m+mi}{100}\PYG{p}{):}
+	\PYG{n}{w} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{where}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{j}\PYG{p}{)} \PYG{o}{\PYGZlt{}=} \PYG{n}{M}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{o}{/}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{M} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{),} \PYG{l+m+mi}{0}\PYG{p}{)}
+	\PYG{k}{return} \PYG{n}{w}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{bartlett\PYGZus{}window}\PYG{p}{(}\PYG{n}{j}\PYG{p}{,} \PYG{n}{M} \PYG{o}{=} \PYG{l+m+mi}{100}\PYG{p}{):}
+	\PYG{n}{w} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{where}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{j}\PYG{p}{)} \PYG{o}{\PYGZlt{}=} \PYG{n}{M}\PYG{p}{,} \PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{\PYGZhy{}} \PYG{n}{np}\PYG{o}{.}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{j}\PYG{p}{)} \PYG{o}{/} \PYG{n}{M}\PYG{p}{)} \PYG{o}{/} \PYG{n}{M}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{)}
+	\PYG{k}{return} \PYG{n}{w}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{hamming\PYGZus{}window}\PYG{p}{(}\PYG{n}{j}\PYG{p}{,} \PYG{n}{M} \PYG{o}{=} \PYG{l+m+mi}{100}\PYG{p}{):}
+	\PYG{n}{w} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{where}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{j}\PYG{p}{)} \PYG{o}{\PYGZlt{}=} \PYG{n}{M}\PYG{p}{,} \PYG{p}{(} \PYG{l+m+mf}{0.54} \PYG{o}{+} \PYG{l+m+mf}{0.46} \PYG{o}{*} \PYG{n}{np}\PYG{o}{.}\PYG{n}{cos}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{pi} \PYG{o}{*} \PYG{n}{j} \PYG{o}{/} \PYG{n}{M}\PYG{p}{)} \PYG{p}{)} \PYG{o}{/} \PYG{p}{(}\PYG{l+m+mf}{1.08} \PYG{o}{*} \PYG{n}{M} \PYG{o}{+} \PYG{l+m+mf}{0.08}\PYG{p}{),} \PYG{l+m+mi}{0}\PYG{p}{)}
+	\PYG{k}{return} \PYG{n}{w}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{han\PYGZus{}window}\PYG{p}{(}\PYG{n}{j}\PYG{p}{,} \PYG{n}{M} \PYG{o}{=} \PYG{l+m+mi}{100}\PYG{p}{):}
+	\PYG{n}{w} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{where}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{j}\PYG{p}{)} \PYG{o}{\PYGZlt{}=} \PYG{n}{M}\PYG{p}{,} \PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{+} \PYG{n}{np}\PYG{o}{.}\PYG{n}{cos}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{pi} \PYG{o}{*} \PYG{n}{j} \PYG{o}{/} \PYG{n}{M}\PYG{p}{))} \PYG{o}{/} \PYG{p}{(}\PYG{l+m+mi}{2} \PYG{o}{*} \PYG{n}{M}\PYG{p}{),} \PYG{l+m+mi}{0}\PYG{p}{)}
+	\PYG{k}{return} \PYG{n}{w}
+	
+\PYG{n}{realizations} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+	\PYG{l+s+s1}{\PYGZsq{}постоянная\PYGZsq{}}\PYG{p}{:} \PYG{n}{Realization}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{ones}\PYG{p}{,} \PYG{k+kc}{None}\PYG{p}{,} \PYG{l+m+mi}{10}\PYG{p}{),}
+	\PYG{l+s+s1}{\PYGZsq{}белый шум\PYGZsq{}}\PYG{p}{:} \PYG{n}{Realization}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{random}\PYG{o}{.}\PYG{n}{standard\PYGZus{}normal}\PYG{p}{,} \PYG{k+kc}{None}\PYG{p}{,} \PYG{l+m+mi}{10}\PYG{p}{),}
+	\PYG{l+s+s1}{\PYGZsq{}несколько гармоник\PYGZsq{}}\PYG{p}{:} \PYG{n}{Realization}\PYG{p}{(}\PYG{n}{signal\PYGZus{}with\PYGZus{}garmonics}\PYG{p}{,} \PYG{k+kc}{None}\PYG{p}{,} \PYG{l+m+mi}{100}\PYG{p}{),}
+	\PYG{l+s+s1}{\PYGZsq{}линейно }\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{коррелированные отсчёты\PYGZsq{}}\PYG{p}{:} \PYG{n}{Realization}\PYG{p}{(}\PYG{n}{signal\PYGZus{}linear\PYGZus{}correlated}\PYG{p}{,} \PYG{k+kc}{None}\PYG{p}{,} \PYG{l+m+mi}{100}\PYG{p}{),}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{windows} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+	\PYG{l+s+s1}{\PYGZsq{}Прямоугольное окно\PYGZsq{}}\PYG{p}{:} \PYG{n}{rect\PYGZus{}window}\PYG{p}{,}
+	\PYG{l+s+s1}{\PYGZsq{}Окно Бартлетта\PYGZsq{}}\PYG{p}{:} \PYG{n}{bartlett\PYGZus{}window}\PYG{p}{,}
+	\PYG{l+s+s1}{\PYGZsq{}Окно Хэмминга\PYGZsq{}}\PYG{p}{:} \PYG{n}{hamming\PYGZus{}window}\PYG{p}{,}
+	\PYG{l+s+s1}{\PYGZsq{}Окно Хана\PYGZsq{}}\PYG{p}{:} \PYG{n}{han\PYGZus{}window}\PYG{p}{,}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{n}{N} \PYG{o}{=} \PYG{l+m+mi}{10000}
+\PYG{n}{delta} \PYG{o}{=} \PYG{l+m+mf}{1e\PYGZhy{}3}
+\PYG{k}{for} \PYG{n}{title}\PYG{p}{,} \PYG{n}{realization} \PYG{o+ow}{in} \PYG{n}{realizations}\PYG{o}{.}\PYG{n}{items}\PYG{p}{():}
+	\PYG{n}{x} \PYG{o}{=} \PYG{n}{realization}\PYG{o}{.}\PYG{n}{generate\PYGZus{}x}\PYG{p}{(}\PYG{n}{N}\PYG{p}{)}
+	
+	\PYG{n}{fig}\PYG{p}{,} \PYG{n}{axs} \PYG{o}{=} \PYG{n}{plt}\PYG{o}{.}\PYG{n}{subplots}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{figsize}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{12}\PYG{p}{,} \PYG{l+m+mi}{8}\PYG{p}{))}
+	\PYG{k}{for} \PYG{n}{i}\PYG{p}{,} \PYG{n}{window\PYGZus{}name} \PYG{o+ow}{in} \PYG{n+nb}{enumerate}\PYG{p}{(}\PYG{n}{windows}\PYG{p}{):}
+		\PYG{n}{Sxx} \PYG{o}{=} \PYG{n}{esimate\PYGZus{}spe}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{delta}\PYG{p}{,} \PYG{n}{windows}\PYG{p}{[}\PYG{n}{window\PYGZus{}name}\PYG{p}{])}
+		\PYG{n}{f} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{Sxx}\PYG{p}{))} \PYG{o}{/} \PYG{p}{(}\PYG{n}{delta} \PYG{o}{*} \PYG{n}{N}\PYG{p}{)}
+		
+		\PYG{n}{plot\PYGZus{}index} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{i} \PYG{o}{/} \PYG{l+m+mi}{2}\PYG{p}{),} \PYG{n}{i} \PYG{o}{\PYGZpc{}} \PYG{l+m+mi}{2}
+		\PYG{n}{axs}\PYG{p}{[}\PYG{n}{plot\PYGZus{}index}\PYG{p}{]}\PYG{o}{.}\PYG{n}{set\PYGZus{}title}\PYG{p}{(}\PYG{n}{window\PYGZus{}name}\PYG{p}{)}
+		\PYG{n}{axs}\PYG{p}{[}\PYG{n}{plot\PYGZus{}index}\PYG{p}{]}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{f}\PYG{p}{,} \PYG{n}{Sxx}\PYG{p}{)}
+		
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{suptitle}\PYG{p}{(}\PYG{n}{title}\PYG{p}{)}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{MintedVerbatim}
