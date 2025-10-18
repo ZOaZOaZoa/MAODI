@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.22.0 (MiKTeX 25.4) (format=lualatex 2025.5.28)  16 OCT 2025 23:14
+This is LuaHBTeX, Version 1.22.0 (MiKTeX 25.4) (format=lualatex 2025.5.28)  18 OCT 2025 13:38
  system commands enabled.
 **main.tex
 (./main.tex
@@ -1939,7 +1939,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 \openout2 = title.aux
  (./title.tex
-<png/tit.png, id=62, 1406.25375pt x 313.9228pt>
+<png/tit.png, id=66, 1406.25375pt x 313.9228pt>
 File: png/tit.png Graphic file (type png)
 <use png/tit.png>
 Package luatex.def Info: png/tit.png  used on input line 4.
@@ -1981,12 +1981,12 @@ Package babel Info: 'russian' activates 'russian' shorthands.
 
 
 ] (./body.tex
-<png/y1.png, id=86, 394.5942pt x 330.2739pt>
+<png/y1.png, id=91, 394.5942pt x 330.2739pt>
 File: png/y1.png Graphic file (type png)
 <use png/y1.png>
 Package luatex.def Info: png/y1.png  used on input line 24.
 (luatex.def)             Requested size: 245.82962pt x 205.76552pt.
-<png/y3.png, id=87, 394.5942pt x 330.2739pt>
+<png/y3.png, id=92, 394.5942pt x 330.2739pt>
 File: png/y3.png Graphic file (type png)
 <use png/y3.png>
 Package luatex.def Info: png/y3.png  used on input line 28.
@@ -2004,12 +2004,12 @@ File: ellipse_illustration.tex Graphic file (type tex)
 
 
 [4]
-<png/y1_ell.png, id=120, 411.2163pt x 331.7193pt>
+<png/y1_ell.png, id=125, 411.2163pt x 331.7193pt>
 File: png/y1_ell.png Graphic file (type png)
 <use png/y1_ell.png>
 Package luatex.def Info: png/y1_ell.png  used on input line 104.
 (luatex.def)             Requested size: 245.82962pt x 198.3093pt.
-<png/y3_ell.png, id=121, 411.2163pt x 331.7193pt>
+<png/y3_ell.png, id=126, 411.2163pt x 331.7193pt>
 File: png/y3_ell.png Graphic file (type png)
 <use png/y3_ell.png>
 Package luatex.def Info: png/y3_ell.png  used on input line 108.
@@ -2033,10 +2033,10 @@ nput line 135.
 \pydata@fh@0=\write7
 
 \openout7 = _FAD58DE7366495DB4650CFEFAC2FCD61.data.minted
-runsystem(latexminted config  --timestamp 20251016231440 FAD58DE7366495DB4650CFE
+runsystem(latexminted config  --timestamp 20251018133843 FAD58DE7366495DB4650CFE
 FAC2FCD61)...executed.
 (./_FAD58DE7366495DB4650CFEFAC2FCD61.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20251016231440 FAD58DE7366495DB46
+runsystem(latexminted cleanconfig  --timestamp 20251018133843 FAD58DE7366495DB46
 50CFEFAC2FCD61)...executed.
 
 (./_minted/default.style.minted)
@@ -2046,12 +2046,12 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 )
-<png/station_y1.png, id=141, 403.9893pt x 328.8285pt>
+<png/station_y1.png, id=146, 403.9893pt x 328.8285pt>
 File: png/station_y1.png Graphic file (type png)
 <use png/station_y1.png>
 Package luatex.def Info: png/station_y1.png  used on input line 163.
 (luatex.def)             Requested size: 245.82962pt x 200.09337pt.
-<png/station_y3.png, id=142, 385.9218pt x 328.8285pt>
+<png/station_y3.png, id=147, 385.9218pt x 328.8285pt>
 File: png/station_y3.png Graphic file (type png)
 <use png/station_y3.png>
 Package luatex.def Info: png/station_y3.png  used on input line 167.
@@ -2062,12 +2062,12 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 170.
 See the caption package documentation for explanation.
 
-<png/acorr_y1.png, id=143, 395.3169pt x 329.5512pt>
+<png/acorr_y1.png, id=148, 395.3169pt x 329.5512pt>
 File: png/acorr_y1.png Graphic file (type png)
 <use png/acorr_y1.png>
 Package luatex.def Info: png/acorr_y1.png  used on input line 182.
 (luatex.def)             Requested size: 245.82962pt x 204.93309pt.
-<png/acorr_y3.png, id=144, 395.3169pt x 329.5512pt>
+<png/acorr_y3.png, id=149, 395.3169pt x 329.5512pt>
 File: png/acorr_y3.png Graphic file (type png)
 <use png/acorr_y3.png>
 Package luatex.def Info: png/acorr_y3.png  used on input line 186.
@@ -2080,12 +2080,12 @@ See the caption package documentation for explanation.
 
 
 [6<./png/station_y1.png><./png/station_y3.png>]
-<png/csd_y1.png, id=155, 426.393pt x 329.5512pt>
+<png/csd_y1.png, id=160, 426.393pt x 329.5512pt>
 File: png/csd_y1.png Graphic file (type png)
 <use png/csd_y1.png>
 Package luatex.def Info: png/csd_y1.png  used on input line 197.
 (luatex.def)             Requested size: 245.82962pt x 189.9933pt.
-<png/csd_y3.png, id=156, 419.8887pt x 329.5512pt>
+<png/csd_y3.png, id=161, 419.8887pt x 329.5512pt>
 File: png/csd_y3.png Graphic file (type png)
 <use png/csd_y3.png>
 Package luatex.def Info: png/csd_y3.png  used on input line 201.
@@ -2106,7 +2106,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.69203pt}.
 
 [7<./png/acorr_y1.png><./png/acorr_y3.png><./png/csd_y1.png><./png/csd_y3.png>]
-<png/corr_1.png, id=176, 715.473pt x 340.3917pt>
+<png/corr_1.png, id=181, 715.473pt x 340.3917pt>
 File: png/corr_1.png Graphic file (type png)
 <use png/corr_1.png>
 Package luatex.def Info: png/corr_1.png  used on input line 229.
@@ -2116,7 +2116,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 229.
 See the caption package documentation for explanation.
 
-<png/corr_2.png, id=177, 708.246pt x 340.3917pt>
+<png/corr_2.png, id=182, 708.246pt x 340.3917pt>
 File: png/corr_2.png Graphic file (type png)
 <use png/corr_2.png>
 Package luatex.def Info: png/corr_2.png  used on input line 229.
@@ -2126,7 +2126,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 229.
 See the caption package documentation for explanation.
 
-<png/corr_3.png, id=178, 729.2043pt x 340.3917pt>
+<png/corr_3.png, id=183, 729.2043pt x 340.3917pt>
 File: png/corr_3.png Graphic file (type png)
 <use png/corr_3.png>
 Package luatex.def Info: png/corr_3.png  used on input line 229.
@@ -2136,7 +2136,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 229.
 See the caption package documentation for explanation.
 
-<png/corr_4.png, id=179, 708.246pt x 355.5684pt>
+<png/corr_4.png, id=184, 708.246pt x 355.5684pt>
 File: png/corr_4.png Graphic file (type png)
 <use png/corr_4.png>
 Package luatex.def Info: png/corr_4.png  used on input line 229.
@@ -2156,7 +2156,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.69203pt}.
 
 [8<./png/corr_1.png><./png/corr_2.png><./png/corr_3.png>]
-<png/corr_5.png, id=192, 708.246pt x 355.5684pt>
+<png/corr_5.png, id=197, 708.246pt x 355.5684pt>
 File: png/corr_5.png Graphic file (type png)
 <use png/corr_5.png>
 Package luatex.def Info: png/corr_5.png  used on input line 229.
@@ -2167,7 +2167,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 229.
 See the caption package documentation for explanation.
 
-<png/corr_6.png, id=193, 708.246pt x 355.5684pt>
+<png/corr_6.png, id=198, 708.246pt x 355.5684pt>
 File: png/corr_6.png Graphic file (type png)
 <use png/corr_6.png>
 Package luatex.def Info: png/corr_6.png  used on input line 229.
@@ -2177,7 +2177,7 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 229.
 See the caption package documentation for explanation.
 
-<png/corr_7.png, id=194, 708.246pt x 355.5684pt>
+<png/corr_7.png, id=199, 708.246pt x 355.5684pt>
 File: png/corr_7.png Graphic file (type png)
 <use png/corr_7.png>
 Package luatex.def Info: png/corr_7.png  used on input line 229.
@@ -2197,15 +2197,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.69203pt}.
 
 [9<./png/corr_4.png><./png/corr_5.png><./png/corr_6.png>]
-<png/csd_1.png, id=208, 715.473pt x 534.0753pt>
+<png/csd_1.png, id=213, 715.473pt x 534.0753pt>
 File: png/csd_1.png Graphic file (type png)
 <use png/csd_1.png>
-Package luatex.def Info: png/csd_1.png  used on input line 259.
+Package luatex.def Info: png/csd_1.png  used on input line 265.
 (luatex.def)             Requested size: 409.72125pt x 305.8359pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 259.
+(caption)                particular \caption on input line 265.
 See the caption package documentation for explanation.
 
 
@@ -2218,25 +2218,25 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.69203pt}.
 
 [10<./png/corr_7.png>]
-<png/csd_2.png, id=218, 728.4816pt x 534.0753pt>
+<png/csd_2.png, id=223, 728.4816pt x 534.0753pt>
 File: png/csd_2.png Graphic file (type png)
 <use png/csd_2.png>
-Package luatex.def Info: png/csd_2.png  used on input line 259.
+Package luatex.def Info: png/csd_2.png  used on input line 265.
 (luatex.def)             Requested size: 409.72125pt x 300.38402pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 259.
+(caption)                particular \caption on input line 265.
 See the caption package documentation for explanation.
 
-<png/csd_3.png, id=219, 715.473pt x 534.0753pt>
+<png/csd_3.png, id=224, 715.473pt x 534.0753pt>
 File: png/csd_3.png Graphic file (type png)
 <use png/csd_3.png>
-Package luatex.def Info: png/csd_3.png  used on input line 259.
+Package luatex.def Info: png/csd_3.png  used on input line 265.
 (luatex.def)             Requested size: 409.72125pt x 305.8359pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 259.
+(caption)                particular \caption on input line 265.
 See the caption package documentation for explanation.
 
 
@@ -2249,15 +2249,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.69203pt}.
 
 [11<./png/csd_1.png><./png/csd_2.png>]
-<png/csd_4.png, id=228, 721.9773pt x 534.0753pt>
+<png/csd_4.png, id=233, 721.9773pt x 534.0753pt>
 File: png/csd_4.png Graphic file (type png)
 <use png/csd_4.png>
-Package luatex.def Info: png/csd_4.png  used on input line 259.
+Package luatex.def Info: png/csd_4.png  used on input line 265.
 (luatex.def)             Requested size: 409.72125pt x 303.08958pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 259.
+(caption)                particular \caption on input line 265.
 See the caption package documentation for explanation.
 
 
@@ -2270,30 +2270,30 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.69203pt}.
 
 [12<./png/csd_3.png><./png/csd_4.png>]
-<png/xy_graph.png, id=238, 394.5942pt x 298.4751pt>
+<png/xy_graph.png, id=243, 394.5942pt x 298.4751pt>
 File: png/xy_graph.png Graphic file (type png)
 <use png/xy_graph.png>
-Package luatex.def Info: png/xy_graph.png  used on input line 278.
+Package luatex.def Info: png/xy_graph.png  used on input line 284.
 (luatex.def)             Requested size: 307.2929pt x 232.45439pt.
-<png/csd_5.png, id=239, 455.301pt x 339.669pt>
+<png/csd_5.png, id=244, 455.301pt x 339.669pt>
 File: png/csd_5.png Graphic file (type png)
 <use png/csd_5.png>
-Package luatex.def Info: png/csd_5.png  used on input line 290.
+Package luatex.def Info: png/csd_5.png  used on input line 296.
 (luatex.def)             Requested size: 307.2929pt x 229.25632pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 290.
+(caption)                particular \caption on input line 296.
 See the caption package documentation for explanation.
 
-<png/csd_6.png, id=240, 455.301pt x 339.669pt>
+<png/csd_6.png, id=245, 455.301pt x 339.669pt>
 File: png/csd_6.png Graphic file (type png)
 <use png/csd_6.png>
-Package luatex.def Info: png/csd_6.png  used on input line 290.
+Package luatex.def Info: png/csd_6.png  used on input line 296.
 (luatex.def)             Requested size: 307.2929pt x 229.25632pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 290.
+(caption)                particular \caption on input line 296.
 See the caption package documentation for explanation.
 
 
@@ -2306,25 +2306,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.69203pt}.
 
 [13<./png/xy_graph.png><./png/csd_5.png>]
-<png/csd_7.png, id=251, 455.301pt x 339.669pt>
+<png/csd_7.png, id=256, 455.301pt x 339.669pt>
 File: png/csd_7.png Graphic file (type png)
 <use png/csd_7.png>
-Package luatex.def Info: png/csd_7.png  used on input line 290.
+Package luatex.def Info: png/csd_7.png  used on input line 296.
 (luatex.def)             Requested size: 307.2929pt x 229.25632pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 290.
+(caption)                particular \caption on input line 296.
 See the caption package documentation for explanation.
 
 )
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.69203pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.69203pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.69203pt}.
 
 [14<./png/csd_6.png><./png/csd_7.png>]
 \openout2 = attachment.aux
@@ -2394,11 +2387,11 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-04-14>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: C2BD0A762E05FFE1868678EFC4937282;2495.
+(rerunfilecheck)             Checksum: E724BC09B8FED2E7C414DED7C1B0610D;2586.
 )
 
 Here is how much of LuaTeX's memory you used:
- 54709 strings out of 471925
+ 54713 strings out of 471925
  100000,1977958 words of node,token memory allocated
  1309 words of node memory still in use:
    24 hlist, 2 vlist, 10 rule, 1 local_par, 7 glue, 4 kern, 1 penalty, 1 margin_
@@ -2406,7 +2399,7 @@ kern, 3 glyph, 110 attribute, 62 glue_spec, 81 attribute_list, 4 write, 16 pdf_l
 iteral, 16 pdf_colorstack nodes
    avail lists: 1:3,2:4595,3:2458,4:776,5:418,6:122,7:4933,8:62,9:1100,10:30,11:
 630
- 79509 multiletter control sequences out of 65536+600000
+ 79512 multiletter control sequences out of 65536+600000
  86 fonts using 20812415 bytes
  104i,13n,118p,1000b,1243s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <E:/Programs/MikTex/fonts/opentype/public/newcomputermodern/NewCMMono10-BookItal
@@ -2424,9 +2417,9 @@ ms/MikTex/fonts/type1/public/amsfonts/cm/cmr6.pfb><E:/Programs/MikTex/fonts/type
 1/public/amsfonts/cm/cmr8.pfb><E:/Programs/MikTex/fonts/type1/public/amsfonts/cm
 /cmsy10.pfb><E:/Programs/MikTex/fonts/type1/public/amsfonts/cm/cmsy6.pfb><E:/Pro
 grams/MikTex/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on main.pdf (22 pages, 1632316 bytes).
+Output written on main.pdf (22 pages, 1635111 bytes).
 
-PDF statistics: 376 PDF objects out of 1000 (max. 8388607)
- 67 named destinations out of 1000 (max. 131072)
- 240 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 381 PDF objects out of 1000 (max. 8388607)
+ 68 named destinations out of 1000 (max. 131072)
+ 248 words of extra memory for PDF output out of 10000 (max. 100000000)
 

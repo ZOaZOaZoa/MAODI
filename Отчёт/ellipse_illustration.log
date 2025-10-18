@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.22.0 (MiKTeX 25.4) (format=lualatex 2025.5.28)  16 OCT 2025 22:16
+This is LuaHBTeX, Version 1.22.0 (MiKTeX 25.4) (format=lualatex 2025.5.28)  18 OCT 2025 13:09
  system commands enabled.
 **ellipse_illustration.tex
 (./ellipse_illustration.tex
@@ -724,20 +724,20 @@ L3 programming layer <2025-04-14>
 )
 
 Here is how much of LuaTeX's memory you used:
- 19421 strings out of 471925
+ 19423 strings out of 471925
  100000,953878 words of node,token memory allocated
  938 words of node memory still in use:
    19 hlist, 1 vlist, 9 rule, 2 glue, 3 kern, 1 glyph, 53 attribute, 49 glue_spe
 c, 53 attribute_list, 2 write, 16 pdf_literal, 16 pdf_colorstack nodes
-   avail lists: 2:2360,3:2441,4:196,5:42,6:2,7:1118,8:4,9:369
- 45219 multiletter control sequences out of 65536+600000
+   avail lists: 2:2360,3:2441,4:196,5:48,6:2,7:1124,8:5,9:369
+ 45221 multiletter control sequences out of 65536+600000
  25 fonts using 1345055 bytes
  117i,7n,114p,421b,855s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <e:/programs/miktex/fonts/opentype/public/lm/lmroman10-regular.otf><E:/Programs/
 MikTex/fonts/type1/public/amsfonts/cm/cmmi10.pfb><E:/Programs/MikTex/fonts/type1
 /public/amsfonts/cm/cmmi7.pfb><E:/Programs/MikTex/fonts/type1/public/amsfonts/cm
 /cmr10.pfb><E:/Programs/MikTex/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on ellipse_illustration.pdf (1 page, 49877 bytes).
+Output written on ellipse_illustration.pdf (1 page, 50034 bytes).
 
 PDF statistics: 56 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
