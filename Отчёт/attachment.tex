@@ -200,7 +200,8 @@ def print_characteristics(arr: np.array):
 	mu, var = estimate_m_var(arr)
 	skew = stats.skew(arr)
 	kurtosis = stats.kurtosis(arr)
-	kstest = stats.kstest(arr, 'norm', alternative='two-sided')
+	arr_std = (arr - np.mean(arr)) / np.std(arr, ddof=1)
+	kstest = stats.kstest(arr_std, 'norm', alternative='two-sided')
 
 print(f'Математическое ожидание - {mu:.3f}')
 print(f'Дисперсия - {var:.3f}')

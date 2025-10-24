@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.22.0 (MiKTeX 25.4) (format=lualatex 2025.5.28)  18 OCT 2025 13:38
+This is LuaHBTeX, Version 1.22.0 (MiKTeX 25.4) (format=lualatex 2025.5.28)  24 OCT 2025 21:10
  system commands enabled.
 **main.tex
 (./main.tex
@@ -2033,14 +2033,14 @@ nput line 135.
 \pydata@fh@0=\write7
 
 \openout7 = _FAD58DE7366495DB4650CFEFAC2FCD61.data.minted
-runsystem(latexminted config  --timestamp 20251018133843 FAD58DE7366495DB4650CFE
+runsystem(latexminted config  --timestamp 20251024211030 FAD58DE7366495DB4650CFE
 FAC2FCD61)...executed.
 (./_FAD58DE7366495DB4650CFEFAC2FCD61.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20251018133843 FAD58DE7366495DB46
+runsystem(latexminted cleanconfig  --timestamp 20251024211030 FAD58DE7366495DB46
 50CFEFAC2FCD61)...executed.
 
 (./_minted/default.style.minted)
-(./_minted/5C07CBD79EFF0937D21ADDD15E8D7203.highlight.minted
+(./_minted/0E83FAC68347BADD4DBE0C888C632BA4.highlight.minted
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `NewCMMono10-Book' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
@@ -2049,32 +2049,32 @@ Package microtype Info: Loading generic protrusion settings for font family
 <png/station_y1.png, id=146, 403.9893pt x 328.8285pt>
 File: png/station_y1.png Graphic file (type png)
 <use png/station_y1.png>
-Package luatex.def Info: png/station_y1.png  used on input line 163.
+Package luatex.def Info: png/station_y1.png  used on input line 158.
 (luatex.def)             Requested size: 245.82962pt x 200.09337pt.
 <png/station_y3.png, id=147, 385.9218pt x 328.8285pt>
 File: png/station_y3.png Graphic file (type png)
 <use png/station_y3.png>
-Package luatex.def Info: png/station_y3.png  used on input line 167.
+Package luatex.def Info: png/station_y3.png  used on input line 162.
 (luatex.def)             Requested size: 245.82962pt x 209.46608pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 170.
+(caption)                particular \caption on input line 165.
 See the caption package documentation for explanation.
 
 <png/acorr_y1.png, id=148, 395.3169pt x 329.5512pt>
 File: png/acorr_y1.png Graphic file (type png)
 <use png/acorr_y1.png>
-Package luatex.def Info: png/acorr_y1.png  used on input line 182.
+Package luatex.def Info: png/acorr_y1.png  used on input line 177.
 (luatex.def)             Requested size: 245.82962pt x 204.93309pt.
 <png/acorr_y3.png, id=149, 395.3169pt x 329.5512pt>
 File: png/acorr_y3.png Graphic file (type png)
 <use png/acorr_y3.png>
-Package luatex.def Info: png/acorr_y3.png  used on input line 186.
+Package luatex.def Info: png/acorr_y3.png  used on input line 181.
 (luatex.def)             Requested size: 245.82962pt x 204.93309pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 189.
+(caption)                particular \caption on input line 184.
 See the caption package documentation for explanation.
 
 
@@ -2083,17 +2083,17 @@ See the caption package documentation for explanation.
 <png/csd_y1.png, id=160, 426.393pt x 329.5512pt>
 File: png/csd_y1.png Graphic file (type png)
 <use png/csd_y1.png>
-Package luatex.def Info: png/csd_y1.png  used on input line 197.
+Package luatex.def Info: png/csd_y1.png  used on input line 192.
 (luatex.def)             Requested size: 245.82962pt x 189.9933pt.
 <png/csd_y3.png, id=161, 419.8887pt x 329.5512pt>
 File: png/csd_y3.png Graphic file (type png)
 <use png/csd_y3.png>
-Package luatex.def Info: png/csd_y3.png  used on input line 201.
+Package luatex.def Info: png/csd_y3.png  used on input line 196.
 (luatex.def)             Requested size: 245.82962pt x 192.94505pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 204.
+(caption)                particular \caption on input line 199.
 See the caption package documentation for explanation.
 
 
@@ -2109,41 +2109,41 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <png/corr_1.png, id=181, 715.473pt x 340.3917pt>
 File: png/corr_1.png Graphic file (type png)
 <use png/corr_1.png>
-Package luatex.def Info: png/corr_1.png  used on input line 229.
+Package luatex.def Info: png/corr_1.png  used on input line 224.
 (luatex.def)             Requested size: 409.72125pt x 194.92383pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 229.
+(caption)                particular \caption on input line 224.
 See the caption package documentation for explanation.
 
 <png/corr_2.png, id=182, 708.246pt x 340.3917pt>
 File: png/corr_2.png Graphic file (type png)
 <use png/corr_2.png>
-Package luatex.def Info: png/corr_2.png  used on input line 229.
+Package luatex.def Info: png/corr_2.png  used on input line 224.
 (luatex.def)             Requested size: 409.72125pt x 196.9235pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 229.
+(caption)                particular \caption on input line 224.
 See the caption package documentation for explanation.
 
 <png/corr_3.png, id=183, 729.2043pt x 340.3917pt>
 File: png/corr_3.png Graphic file (type png)
 <use png/corr_3.png>
-Package luatex.def Info: png/corr_3.png  used on input line 229.
+Package luatex.def Info: png/corr_3.png  used on input line 224.
 (luatex.def)             Requested size: 409.72125pt x 191.2569pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 229.
+(caption)                particular \caption on input line 224.
 See the caption package documentation for explanation.
 
 <png/corr_4.png, id=184, 708.246pt x 355.5684pt>
 File: png/corr_4.png Graphic file (type png)
 <use png/corr_4.png>
-Package luatex.def Info: png/corr_4.png  used on input line 229.
+Package luatex.def Info: png/corr_4.png  used on input line 224.
 (luatex.def)             Requested size: 409.72125pt x 205.70352pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 229.
+(caption)                particular \caption on input line 224.
 See the caption package documentation for explanation.
 
 
@@ -2159,32 +2159,32 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <png/corr_5.png, id=197, 708.246pt x 355.5684pt>
 File: png/corr_5.png Graphic file (type png)
 <use png/corr_5.png>
-Package luatex.def Info: png/corr_5.png  used on input line 229.
+Package luatex.def Info: png/corr_5.png  used on input line 224.
 (luatex.def)             Requested size: 409.72125pt x 205.70352pt.
 
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 229.
+(caption)                particular \caption on input line 224.
 See the caption package documentation for explanation.
 
 <png/corr_6.png, id=198, 708.246pt x 355.5684pt>
 File: png/corr_6.png Graphic file (type png)
 <use png/corr_6.png>
-Package luatex.def Info: png/corr_6.png  used on input line 229.
+Package luatex.def Info: png/corr_6.png  used on input line 224.
 (luatex.def)             Requested size: 409.72125pt x 205.70352pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 229.
+(caption)                particular \caption on input line 224.
 See the caption package documentation for explanation.
 
 <png/corr_7.png, id=199, 708.246pt x 355.5684pt>
 File: png/corr_7.png Graphic file (type png)
 <use png/corr_7.png>
-Package luatex.def Info: png/corr_7.png  used on input line 229.
+Package luatex.def Info: png/corr_7.png  used on input line 224.
 (luatex.def)             Requested size: 409.72125pt x 205.70352pt.
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 229.
+(caption)                particular \caption on input line 224.
 See the caption package documentation for explanation.
 
 
@@ -2349,14 +2349,14 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 121.
 See the caption package documentation for explanation.
 
-(./_minted/18ADB2190D2F50AFF2BB0726052D9A1A.highlight.minted
+(./_minted/847A6012CFC5C8ECE8535616F65D2E5E.highlight.minted
 
 [16]
 
 [17])
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 221.
+(caption)                particular \caption on input line 222.
 See the caption package documentation for explanation.
 
 (./_minted/CD93675126F996B8AA1F3BBF653631F3.highlight.minted
@@ -2366,7 +2366,7 @@ See the caption package documentation for explanation.
 [19])
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 299.
+(caption)                particular \caption on input line 300.
 See the caption package documentation for explanation.
 
 (./_minted/BD021D8E103DC98DECC8FD407BCB0847.highlight.minted
@@ -2374,7 +2374,7 @@ See the caption package documentation for explanation.
 [20])
 
 Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 378.
+(caption)                particular \caption on input line 379.
 See the caption package documentation for explanation.
 
 (./_minted/713E86D40DEDDFFB1B9E4423423A97B4.highlight.minted
@@ -2391,15 +2391,15 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 )
 
 Here is how much of LuaTeX's memory you used:
- 54713 strings out of 471925
+ 54715 strings out of 471925
  100000,1977958 words of node,token memory allocated
  1309 words of node memory still in use:
    24 hlist, 2 vlist, 10 rule, 1 local_par, 7 glue, 4 kern, 1 penalty, 1 margin_
 kern, 3 glyph, 110 attribute, 62 glue_spec, 81 attribute_list, 4 write, 16 pdf_l
 iteral, 16 pdf_colorstack nodes
-   avail lists: 1:3,2:4595,3:2458,4:776,5:418,6:122,7:4933,8:62,9:1100,10:30,11:
-630
- 79512 multiletter control sequences out of 65536+600000
+   avail lists: 1:3,2:4607,3:2458,4:782,5:417,6:122,7:4954,8:62,9:1099,10:30,11:
+621
+ 79514 multiletter control sequences out of 65536+600000
  86 fonts using 20812415 bytes
  104i,13n,118p,1000b,1243s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <E:/Programs/MikTex/fonts/opentype/public/newcomputermodern/NewCMMono10-BookItal
@@ -2417,7 +2417,7 @@ ms/MikTex/fonts/type1/public/amsfonts/cm/cmr6.pfb><E:/Programs/MikTex/fonts/type
 1/public/amsfonts/cm/cmr8.pfb><E:/Programs/MikTex/fonts/type1/public/amsfonts/cm
 /cmsy10.pfb><E:/Programs/MikTex/fonts/type1/public/amsfonts/cm/cmsy6.pfb><E:/Pro
 grams/MikTex/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on main.pdf (22 pages, 1635111 bytes).
+Output written on main.pdf (22 pages, 1635026 bytes).
 
 PDF statistics: 381 PDF objects out of 1000 (max. 8388607)
  68 named destinations out of 1000 (max. 131072)

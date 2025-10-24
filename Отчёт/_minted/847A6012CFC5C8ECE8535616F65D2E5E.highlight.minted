@@ -77,7 +77,8 @@
 	\PYG{n}{mu}\PYG{p}{,} \PYG{n}{var} \PYG{o}{=} \PYG{n}{estimate\PYGZus{}m\PYGZus{}var}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{)}
 	\PYG{n}{skew} \PYG{o}{=} \PYG{n}{stats}\PYG{o}{.}\PYG{n}{skew}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{)}
 	\PYG{n}{kurtosis} \PYG{o}{=} \PYG{n}{stats}\PYG{o}{.}\PYG{n}{kurtosis}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{)}
-	\PYG{n}{kstest} \PYG{o}{=} \PYG{n}{stats}\PYG{o}{.}\PYG{n}{kstest}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}norm\PYGZsq{}}\PYG{p}{,} \PYG{n}{alternative}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}two\PYGZhy{}sided\PYGZsq{}}\PYG{p}{)}
+	\PYG{n}{arr\PYGZus{}std} \PYG{o}{=} \PYG{p}{(}\PYG{n}{arr} \PYG{o}{\PYGZhy{}} \PYG{n}{np}\PYG{o}{.}\PYG{n}{mean}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{))} \PYG{o}{/} \PYG{n}{np}\PYG{o}{.}\PYG{n}{std}\PYG{p}{(}\PYG{n}{arr}\PYG{p}{,} \PYG{n}{ddof}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{)}
+	\PYG{n}{kstest} \PYG{o}{=} \PYG{n}{stats}\PYG{o}{.}\PYG{n}{kstest}\PYG{p}{(}\PYG{n}{arr\PYGZus{}std}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}norm\PYGZsq{}}\PYG{p}{,} \PYG{n}{alternative}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}two\PYGZhy{}sided\PYGZsq{}}\PYG{p}{)}
 
 \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Математическое ожидание \PYGZhy{} }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{mu}\PYG{l+s+si}{:}\PYG{l+s+s1}{.3f}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
 \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Дисперсия \PYGZhy{} }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{var}\PYG{l+s+si}{:}\PYG{l+s+s1}{.3f}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}

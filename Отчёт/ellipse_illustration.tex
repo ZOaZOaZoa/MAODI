@@ -78,12 +78,12 @@
 		%\node[above] at (0,\a,0) {$Y$};
 		%\node[above right] at (0,0,\a) {$Z$};
 		\begin{scope}[canvas is xz plane at y=0, transform shape]
-			\node[blue!60!black, xscale=1, centered, yscale=1.2, scale=0.4] at (\mu,0.5) {pvalue};
+			\node[blue!60!black, xscale=1, centered, yscale=1.2, scale=0.4] at (\mu,0.5) {$p$};
 			\node[centered, yscale=1.2, scale=0.35, above left] at (\mu+\rx,0) {$-n_\sigma$};
 			\node[centered, yscale=1.2, scale=0.35, above right] at (\mu-\rx,0) {$n_\sigma$};
 		\end{scope}
 		\begin{scope}[canvas is yz plane at x=0, transform shape]
-			\node[red!60!black, centered, xscale=-1, yscale=1.2, scale=0.4] at (\mu,0.5) {pvalue};
+			\node[red!60!black, centered, xscale=-1, yscale=1.2, scale=0.4] at (\mu,0.5) {$p$};
 			\node[centered, xscale=-1, yscale=1.2, scale=0.35, above right] at (\mu+\ry,0) {$-n_\sigma$};
 			\node[centered, xscale=-1, yscale=1.2, scale=0.35, above left] at (\mu-\ry,0) {$n_\sigma$};
 		\end{scope}

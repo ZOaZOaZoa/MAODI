@@ -1,0 +1,15 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+Характеристики y1
+Математическое ожидание \PYGZhy{} 0.024
+Дисперсия \PYGZhy{} 0.383
+Асимметрия \PYGZhy{} 0.179
+Эксцесс \PYGZhy{} 0.254
+Тест на нормальность Колмогорова\PYGZhy{}Смирнова \PYGZhy{} pvalue=8.1e\PYGZhy{}01
+
+Характеристики y3
+Математическое ожидание \PYGZhy{} 1.121
+Дисперсия \PYGZhy{} 3.844
+Асимметрия \PYGZhy{} 0.049
+Эксцесс \PYGZhy{} \PYGZhy{}0.132
+Тест на нормальность Колмогорова\PYGZhy{}Смирнова \PYGZhy{} pvalue=9.1e\PYGZhy{}01
+\end{MintedVerbatim}
