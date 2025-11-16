@@ -67,21 +67,21 @@ def acf2(x):
 
     return res
 
-def dataToEnergy(data, sr, frame_time, frame_shift):
+def dataToEnergy(data, sr, frame_time, frame_shift, do_print = True):
     frameWidth = int(frame_time * sr)
     frameShift = int(frame_shift * frameWidth)
 
     frameCount = int(data.size / (frameWidth - frameShift)) - 1
-    print(f'{frameWidth=}')
-    print(f'{frame_shift=}')
-    print(f'{frameCount=}')
+    if do_print:
+        print(f'{frameWidth=}')
+        print(f'{frame_shift=}')
+        print(f'{frameCount=}')
 
     E = [0.0] * frameCount
     sh = 0
     df = frameWidth - frameShift
     for i in range(frameCount):
         En = 0
-        print('A')
         for j in range(frameWidth):
             sn = float(data[j + sh] ** 2)
             En = En + sn
@@ -91,6 +91,14 @@ def dataToEnergy(data, sr, frame_time, frame_shift):
 
     return E
 
+def getEMax(file_name, seconds_from_start, frame_time, frame_shift):
+    data, samplerate = sf.read(file_name)
+
+    noise_indices = int(seconds_from_start * samplerate)
+    noise_data = data[:noise_indices]
+
+    E = dataToEnergy(noise_data, samplerate, frame_time, frame_shift, do_print=False)
+    return np.max(E)
 
 def VAD(data, sr, frame_time, frame_shift, noise_frame_end, eTh):
     frameWidth = int(frame_time * sr)
