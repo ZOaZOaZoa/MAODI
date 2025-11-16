@@ -9,7 +9,7 @@ import soundfile as sf
 
 def main():
     path = os.getcwd() + '\\'
-    command = 'тест'
+    command = 'Осмотреться'
     dir = path + command + '\\'
     os.makedirs(dir, exist_ok=True)
 
