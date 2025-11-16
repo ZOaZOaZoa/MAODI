@@ -1,0 +1,94 @@
+\usepackage[russian]{babel}
+\usepackage[utf8x]{inputenc}
+\newtheorem{theorem}{\hspace*{1.25cm}Теорема}
+%Соответствующий математический шрифт для Times new roman
+%\usepackage{newtxmath}
+
+%Шрифты
+\usepackage{fontspec} 
+\defaultfontfeatures{Ligatures={TeX},Renderer=Basic} 
+\setmainfont{NewCM10-Book}
+\setsansfont{NewCMSans10-Book}
+\setmonofont{NewCMMono10-Book}
+
+%\setdefaultlanguage{russian}
+
+%Геометрия
+\usepackage{geometry}
+\geometry{top=20mm}
+\geometry{bottom=15mm}
+\geometry{left=20mm}
+\geometry{right=10mm}
+\usepackage{setspace}
+%Нормальные дроби через запятую
+\usepackage{ncccomma}
+
+\newcommand{\changefont}{%
+	\fontsize{12}{11}\selectfont
+}
+
+%Заголовки
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+%\renewcommand{\sectionmark}[1]{\markright{#1}}
+\fancyhead[R]{\changefont \slshape \leftmark}
+%\fancyhead[L]{\changefont \slshape \rightmark}
+%\newcommand{\ssubsection}[1]{\subsection*{#1}
+%	\addcontentsline{toc}{subsection}{#1}
+%	\markright{#1}{}}
+\cfoot{\thepage}
+
+%\полуторный интервал
+\setstretch{1.15}
+\setlength{\parindent}{1.25cm}
+
+\usepackage{amsmath, amsfonts, mathtools,amssymb}
+\usepackage{bm}
+\usepackage{physics}
+\usepackage{indentfirst}
+\usepackage{xcolor}
+\usepackage{alltt}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{pgfplots}
+\usepackage{multirow}
+\usepackage{standalone}  
+
+%Настройка ссылок
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{minted}
+\lstdefinestyle{python}{
+	language=Python,
+	breaklines=true,
+	frame=single,
+	numbers=left,
+	keywordstyle=\bfseries\color{green!40!black},
+	frame=lines,
+	basicstyle=\footnotesize\rmfamily
+}
+%\usepackage{upgreek}
+%\renewcomand{\beta}{\upbeta}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+\usepackage{caption}
+\DeclareCaptionLabelSeparator{dot}{. }
+\captionsetup{justification=centering,labelsep=dot}
+\usepackage{titlesec}
+
+%Формат заголовков
+\titleformat{\section}{\bfseries\filcenter\uppercase}{\thesection}{1em}{}
+\titleformat{\subsection}{\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\bfseries\filcenter\normalsize}{\thesubsubsection}{1em}{}
+
+\usepackage{chngcntr}
+
+%Включить в нумерацию картинок раздел
+\counterwithin{figure}{section}
+\renewcommand{\sp}[1]{\mathrm{sp}\,#1}

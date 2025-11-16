@@ -1,0 +1,77 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{wave}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{pyaudio}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{py}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{keyboard}
+\PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{array}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{array}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{os}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{dataprocessing}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{dp}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{numpy}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{np}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{soundfile}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{sf}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{record\PYGZus{}voice}\PYG{p}{(}\PYG{n}{file\PYGZus{}to\PYGZus{}save}\PYG{p}{,} \PYG{n}{descriptive} \PYG{o}{=} \PYG{k+kc}{True}\PYG{p}{):}
+    \PYG{n}{CHUNK} \PYG{o}{=} \PYG{l+m+mi}{1024}
+    \PYG{n}{FORMAT} \PYG{o}{=} \PYG{n}{py}\PYG{o}{.}\PYG{n}{paInt16}
+    \PYG{n}{CHANNELS} \PYG{o}{=} \PYG{l+m+mi}{1}
+    \PYG{n}{RATE} \PYG{o}{=} \PYG{l+m+mi}{22050}
+
+    \PYG{n}{p} \PYG{o}{=} \PYG{n}{py}\PYG{o}{.}\PYG{n}{PyAudio}\PYG{p}{()}
+    \PYG{n}{stream} \PYG{o}{=} \PYG{n}{p}\PYG{o}{.}\PYG{n}{open}\PYG{p}{(}\PYG{n+nb}{format}\PYG{o}{=}\PYG{n}{FORMAT}\PYG{p}{,} \PYG{n}{channels}\PYG{o}{=}\PYG{n}{CHANNELS}\PYG{p}{,} \PYG{n}{rate}\PYG{o}{=}\PYG{n}{RATE}\PYG{p}{,} \PYG{n+nb}{input}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{,} \PYG{n}{frames\PYGZus{}per\PYGZus{}buffer}\PYG{o}{=}\PYG{n}{CHUNK}\PYG{p}{)}
+
+    \PYG{n}{data\PYGZus{}all} \PYG{o}{=} \PYG{n}{array}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}h\PYGZsq{}}\PYG{p}{)}
+
+    \PYG{n}{recording} \PYG{o}{=} \PYG{k+kc}{True}
+
+    \PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{key\PYGZus{}press}\PYG{p}{(}\PYG{n}{e}\PYG{p}{):}
+        \PYG{k}{nonlocal} \PYG{n}{recording}
+        \PYG{k}{if} \PYG{n}{e}\PYG{o}{.}\PYG{n}{name} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}enter\PYGZsq{}}\PYG{p}{:}
+            \PYG{n}{recording} \PYG{o}{=} \PYG{k+kc}{False}
+            \PYG{n}{keyboard}\PYG{o}{.}\PYG{n}{unhook\PYGZus{}all}\PYG{p}{()}
+
+    \PYG{n}{keyboard}\PYG{o}{.}\PYG{n}{hook}\PYG{p}{(}\PYG{n}{key\PYGZus{}press}\PYG{p}{)}
+
+    \PYG{n}{start\PYGZus{}prompted} \PYG{o}{=} \PYG{k+kc}{False}
+    \PYG{k}{while} \PYG{n}{recording}\PYG{p}{:}
+        \PYG{k}{if} \PYG{n}{stream}\PYG{o}{.}\PYG{n}{is\PYGZus{}active}\PYG{p}{():}
+            \PYG{k}{if} \PYG{o+ow}{not} \PYG{n}{start\PYGZus{}prompted}\PYG{p}{:}
+                \PYG{n}{start\PYGZus{}prompted} \PYG{o}{=} \PYG{k+kc}{True}
+                \PYG{k}{if} \PYG{n}{descriptive}\PYG{p}{:}
+                    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Началась запись\PYGZdq{}}\PYG{p}{)}
+
+            \PYG{n}{data} \PYG{o}{=} \PYG{n}{stream}\PYG{o}{.}\PYG{n}{read}\PYG{p}{(}\PYG{n}{CHUNK}\PYG{p}{,} \PYG{n}{exception\PYGZus{}on\PYGZus{}overflow}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{)}
+            \PYG{n}{data\PYGZus{}all}\PYG{o}{.}\PYG{n}{extend}\PYG{p}{(}\PYG{n}{array}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}h\PYGZsq{}}\PYG{p}{,} \PYG{n}{data}\PYG{p}{))}
+    
+    \PYG{k}{if} \PYG{n}{descriptive}\PYG{p}{:}
+        \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Вышли из цикла\PYGZsq{}}\PYG{p}{)}
+
+    \PYG{n}{stream}\PYG{o}{.}\PYG{n}{stop\PYGZus{}stream}\PYG{p}{()}
+    \PYG{n}{stream}\PYG{o}{.}\PYG{n}{close}\PYG{p}{()}
+    \PYG{n}{p}\PYG{o}{.}\PYG{n}{terminate}\PYG{p}{()}
+    \PYG{k}{if} \PYG{n}{descriptive}\PYG{p}{:}
+        \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Запись остановлена\PYGZsq{}}\PYG{p}{)}
+
+    \PYG{n}{wav} \PYG{o}{=} \PYG{n}{wave}\PYG{o}{.}\PYG{n}{open}\PYG{p}{(}\PYG{n}{file\PYGZus{}to\PYGZus{}save}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}wb\PYGZdq{}}\PYG{p}{)}
+    \PYG{n}{wav}\PYG{o}{.}\PYG{n}{setnchannels}\PYG{p}{(}\PYG{n}{CHANNELS}\PYG{p}{)}
+    \PYG{n}{wav}\PYG{o}{.}\PYG{n}{setframerate}\PYG{p}{(}\PYG{n}{RATE}\PYG{p}{)}
+    \PYG{n}{wav}\PYG{o}{.}\PYG{n}{setsampwidth}\PYG{p}{(}\PYG{n}{p}\PYG{o}{.}\PYG{n}{get\PYGZus{}sample\PYGZus{}size}\PYG{p}{(}\PYG{n}{FORMAT}\PYG{p}{))}
+    \PYG{n}{wav}\PYG{o}{.}\PYG{n}{writeframes}\PYG{p}{(}\PYG{n}{data\PYGZus{}all}\PYG{p}{)}
+    \PYG{n}{wav}\PYG{o}{.}\PYG{n}{close}\PYG{p}{()}
+    \PYG{k}{if} \PYG{n}{descriptive}\PYG{p}{:}
+        \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}Запись сохранена в }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{file\PYGZus{}to\PYGZus{}save}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{main}\PYG{p}{():}
+    \PYG{n}{FRAME\PYGZus{}TIME} \PYG{o}{=} \PYG{l+m+mf}{20E\PYGZhy{}3}
+    \PYG{n}{FRAME\PYGZus{}SHIFT} \PYG{o}{=} \PYG{l+m+mf}{0.5}
+
+    \PYG{n}{path} \PYG{o}{=} \PYG{n}{os}\PYG{o}{.}\PYG{n}{getcwd}\PYG{p}{()} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}\PYGZbs{}}\PYG{l+s+s1}{\PYGZsq{}}
+    \PYG{n}{command} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}тест\PYGZsq{}}
+    \PYG{n+nb}{dir} \PYG{o}{=} \PYG{n}{path} \PYG{o}{+} \PYG{n}{command} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}\PYGZbs{}}\PYG{l+s+s1}{\PYGZsq{}}
+    \PYG{n}{os}\PYG{o}{.}\PYG{n}{makedirs}\PYG{p}{(}\PYG{n+nb}{dir}\PYG{p}{,} \PYG{n}{exist\PYGZus{}ok}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{)}
+
+    \PYG{n}{fname} \PYG{o}{=} \PYG{n+nb}{dir} \PYG{o}{+} \PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{command}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{.wav\PYGZdq{}}
+    \PYG{n}{record\PYGZus{}voice}\PYG{p}{(}\PYG{n}{fname}\PYG{p}{)}
+    \PYG{n}{dp}\PYG{o}{.}\PYG{n}{resave\PYGZus{}activity\PYGZus{}fragments}\PYG{p}{(}\PYG{n}{fname}\PYG{p}{,} \PYG{n}{FRAME\PYGZus{}TIME}\PYG{p}{,} \PYG{n}{FRAME\PYGZus{}SHIFT}\PYG{p}{)}
+    
+
+\PYG{k}{if} \PYG{n+nv+vm}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}\PYGZsq{}}\PYG{p}{:}
+    \PYG{n}{main}\PYG{p}{()}
+\end{MintedVerbatim}

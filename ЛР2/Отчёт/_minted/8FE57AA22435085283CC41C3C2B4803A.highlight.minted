@@ -1,0 +1,29 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} Метод recude\PYGZus{}noise (Модификация метода спектральных вычитаний)}
+\PYG{n}{filtered\PYGZus{}data} \PYG{o}{=} \PYG{n}{nr}\PYG{o}{.}\PYG{n}{reduce\PYGZus{}noise}\PYG{p}{(}\PYG{n}{y}\PYG{o}{=}\PYG{n}{data}\PYG{p}{,} \PYG{n}{sr}\PYG{o}{=}\PYG{n}{samplerate}\PYG{p}{,} \PYG{n}{y\PYGZus{}noise}\PYG{o}{=}\PYG{n}{noise\PYGZus{}data}\PYG{p}{,} \PYG{n}{prop\PYGZus{}decrease}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{thresh\PYGZus{}n\PYGZus{}mult\PYGZus{}nonstationary}\PYG{o}{=}\PYG{l+m+mf}{1.5}\PYG{p}{,} \PYG{n}{stationary}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{rcParams}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}figure.figsize\PYGZdq{}}\PYG{p}{]} \PYG{o}{=} \PYG{p}{(}\PYG{l+m+mi}{20}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{filtered\PYGZus{}data}\PYG{p}{[:}\PYG{n}{indices\PYGZus{}to\PYGZus{}plot}\PYG{p}{])}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+
+\PYG{n}{sf}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Y\PYGZus{}filtered12.wav\PYGZsq{}}\PYG{p}{,} \PYG{n}{filtered\PYGZus{}data}\PYG{p}{,} \PYG{n}{samplerate}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Цифровая фильтрация}
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{digital\PYGZus{}filter}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{alpha}\PYG{p}{):}
+	\PYG{n}{N} \PYG{o}{=} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{data}\PYG{p}{)}
+	\PYG{n}{y} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{n}{N}\PYG{p}{)}
+	\PYG{n}{y}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{=} \PYG{n}{data}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{/} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sqrt}\PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{\PYGZhy{}} \PYG{n}{alpha}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{p}{)}
+	\PYG{k}{for} \PYG{n}{n} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{N}\PYG{p}{):}
+	\PYG{n}{y}\PYG{p}{[}\PYG{n}{n}\PYG{p}{]} \PYG{o}{=} \PYG{n}{alpha} \PYG{o}{*} \PYG{n}{y}\PYG{p}{[}\PYG{n}{n}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sqrt}\PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{\PYGZhy{}} \PYG{n}{alpha}\PYG{o}{**}\PYG{l+m+mi}{2}\PYG{p}{)} \PYG{o}{*} \PYG{n}{data}\PYG{p}{[}\PYG{n}{n}\PYG{p}{]}
+	
+	\PYG{k}{return} \PYG{n}{y}
+	
+\PYG{n}{seconds\PYGZus{}to\PYGZus{}plot} \PYG{o}{=} \PYG{l+m+mi}{10}
+\PYG{n}{indices\PYGZus{}to\PYGZus{}plot} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{seconds\PYGZus{}to\PYGZus{}plot} \PYG{o}{*} \PYG{n}{samplerate}\PYG{p}{)}
+
+\PYG{n}{filtered\PYGZus{}data2} \PYG{o}{=} \PYG{n}{digital\PYGZus{}filter}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{l+m+mf}{0.99}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{rcParams}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}figure.figsize\PYGZdq{}}\PYG{p}{]} \PYG{o}{=} \PYG{p}{(}\PYG{l+m+mi}{20}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{filtered\PYGZus{}data2}\PYG{p}{[:}\PYG{n}{indices\PYGZus{}to\PYGZus{}plot}\PYG{p}{])}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+
+\PYG{n}{sf}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Y\PYGZus{}filtered2.wav\PYGZsq{}}\PYG{p}{,} \PYG{n}{filtered\PYGZus{}data2}\PYG{p}{,} \PYG{n}{samplerate}\PYG{p}{)}
+\end{MintedVerbatim}

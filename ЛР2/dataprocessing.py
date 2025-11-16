@@ -1,71 +1,6 @@
 import numpy as np
 import soundfile as sf
-
-def acf(x):
-    n = len(x)
-    print(n)
-    if n > 0:
-        res = [0] * (2 * n - 1)
-        mx = 0
-        for j in range(n):
-            mx = mx + x[j]
-        mx = mx / n
-
-        for j in range(n):
-            x[j] = (x[j] - mx)
-            res[n - 1] = res[n - 1] + x[j] * x[j]
-        res[n - 1] = res[n - 1] / (n)
-        print(res[n - 1])
-
-        for k in range(1, n):
-            # res[k + n - 1] = 0
-            nmax = n - k
-            for j in range(nmax):
-                res[n + k - 1] = res[n + k - 1] + x[j] * x[j + k]
-            res[n + k - 1] = res[n + k - 1] / (n - k)
-            res[n - 1 - k] = res[n + k - 1]
-    else:
-        res = []
-
-    # res2 =  [0] * (2 * n - 1)
-    # for j in range(2*n - 1):
-    #     res2[j] = res[j] / res[n - 1]
-    print(x[0])
-    print(x[n-1])
-    return res
-
-def acf2(x):
-    n = len(x)
-    mx = 0
-    for j in range(n):
-        mx = mx + x[j]
-    mx = mx / n
-
-    for j in range(n):
-        x[j] = (x[j] - mx)
-
-    y = [0] * 2 * n
-    for j in range(n):
-        y[j] = x[j]
-
-    for j in range(n, n):
-        y[j] = 0
-
-    n = len(y)
-    a = np.fft.rfft(y, n)
-    print(a)
-    b = [0] * len(a)
-    for j in range(len(a)):
-        b[j] = a[j].real * a[j].real + a[j].imag * a[j].imag
-    c = np.fft.ifft(b)
-    c2 = np.fft.fftshift(c)
-    n = len(x)
-    res = [0] * n
-    for j in range(n):
-        res[j] = c2[j].real
-
-
-    return res
+import librosa.feature as ft
 
 def dataToEnergy(data, sr, frame_time, frame_shift, do_print = True):
     frameWidth = int(frame_time * sr)
@@ -167,13 +102,22 @@ def VAD(data, sr, frame_time, frame_shift, noise_frame_end, eTh):
 
     return vadData, tickData
 
-
 def resave(fname, start, end, newfname):
     y, sr = sf.read(file=fname, dtype='int16')
     out = y[start:end]
     sf.write(file=newfname, data=out, samplerate=sr,subtype='PCM_16')
 
+def resave_activity_fragments(fname, frame_time, frame_shift):
+    E_noise_max = getEMax(fname, seconds_from_start=1, frame_time=frame_time, frame_shift=frame_shift)
+    data, samplerate = sf.read(fname)
+    _, ticks = VAD(data, samplerate, frame_time, frame_shift, noise_frame_end=0, eTh= E_noise_max)
 
-def noise_reduction():
-
-    return None
+    counter = 1
+    for i in range(int(len(ticks) / 2)):
+        left_tick = ticks[2*i]
+        right_tick = ticks[2*i + 1]
+        if right_tick - left_tick < 5000:
+            continue
+        
+        resave(fname, left_tick, right_tick, fname.replace('.wav', f'{counter}.wav'))
+        counter += 1

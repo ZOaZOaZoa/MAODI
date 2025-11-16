@@ -1,0 +1,59 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{numpy}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{np}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{soundfile}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{sf}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{matplotlib.pyplot}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{plt}
+\PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{matplotlib.patches}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{Rectangle}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{noisereduce}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{nr}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{dataprocessing}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{dp}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{librosa.feature}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{ft}
+\PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{enum}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{Enum}
+
+\PYG{c+c1}{\PYGZsh{} Считывание файла с речью}
+\PYG{n}{data}\PYG{p}{,} \PYG{n}{samplerate} \PYG{o}{=} \PYG{n}{sf}\PYG{o}{.}\PYG{n}{read}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Y.wav\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{seconds\PYGZus{}to\PYGZus{}plot} \PYG{o}{=} \PYG{l+m+mf}{1.5}
+\PYG{n}{indices\PYGZus{}to\PYGZus{}plot} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{seconds\PYGZus{}to\PYGZus{}plot} \PYG{o}{*} \PYG{n}{samplerate}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{rcParams}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}figure.figsize\PYGZdq{}}\PYG{p}{]} \PYG{o}{=} \PYG{p}{(}\PYG{l+m+mi}{20}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{data}\PYG{p}{[:}\PYG{n}{indices\PYGZus{}to\PYGZus{}plot}\PYG{p}{])}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+
+\PYG{c+c1}{\PYGZsh{} Сохранение шума в начале}
+\PYG{n}{noise\PYGZus{}seconds} \PYG{o}{=} \PYG{l+m+mf}{0.4}
+\PYG{n}{noise\PYGZus{}indices} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{noise\PYGZus{}seconds} \PYG{o}{*} \PYG{n}{samplerate}\PYG{p}{)}
+\PYG{n}{noise\PYGZus{}data} \PYG{o}{=} \PYG{n}{data}\PYG{p}{[:}\PYG{n}{noise\PYGZus{}indices}\PYG{p}{]}
+\PYG{n}{dp}\PYG{o}{.}\PYG{n}{resave}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Y.wav\PYGZsq{}}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{noise\PYGZus{}indices}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}Y\PYGZus{}noise.wav\PYGZsq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Получение выборки кратковременных энергий кадров речевого сигнала}
+\PYG{n}{frame\PYGZus{}time} \PYG{o}{=} \PYG{l+m+mf}{20e\PYGZhy{}3}
+\PYG{n}{frame\PYGZus{}shift} \PYG{o}{=} \PYG{l+m+mf}{0.5}
+
+
+\PYG{n}{E} \PYG{o}{=} \PYG{n}{dp}\PYG{o}{.}\PYG{n}{dataToEnergy}\PYG{p}{(}\PYG{n}{noise\PYGZus{}data}\PYG{p}{,} \PYG{n}{samplerate}\PYG{p}{,} \PYG{n}{frame\PYGZus{}time}\PYG{p}{,} \PYG{n}{frame\PYGZus{}shift}\PYG{p}{,} \PYG{n}{do\PYGZus{}print}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{)}
+\PYG{n}{E\PYGZus{}noise\PYGZus{}max} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{max}\PYG{p}{(}\PYG{n}{E}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{E\PYGZus{}noise\PYGZus{}max}\PYG{l+s+si}{=:}\PYG{l+s+s1}{.2e}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{rcParams}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}figure.figsize\PYGZdq{}}\PYG{p}{]} \PYG{o}{=} \PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{E}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+
+\PYG{c+c1}{\PYGZsh{} Выявление голосовой активности}
+\PYG{n}{vadData}\PYG{p}{,} \PYG{n}{tickData} \PYG{o}{=} \PYG{n}{dp}\PYG{o}{.}\PYG{n}{VAD}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{samplerate}\PYG{p}{,} \PYG{n}{frame\PYGZus{}time}\PYG{p}{,} \PYG{n}{frame\PYGZus{}shift}\PYG{p}{,} \PYG{n}{noise\PYGZus{}frame\PYGZus{}end}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{eTh}\PYG{o}{=} \PYG{n}{E\PYGZus{}noise\PYGZus{}max}\PYG{p}{)}
+
+\PYG{n}{seconds\PYGZus{}to\PYGZus{}plot} \PYG{o}{=} \PYG{l+m+mi}{3}
+\PYG{n}{indices\PYGZus{}to\PYGZus{}plot} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{seconds\PYGZus{}to\PYGZus{}plot} \PYG{o}{*} \PYG{n}{samplerate}\PYG{p}{)}
+\PYG{n}{ticks} \PYG{o}{=} \PYG{p}{[]}
+\PYG{k}{for} \PYG{n}{tick} \PYG{o+ow}{in} \PYG{n}{tickData}\PYG{p}{:}
+	\PYG{k}{if} \PYG{n}{tick} \PYG{o}{\PYGZgt{}} \PYG{n}{indices\PYGZus{}to\PYGZus{}plot}\PYG{p}{:}
+		\PYG{k}{break}
+
+	\PYG{n}{ticks}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{tick}\PYG{p}{)}
+
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{rcParams}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}figure.figsize\PYGZdq{}}\PYG{p}{]} \PYG{o}{=} \PYG{p}{(}\PYG{l+m+mi}{20}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{)}
+\PYG{n}{fig}\PYG{p}{,} \PYG{n}{ax} \PYG{o}{=} \PYG{n}{plt}\PYG{o}{.}\PYG{n}{subplots}\PYG{p}{()}
+\PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{int}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{ticks}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mi}{2}\PYG{p}{)):}
+	\PYG{n}{left\PYGZus{}tick} \PYG{o}{=} \PYG{n}{ticks}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{i}\PYG{p}{]}
+	\PYG{n}{right\PYGZus{}tick} \PYG{o}{=} \PYG{n}{ticks}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{i} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{]}
+	\PYG{n}{rect} \PYG{o}{=} \PYG{n}{Rectangle}\PYG{p}{((}\PYG{n}{left\PYGZus{}tick}\PYG{p}{,} \PYG{n}{np}\PYG{o}{.}\PYG{n}{min}\PYG{p}{(}\PYG{n}{data}\PYG{p}{)),} \PYG{n}{width}\PYG{o}{=}\PYG{n}{right\PYGZus{}tick} \PYG{o}{\PYGZhy{}} \PYG{n}{left\PYGZus{}tick}\PYG{p}{,} \PYG{n}{height} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{max}\PYG{p}{(}\PYG{n}{data}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{n}{np}\PYG{o}{.}\PYG{n}{min}\PYG{p}{(}\PYG{n}{data}\PYG{p}{),} \PYG{n}{facecolor}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}r\PYGZsq{}}\PYG{p}{,} \PYG{n}{linewidth}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{edgecolor}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}k\PYGZsq{}}\PYG{p}{)}
+	\PYG{n}{ax}\PYG{o}{.}\PYG{n}{add\PYGZus{}patch}\PYG{p}{(}\PYG{n}{rect}\PYG{p}{)}
+
+\PYG{n}{ax}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{data}\PYG{p}{[:}\PYG{n}{indices\PYGZus{}to\PYGZus{}plot}\PYG{p}{])}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{MintedVerbatim}

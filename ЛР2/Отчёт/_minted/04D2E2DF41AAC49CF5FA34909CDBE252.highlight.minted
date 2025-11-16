@@ -1,0 +1,76 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{word1\PYGZus{}path} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}./notebook/Разворот/Разворот7.wav\PYGZsq{}}
+\PYG{n}{word2\PYGZus{}path} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}./notebook/Сканировать/Сканировать7.wav\PYGZsq{}}
+
+\PYG{n}{data1}\PYG{p}{,} \PYG{n}{samplerate1} \PYG{o}{=} \PYG{n}{sf}\PYG{o}{.}\PYG{n}{read}\PYG{p}{(}\PYG{n}{word1\PYGZus{}path}\PYG{p}{)}
+\PYG{n}{data2}\PYG{p}{,} \PYG{n}{samplerate2} \PYG{o}{=} \PYG{n}{sf}\PYG{o}{.}\PYG{n}{read}\PYG{p}{(}\PYG{n}{word2\PYGZus{}path}\PYG{p}{)}
+
+\PYG{n}{frame\PYGZus{}time} \PYG{o}{=} \PYG{l+m+mf}{16e\PYGZhy{}3}
+\PYG{n}{frame\PYGZus{}length} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{frame\PYGZus{}time} \PYG{o}{*} \PYG{n}{samplerate1}\PYG{p}{)}
+\PYG{n}{frame\PYGZus{}shift\PYGZus{}ratio} \PYG{o}{=} \PYG{l+m+mf}{0.5}
+\PYG{n}{frame\PYGZus{}shift} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{frame\PYGZus{}shift\PYGZus{}ratio} \PYG{o}{*} \PYG{n}{frame\PYGZus{}length}\PYG{p}{)}
+
+\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{Phoneme}\PYG{p}{(}\PYG{n}{Enum}\PYG{p}{):}
+	\PYG{n}{Pause} \PYG{o}{=} \PYG{l+m+mi}{0}
+	\PYG{n}{Vowel} \PYG{o}{=} \PYG{l+m+mi}{1}
+	\PYG{n}{Consonant} \PYG{o}{=} \PYG{l+m+mi}{2}
+
+	\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf+fm}{\PYGZus{}\PYGZus{}int\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+		\PYG{k}{return} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{value}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{scale\PYGZus{}to\PYGZus{}plot}\PYG{p}{(}\PYG{n}{data}\PYG{p}{):}
+	\PYG{n}{to\PYGZus{}plot\PYGZus{}data} \PYG{o}{=} \PYG{p}{[]}
+	\PYG{k}{for} \PYG{n}{zero\PYGZus{}crossing\PYGZus{}rate} \PYG{o+ow}{in} \PYG{n}{data}\PYG{p}{:}
+	\PYG{n}{to\PYGZus{}plot\PYGZus{}data} \PYG{o}{+=} \PYG{p}{[}\PYG{n}{zero\PYGZus{}crossing\PYGZus{}rate}\PYG{p}{]} \PYG{o}{*} \PYG{n}{frame\PYGZus{}shift}
+
+	\PYG{k}{return} \PYG{n}{to\PYGZus{}plot\PYGZus{}data}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{calc\PYGZus{}plot\PYGZus{}features}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{samplerate}\PYG{p}{,} \PYG{n}{frame\PYGZus{}length}\PYG{p}{,} \PYG{n}{frame\PYGZus{}shift}\PYG{p}{,} \PYG{n}{E\PYGZus{}max}\PYG{p}{,} \PYG{n}{z\PYGZus{}max}\PYG{p}{,} \PYG{n}{data\PYGZus{}name}\PYG{p}{:}\PYG{n+nb}{str} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}\PYG{p}{):}
+	\PYG{c+c1}{\PYGZsh{} Расчёт характеристик}
+	\PYG{n}{E} \PYG{o}{=} \PYG{n}{dp}\PYG{o}{.}\PYG{n}{dataToEnergy}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{samplerate}\PYG{p}{,} \PYG{n}{frame\PYGZus{}time}\PYG{p}{,} \PYG{n}{frame\PYGZus{}shift\PYGZus{}ratio}\PYG{p}{,} \PYG{n}{do\PYGZus{}print}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{)}
+	\PYG{n}{E} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{(}\PYG{n}{E}\PYG{p}{)}
+	\PYG{n}{E\PYGZus{}max\PYGZus{}calc} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{max}\PYG{p}{(}\PYG{n}{E}\PYG{p}{)}
+	\PYG{n}{scaler} \PYG{o}{=} \PYG{l+m+mf}{0.5}\PYG{o}{/}\PYG{n}{E\PYGZus{}max\PYGZus{}calc}
+	\PYG{n}{E} \PYG{o}{*=} \PYG{n}{scaler}
+	\PYG{n}{zero\PYGZus{}crossing\PYGZus{}rates} \PYG{o}{=} \PYG{n}{ft}\PYG{o}{.}\PYG{n}{zero\PYGZus{}crossing\PYGZus{}rate}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{frame\PYGZus{}length}\PYG{o}{=}\PYG{n}{frame\PYGZus{}length}\PYG{p}{,} \PYG{n}{hop\PYGZus{}length}\PYG{o}{=}\PYG{n}{frame\PYGZus{}shift}\PYG{p}{,} \PYG{n}{center}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{)}
+	
+	\PYG{c+c1}{\PYGZsh{} Классификация фонем для кадров}
+	\PYG{n}{phoneme\PYGZus{}classes} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{empty}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{E}\PYG{p}{),} \PYG{n}{dtype}\PYG{o}{=}\PYG{n+nb}{object}\PYG{p}{)}
+	\PYG{n}{pause\PYGZus{}mask} \PYG{o}{=} \PYG{n}{E} \PYG{o}{\PYGZlt{}} \PYG{n}{E\PYGZus{}max}
+	\PYG{n}{vowel\PYGZus{}mask} \PYG{o}{=} \PYG{p}{(}\PYG{o}{\PYGZti{}}\PYG{n}{pause\PYGZus{}mask}\PYG{p}{)} \PYG{o}{\PYGZam{}} \PYG{p}{(}\PYG{n}{zero\PYGZus{}crossing\PYGZus{}rates}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{\PYGZlt{}} \PYG{n}{z\PYGZus{}max}\PYG{p}{)}
+	\PYG{n}{consonant\PYGZus{}mask} \PYG{o}{=} \PYG{o}{\PYGZti{}}\PYG{p}{(}\PYG{n}{pause\PYGZus{}mask} \PYG{o}{|} \PYG{n}{vowel\PYGZus{}mask}\PYG{p}{)}
+	
+	\PYG{n}{phoneme\PYGZus{}classes}\PYG{p}{[}\PYG{n}{pause\PYGZus{}mask}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Phoneme}\PYG{o}{.}\PYG{n}{Pause}
+	\PYG{n}{phoneme\PYGZus{}classes}\PYG{p}{[}\PYG{n}{vowel\PYGZus{}mask}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Phoneme}\PYG{o}{.}\PYG{n}{Vowel}
+	\PYG{n}{phoneme\PYGZus{}classes}\PYG{p}{[}\PYG{n}{consonant\PYGZus{}mask}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Phoneme}\PYG{o}{.}\PYG{n}{Consonant}
+	
+	\PYG{c+c1}{\PYGZsh{} Преобразование для построения графиков}
+	\PYG{n}{to\PYGZus{}plot\PYGZus{}crossing\PYGZus{}rate} \PYG{o}{=} \PYG{n}{scale\PYGZus{}to\PYGZus{}plot}\PYG{p}{(}\PYG{n}{zero\PYGZus{}crossing\PYGZus{}rates}\PYG{o}{.}\PYG{n}{flatten}\PYG{p}{())}
+	\PYG{n}{to\PYGZus{}plot\PYGZus{}E} \PYG{o}{=} \PYG{n}{scale\PYGZus{}to\PYGZus{}plot}\PYG{p}{(}\PYG{n}{E}\PYG{p}{)}
+	\PYG{n}{to\PYGZus{}plot\PYGZus{}classes} \PYG{o}{=} \PYG{n}{scale\PYGZus{}to\PYGZus{}plot}\PYG{p}{(}\PYG{n}{phoneme\PYGZus{}classes}\PYG{p}{)}
+	
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Характеристики речевого сигнала }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{data\PYGZus{}name}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Речь\PYGZsq{}}\PYG{p}{)}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{to\PYGZus{}plot\PYGZus{}crossing\PYGZus{}rate}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}\PYGZhy{}\PYGZsq{}}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}z\PYGZdl{}\PYGZsq{}}\PYG{p}{)}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{to\PYGZus{}plot\PYGZus{}E}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}.\PYGZsq{}}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{scaler}\PYG{l+s+si}{:}\PYG{l+s+s1}{.2f}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{E\PYGZdl{}\PYGZsq{}}\PYG{p}{)}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{()}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+	
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Фонемы речевого сигнала }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{data\PYGZus{}name}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Речь\PYGZsq{}}\PYG{p}{)}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{l+m+mf}{0.25}\PYG{o}{*}\PYG{n}{np}\PYG{o}{.}\PYG{n}{int16}\PYG{p}{(}\PYG{n}{to\PYGZus{}plot\PYGZus{}classes}\PYG{p}{),} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Класс\PYGZsq{}}\PYG{p}{)}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{yticks}\PYG{p}{(}
+	\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mf}{0.25}\PYG{p}{,} \PYG{l+m+mf}{0.5}\PYG{p}{],}
+	\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}Пауза\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}Гласная\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}Согласная\PYGZsq{}}\PYG{p}{]}
+	\PYG{p}{)}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{()}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+	
+	\PYG{k}{return} \PYG{n}{E}\PYG{p}{,} \PYG{n}{zero\PYGZus{}crossing\PYGZus{}rates}
+
+\PYG{n}{E\PYGZus{}max} \PYG{o}{=} \PYG{l+m+mf}{1e\PYGZhy{}4}
+\PYG{n}{z\PYGZus{}max} \PYG{o}{=} \PYG{l+m+mf}{0.08}
+
+\PYG{n}{calc\PYGZus{}plot\PYGZus{}features}\PYG{p}{(}\PYG{n}{data1}\PYG{p}{,} \PYG{n}{samplerate1}\PYG{p}{,} \PYG{n}{frame\PYGZus{}length}\PYG{p}{,} \PYG{n}{frame\PYGZus{}shift}\PYG{p}{,} \PYG{n}{E\PYGZus{}max}\PYG{p}{,} \PYG{n}{z\PYGZus{}max}\PYG{p}{,} \PYG{n}{word1\PYGZus{}path}\PYG{o}{.}\PYG{n}{split}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}/\PYGZsq{}}\PYG{p}{)[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{])}
+\PYG{n}{calc\PYGZus{}plot\PYGZus{}features}\PYG{p}{(}\PYG{n}{data2}\PYG{p}{,} \PYG{n}{samplerate2}\PYG{p}{,} \PYG{n}{frame\PYGZus{}length}\PYG{p}{,} \PYG{n}{frame\PYGZus{}shift}\PYG{p}{,} \PYG{n}{E\PYGZus{}max}\PYG{p}{,} \PYG{n}{z\PYGZus{}max}\PYG{p}{,} \PYG{n}{word2\PYGZus{}path}\PYG{o}{.}\PYG{n}{split}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}/\PYGZsq{}}\PYG{p}{)[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{])}
+\end{MintedVerbatim}

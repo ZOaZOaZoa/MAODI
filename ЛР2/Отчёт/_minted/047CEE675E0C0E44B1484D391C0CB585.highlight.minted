@@ -1,0 +1,125 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{numpy}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{np}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{soundfile}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{sf}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{librosa.feature}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{ft}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{dataToEnergy}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{sr}\PYG{p}{,} \PYG{n}{frame\PYGZus{}time}\PYG{p}{,} \PYG{n}{frame\PYGZus{}shift}\PYG{p}{,} \PYG{n}{do\PYGZus{}print} \PYG{o}{=} \PYG{k+kc}{True}\PYG{p}{):}
+    \PYG{n}{frameWidth} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{frame\PYGZus{}time} \PYG{o}{*} \PYG{n}{sr}\PYG{p}{)}
+    \PYG{n}{frameShift} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{frame\PYGZus{}shift} \PYG{o}{*} \PYG{n}{frameWidth}\PYG{p}{)}
+
+    \PYG{n}{frameCount} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{data}\PYG{o}{.}\PYG{n}{size} \PYG{o}{/} \PYG{p}{(}\PYG{n}{frameWidth} \PYG{o}{\PYGZhy{}} \PYG{n}{frameShift}\PYG{p}{))} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}
+    \PYG{k}{if} \PYG{n}{do\PYGZus{}print}\PYG{p}{:}
+        \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{frameWidth}\PYG{l+s+si}{=\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+        \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{frame\PYGZus{}shift}\PYG{l+s+si}{=\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+        \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{frameCount}\PYG{l+s+si}{=\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+
+    \PYG{n}{E} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mf}{0.0}\PYG{p}{]} \PYG{o}{*} \PYG{n}{frameCount}
+    \PYG{n}{sh} \PYG{o}{=} \PYG{l+m+mi}{0}
+    \PYG{n}{df} \PYG{o}{=} \PYG{n}{frameWidth} \PYG{o}{\PYGZhy{}} \PYG{n}{frameShift}
+    \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{frameCount}\PYG{p}{):}
+        \PYG{n}{En} \PYG{o}{=} \PYG{l+m+mi}{0}
+        \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{frameWidth}\PYG{p}{):}
+            \PYG{n}{sn} \PYG{o}{=} \PYG{n+nb}{float}\PYG{p}{(}\PYG{n}{data}\PYG{p}{[}\PYG{n}{j} \PYG{o}{+} \PYG{n}{sh}\PYG{p}{]} \PYG{o}{**} \PYG{l+m+mi}{2}\PYG{p}{)}
+            \PYG{n}{En} \PYG{o}{=} \PYG{n}{En} \PYG{o}{+} \PYG{n}{sn}
+
+        \PYG{n}{E}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{En} \PYG{o}{/} \PYG{n}{frameWidth}
+        \PYG{n}{sh} \PYG{o}{=} \PYG{n}{sh} \PYG{o}{+} \PYG{n}{df}
+
+    \PYG{k}{return} \PYG{n}{E}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{getEMax}\PYG{p}{(}\PYG{n}{file\PYGZus{}name}\PYG{p}{,} \PYG{n}{seconds\PYGZus{}from\PYGZus{}start}\PYG{p}{,} \PYG{n}{frame\PYGZus{}time}\PYG{p}{,} \PYG{n}{frame\PYGZus{}shift}\PYG{p}{):}
+    \PYG{n}{data}\PYG{p}{,} \PYG{n}{samplerate} \PYG{o}{=} \PYG{n}{sf}\PYG{o}{.}\PYG{n}{read}\PYG{p}{(}\PYG{n}{file\PYGZus{}name}\PYG{p}{)}
+
+    \PYG{n}{noise\PYGZus{}indices} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{seconds\PYGZus{}from\PYGZus{}start} \PYG{o}{*} \PYG{n}{samplerate}\PYG{p}{)}
+    \PYG{n}{noise\PYGZus{}data} \PYG{o}{=} \PYG{n}{data}\PYG{p}{[:}\PYG{n}{noise\PYGZus{}indices}\PYG{p}{]}
+
+    \PYG{n}{E} \PYG{o}{=} \PYG{n}{dataToEnergy}\PYG{p}{(}\PYG{n}{noise\PYGZus{}data}\PYG{p}{,} \PYG{n}{samplerate}\PYG{p}{,} \PYG{n}{frame\PYGZus{}time}\PYG{p}{,} \PYG{n}{frame\PYGZus{}shift}\PYG{p}{,} \PYG{n}{do\PYGZus{}print}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{)}
+    \PYG{k}{return} \PYG{n}{np}\PYG{o}{.}\PYG{n}{max}\PYG{p}{(}\PYG{n}{E}\PYG{p}{)}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{VAD}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{sr}\PYG{p}{,} \PYG{n}{frame\PYGZus{}time}\PYG{p}{,} \PYG{n}{frame\PYGZus{}shift}\PYG{p}{,} \PYG{n}{noise\PYGZus{}frame\PYGZus{}end}\PYG{p}{,} \PYG{n}{eTh}\PYG{p}{):}
+    \PYG{n}{frameWidth} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{frame\PYGZus{}time} \PYG{o}{*} \PYG{n}{sr}\PYG{p}{)}
+    \PYG{n}{frameShift} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{frame\PYGZus{}shift} \PYG{o}{*} \PYG{n}{frameWidth}\PYG{p}{)}
+
+    \PYG{n}{frameCount} \PYG{o}{=} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{data}\PYG{o}{.}\PYG{n}{size} \PYG{o}{/} \PYG{p}{(}\PYG{n}{frameWidth} \PYG{o}{\PYGZhy{}} \PYG{n}{frameShift}\PYG{p}{))} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}
+
+    \PYG{n}{maxY} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{max}\PYG{p}{(}\PYG{n}{data}\PYG{p}{)}
+    \PYG{n}{df} \PYG{o}{=} \PYG{n}{frameWidth} \PYG{o}{\PYGZhy{}} \PYG{n}{frameShift}
+    \PYG{n}{E} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{*} \PYG{n}{frameCount}
+    \PYG{n}{sh} \PYG{o}{=} \PYG{l+m+mi}{0}
+    \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{frameCount}\PYG{p}{):}
+        \PYG{n}{En} \PYG{o}{=} \PYG{l+m+mi}{0}
+
+        \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{frameWidth}\PYG{p}{):}
+            \PYG{n}{sn} \PYG{o}{=} \PYG{n+nb}{float}\PYG{p}{(}\PYG{n}{data}\PYG{p}{[}\PYG{n}{j} \PYG{o}{+} \PYG{n}{sh}\PYG{p}{]} \PYG{o}{**} \PYG{l+m+mi}{2}\PYG{p}{)}
+            \PYG{n}{En} \PYG{o}{=} \PYG{n}{En} \PYG{o}{+} \PYG{n}{sn}
+
+        \PYG{n}{E}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{=} \PYG{n}{En} \PYG{o}{/} \PYG{n}{frameWidth}
+        \PYG{n}{sh} \PYG{o}{=} \PYG{n}{sh} \PYG{o}{+} \PYG{n}{df}
+
+    \PYG{k}{if} \PYG{n}{noise\PYGZus{}frame\PYGZus{}end} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{:}
+        \PYG{n}{ePorog} \PYG{o}{=} \PYG{l+m+mi}{0}
+        \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{noise\PYGZus{}frame\PYGZus{}end}\PYG{p}{):}
+            \PYG{k}{if} \PYG{n}{ePorog} \PYG{o}{\PYGZlt{}} \PYG{n}{E}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]:}
+                \PYG{n}{ePorog} \PYG{o}{=} \PYG{n}{E}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]}
+
+        \PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{ePorog}\PYG{p}{)}
+        \PYG{n}{ePorog} \PYG{o}{=} \PYG{n}{ePorog} \PYG{o}{*} \PYG{l+m+mi}{5}
+    \PYG{k}{else}\PYG{p}{:}
+        \PYG{n}{ePorog} \PYG{o}{=} \PYG{n}{eTh}
+
+    \PYG{n}{st\PYGZus{}jcounter} \PYG{o}{=} \PYG{k+kc}{False}
+    \PYG{n}{dj\PYGZus{}len} \PYG{o}{=} \PYG{l+m+mi}{0}
+    \PYG{n}{tickData} \PYG{o}{=} \PYG{p}{[]}
+    \PYG{n}{vadData} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{*} \PYG{n}{frameCount}
+    \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{frameCount}\PYG{p}{):}
+
+        \PYG{k}{if} \PYG{n}{E}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{\PYGZlt{}=} \PYG{n}{ePorog}\PYG{p}{:}
+            \PYG{n}{vadData}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{0}
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{n}{vadData}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{1}
+
+        \PYG{k}{if} \PYG{p}{(}\PYG{n}{j} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{):}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{vadData}\PYG{p}{[}\PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{\PYGZlt{}} \PYG{n}{vadData}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]):}
+                \PYG{n}{st\PYGZus{}jcounter} \PYG{o}{=} \PYG{k+kc}{False}
+                \PYG{k}{if} \PYG{p}{(}\PYG{n}{j} \PYG{o}{\PYGZhy{}} \PYG{n}{dj\PYGZus{}len} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{0}\PYG{p}{):}
+                    \PYG{n}{tickData}\PYG{o}{.}\PYG{n}{append}\PYG{p}{((}\PYG{n}{j} \PYG{o}{\PYGZhy{}} \PYG{n}{dj\PYGZus{}len}\PYG{p}{)} \PYG{o}{*} \PYG{n}{df}\PYG{p}{)}
+                \PYG{k}{else}\PYG{p}{:}
+                    \PYG{n}{tickData}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{l+m+mi}{0} \PYG{o}{*} \PYG{n}{df}\PYG{p}{)}
+            \PYG{k}{elif} \PYG{p}{(} \PYG{n}{vadData}\PYG{p}{[}\PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{vadData}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]):}
+                \PYG{n}{st\PYGZus{}jcounter} \PYG{o}{=} \PYG{k+kc}{True}
+                \PYG{n}{dj} \PYG{o}{=} \PYG{l+m+mi}{0}
+                \PYG{n}{tickData}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{j} \PYG{o}{*} \PYG{n}{df}\PYG{p}{)}
+            \PYG{k}{else}\PYG{p}{:}
+                \PYG{k}{if} \PYG{n}{st\PYGZus{}jcounter}\PYG{p}{:}
+                    \PYG{n}{dj}\PYG{o}{+=}\PYG{l+m+mi}{1}
+                    \PYG{k}{if} \PYG{n}{dj} \PYG{o}{==} \PYG{n}{dj\PYGZus{}len}\PYG{p}{:}
+                        \PYG{n}{tickData}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{j} \PYG{o}{*} \PYG{n}{df}\PYG{p}{)}
+                        \PYG{n}{st\PYGZus{}jcounter} \PYG{o}{=} \PYG{k+kc}{False}
+                        \PYG{n}{dj} \PYG{o}{=} \PYG{l+m+mi}{0}
+        \PYG{c+c1}{\PYGZsh{} if (j == frameCount \PYGZhy{} 1) and st\PYGZus{}jcounter and (dj \PYGZgt{} 0):}
+        \PYG{c+c1}{\PYGZsh{}     tickData.append(j * df)}
+
+
+
+    \PYG{k}{return} \PYG{n}{vadData}\PYG{p}{,} \PYG{n}{tickData}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{resave}\PYG{p}{(}\PYG{n}{fname}\PYG{p}{,} \PYG{n}{start}\PYG{p}{,} \PYG{n}{end}\PYG{p}{,} \PYG{n}{newfname}\PYG{p}{):}
+    \PYG{n}{y}\PYG{p}{,} \PYG{n}{sr} \PYG{o}{=} \PYG{n}{sf}\PYG{o}{.}\PYG{n}{read}\PYG{p}{(}\PYG{n}{file}\PYG{o}{=}\PYG{n}{fname}\PYG{p}{,} \PYG{n}{dtype}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}int16\PYGZsq{}}\PYG{p}{)}
+    \PYG{n}{out} \PYG{o}{=} \PYG{n}{y}\PYG{p}{[}\PYG{n}{start}\PYG{p}{:}\PYG{n}{end}\PYG{p}{]}
+    \PYG{n}{sf}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{n}{file}\PYG{o}{=}\PYG{n}{newfname}\PYG{p}{,} \PYG{n}{data}\PYG{o}{=}\PYG{n}{out}\PYG{p}{,} \PYG{n}{samplerate}\PYG{o}{=}\PYG{n}{sr}\PYG{p}{,}\PYG{n}{subtype}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}PCM\PYGZus{}16\PYGZsq{}}\PYG{p}{)}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{resave\PYGZus{}activity\PYGZus{}fragments}\PYG{p}{(}\PYG{n}{fname}\PYG{p}{,} \PYG{n}{frame\PYGZus{}time}\PYG{p}{,} \PYG{n}{frame\PYGZus{}shift}\PYG{p}{):}
+    \PYG{n}{E\PYGZus{}noise\PYGZus{}max} \PYG{o}{=} \PYG{n}{getEMax}\PYG{p}{(}\PYG{n}{fname}\PYG{p}{,} \PYG{n}{seconds\PYGZus{}from\PYGZus{}start}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{frame\PYGZus{}time}\PYG{o}{=}\PYG{n}{frame\PYGZus{}time}\PYG{p}{,} \PYG{n}{frame\PYGZus{}shift}\PYG{o}{=}\PYG{n}{frame\PYGZus{}shift}\PYG{p}{)}
+    \PYG{n}{data}\PYG{p}{,} \PYG{n}{samplerate} \PYG{o}{=} \PYG{n}{sf}\PYG{o}{.}\PYG{n}{read}\PYG{p}{(}\PYG{n}{fname}\PYG{p}{)}
+    \PYG{n}{\PYGZus{}}\PYG{p}{,} \PYG{n}{ticks} \PYG{o}{=} \PYG{n}{VAD}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{samplerate}\PYG{p}{,} \PYG{n}{frame\PYGZus{}time}\PYG{p}{,} \PYG{n}{frame\PYGZus{}shift}\PYG{p}{,} \PYG{n}{noise\PYGZus{}frame\PYGZus{}end}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{eTh}\PYG{o}{=} \PYG{n}{E\PYGZus{}noise\PYGZus{}max}\PYG{p}{)}
+
+    \PYG{n}{counter} \PYG{o}{=} \PYG{l+m+mi}{1}
+    \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{int}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{ticks}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mi}{2}\PYG{p}{)):}
+        \PYG{n}{left\PYGZus{}tick} \PYG{o}{=} \PYG{n}{ticks}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{i}\PYG{p}{]}
+        \PYG{n}{right\PYGZus{}tick} \PYG{o}{=} \PYG{n}{ticks}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{i} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{]}
+        \PYG{k}{if} \PYG{n}{right\PYGZus{}tick} \PYG{o}{\PYGZhy{}} \PYG{n}{left\PYGZus{}tick} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{5000}\PYG{p}{:}
+            \PYG{k}{continue}
+        
+        \PYG{n}{resave}\PYG{p}{(}\PYG{n}{fname}\PYG{p}{,} \PYG{n}{left\PYGZus{}tick}\PYG{p}{,} \PYG{n}{right\PYGZus{}tick}\PYG{p}{,} \PYG{n}{fname}\PYG{o}{.}\PYG{n}{replace}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}.wav\PYGZsq{}}\PYG{p}{,} \PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{counter}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{.wav\PYGZsq{}}\PYG{p}{))}
+        \PYG{n}{counter} \PYG{o}{+=} \PYG{l+m+mi}{1}
+\end{MintedVerbatim}
