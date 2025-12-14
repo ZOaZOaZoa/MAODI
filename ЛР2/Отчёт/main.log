@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.22.0 (MiKTeX 25.4) (format=lualatex 2025.5.28)  16 NOV 2025 17:23
+This is LuaHBTeX, Version 1.22.0 (MiKTeX 25.4) (format=lualatex 2025.5.28)  21 NOV 2025 22:30
  system commands enabled.
 **main.tex
 (./main.tex
@@ -2008,23 +2008,23 @@ Package luatex.def Info: png/digital_filter.png  used on input line 62.
 
 
 [4<./png/reduce_noise.png><./png/digital_filter.png>]
-<png/разворот1.png, id=118, 1165.7151pt x 214.6419pt>
+<png/разворот1.png, id=117, 1165.7151pt x 214.6419pt>
 File: png/разворот1.png Graphic file (type png)
 <use png/разворот1.png>
 Package luatex.def Info: png/разворот1.png  used on input line 75.
 (luatex.def)             Requested size: 460.93153pt x 84.8694pt.
-<png/разворот2.png, id=119, 1196.7912pt x 214.6419pt>
+<png/разворот2.png, id=118, 1196.7912pt x 214.6419pt>
 File: png/разворот2.png Graphic file (type png)
 <use png/разворот2.png>
 Package luatex.def Info: png/разворот2.png  used on input line 81.
 (luatex.def)             Requested size: 460.93153pt x 82.66522pt.
-<png/сканировать1.png, id=120, 1165.7151pt x 214.6419pt>
+<png/сканировать1.png, id=119, 1165.7151pt x 214.6419pt>
 File: png/сканировать1.png Graphic file (type png)
 <use png/сканировать1.png>
 Package luatex.def Info: png/сканировать1.png  used on input line 87
 .
 (luatex.def)             Requested size: 460.93153pt x 84.8694pt.
-<png/сканировать2.png, id=121, 1196.7912pt x 214.6419pt>
+<png/сканировать2.png, id=120, 1196.7912pt x 214.6419pt>
 File: png/сканировать2.png Graphic file (type png)
 <use png/сканировать2.png>
 Package luatex.def Info: png/сканировать2.png  used on input line 93
@@ -2053,10 +2053,10 @@ nput line 6.
 \pydata@fh@0=\write7
 
 \openout7 = _FAD58DE7366495DB4650CFEFAC2FCD61.data.minted
-runsystem(latexminted config  --timestamp 20251116172334 FAD58DE7366495DB4650CFE
+runsystem(latexminted config  --timestamp 20251121223003 FAD58DE7366495DB4650CFE
 FAC2FCD61)...executed.
 (./_FAD58DE7366495DB4650CFEFAC2FCD61.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20251116172334 FAD58DE7366495DB46
+runsystem(latexminted cleanconfig  --timestamp 20251121223003 FAD58DE7366495DB46
 50CFEFAC2FCD61)...executed.
 
 (./_minted/default.style.minted)
@@ -2119,8 +2119,8 @@ Here is how much of LuaTeX's memory you used:
    24 hlist, 2 vlist, 10 rule, 1 local_par, 7 glue, 4 kern, 1 penalty, 1 margin_
 kern, 3 glyph, 78 attribute, 62 glue_spec, 65 attribute_list, 4 write, 16 pdf_li
 teral, 16 pdf_colorstack nodes
-   avail lists: 1:3,2:4197,3:268,4:570,5:380,6:120,7:4918,8:32,9:995,10:12,11:69
-7
+   avail lists: 1:3,2:4197,3:268,4:570,5:380,6:120,7:4598,8:32,9:995,10:12,11:64
+4
  78696 multiletter control sequences out of 65536+600000
  89 fonts using 22474263 bytes
  104i,13n,118p,1000b,1221s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2139,9 +2139,9 @@ ms/MikTex/fonts/type1/public/amsfonts/cm/cmr6.pfb><E:/Programs/MikTex/fonts/type
 1/public/amsfonts/cm/cmr8.pfb><E:/Programs/MikTex/fonts/type1/public/amsfonts/cm
 /cmsy10.pfb><E:/Programs/MikTex/fonts/type1/public/amsfonts/cm/cmsy6.pfb><E:/Pro
 grams/MikTex/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on main.pdf (12 pages, 729412 bytes).
+Output written on main.pdf (12 pages, 729623 bytes).
 
-PDF statistics: 255 PDF objects out of 1000 (max. 8388607)
+PDF statistics: 256 PDF objects out of 1000 (max. 8388607)
  34 named destinations out of 1000 (max. 131072)
  224 words of extra memory for PDF output out of 10000 (max. 100000000)
 
