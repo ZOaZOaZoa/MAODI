@@ -1,0 +1,1860 @@
+This is LuaHBTeX, Version 1.22.0 (MiKTeX 25.4) (format=lualatex 2025.5.28)  17 DEC 2025 22:35
+ system commands enabled.
+**body.tex
+(./body.tex
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-04-14>
+Lua module: luaotfload 2024-12-03 v3.29 Lua based OpenType font support
+Lua module: lualibs 2023-07-13 v2.76 ConTeXt Lua standard libraries.
+Lua module: lualibs-extended 2023-07-13 v2.76 ConTeXt Lua libraries -- extended 
+collection.
+luaotfload | conf : Root cache directory is "C:/Users/ZOaZOaZoa/AppData/Local/Mi
+KTeX/luatex-cache/generic/names".
+luaotfload | init : Loading fontloader "fontloader-2023-12-28.lua" from kpse-res
+olved path "E:/Programs/MikTex/tex/luatex/luaotfload/fontloader-2023-12-28.lua".
+Lua-only attribute luaotfload@noligature = 1
+luaotfload | init : Context OpenType loader version 3.134
+Inserting `luaotfload.node_processor' in `pre_linebreak_filter'.
+Inserting `luaotfload.node_processor' in `hpack_filter'.
+Inserting `luaotfload.glyph_stream' in `glyph_stream_provider'.
+Inserting `luaotfload.define_font' in `define_font'.
+Lua-only attribute luaotfload_color_attribute = 2
+luaotfload | conf : Root cache directory is "C:/Users/ZOaZOaZoa/AppData/Local/Mi
+KTeX/luatex-cache/generic/names".
+Inserting `luaotfload.harf.strip_prefix' in `find_opentype_file'.
+Inserting `luaotfload.harf.strip_prefix' in `find_truetype_file'.
+Removing  `luaotfload.glyph_stream' from `glyph_stream_provider'.
+Inserting `luaotfload.harf.glyphstream' in `glyph_stream_provider'.
+Inserting `luaotfload.harf.finalize_vlist' in `post_linebreak_filter'.
+Inserting `luaotfload.harf.finalize_hlist' in `hpack_filter'.
+Inserting `luaotfload.cleanup_files' in `wrapup_run'.
+Inserting `luaotfload.harf.finalize_unicode' in `finish_pdffile'.
+Inserting `luaotfload.glyphinfo' in `glyph_info'.
+Lua-only attribute luaotfload.letterspace_done = 3
+Inserting `luaotfload.aux.set_sscale_dimens' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_font_index' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.patch_cambria_domh' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.fixup_fontdata' in `luaotfload.patch_font_unsafe'.
+Inserting `luaotfload.aux.set_capheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_xheight' in `luaotfload.patch_font'.
+Inserting `luaotfload.rewrite_fontname' in `luaotfload.patch_font'.
+Inserting `tracingstacklevels' in `input_level_string'.
+! Undefined control sequence.
+l.1 \section
+            { Выполнение работы }
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \section{ В
+                ыполнение работы }
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Undefined control sequence.
+l.2 \subsection
+               { Выявление голосовой активности }
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 1--3
+[]Выполнение
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.4 И
+      меется звуковой файл в формате .wav, где ...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+luaotfload | db : Font names database loaded from C:/Users/ZOaZOaZoa/AppData/Loc
+al/MiKTeX/luatex-cache/generic/names/luaotfload-names.luc.gz
+! Undefined control sequence.
+<write> ...g: Reference `signal' on page \thepage 
+                                                  \space undefined\on@line .
+l.4 ...дставлен на рис. \ref{signal}
+                                                  .
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `signal' on page  undefined on input line 4.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 4--5
+[]Имеется
+ []
+
+
+Overfull \hbox (10.85999pt too wide) in paragraph at lines 4--5
+[]. 
+ []
+
+
+! LaTeX Error: Environment figure undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 \begin{figure}
+                  [h]
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 \begin{figure}[
+                   h]
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Undefined control sequence.
+l.7 	\centering\includegraphics
+                               [width=.9\textwidth]{png/исходный_си...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   ]
+l.7 ...ntering\includegraphics[width=.9\textwidth]
+                                                  {png/исходный_си...
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   ]
+l.7 ...ntering\includegraphics[width=.9\textwidth]
+                                                  {png/исходный_си...
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.7 ...s[width=.9\textwidth]{png/исходный_
+                                                  сигнал.png}
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 7.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 7.
+! Extra }, or forgotten $.
+l.7 ...dth]{png/исходный_сигнал.png}
+                                                  
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+! LaTeX Error: \caption outside float.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.8 	\caption
+             {Исходный речевой сигнал}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: \begin{document} ended by \end{figure}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.10 \end{figure}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.10 \end{figure}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+Missing character: There is no с (U+0441) in font cmmi7!
+Missing character: There is no и (U+0438) in font cmmi10!
+Missing character: There is no и (U+0438) in font cmmi10!
+Missing character: There is no г (U+0433) in font cmmi10!
+Missing character: There is no г (U+0433) in font cmmi10!
+Missing character: There is no н (U+043D) in font cmmi10!
+Missing character: There is no н (U+043D) in font cmmi10!
+Missing character: There is no а (U+0430) in font cmmi10!
+Missing character: There is no а (U+0430) in font cmmi10!
+Missing character: There is no л (U+043B) in font cmmi10!
+Missing character: There is no л (U+043B) in font cmmi10!
+Missing character: There is no И (U+0418) in font cmmi10!
+Missing character: There is no И (U+0418) in font cmmi10!
+Missing character: There is no с (U+0441) in font cmmi10!
+Missing character: There is no с (U+0441) in font cmmi10!
+Missing character: There is no х (U+0445) in font cmmi10!
+Missing character: There is no х (U+0445) in font cmmi10!
+Missing character: There is no о (U+043E) in font cmmi10!
+Missing character: There is no о (U+043E) in font cmmi10!
+Missing character: There is no д (U+0434) in font cmmi10!
+Missing character: There is no д (U+0434) in font cmmi10!
+Missing character: There is no н (U+043D) in font cmmi10!
+Missing character: There is no н (U+043D) in font cmmi10!
+Missing character: There is no ы (U+044B) in font cmmi10!
+Missing character: There is no ы (U+044B) in font cmmi10!
+Missing character: There is no й (U+0439) in font cmmi10!
+Missing character: There is no й (U+0439) in font cmmi10!
+Missing character: There is no р (U+0440) in font cmmi10!
+Missing character: There is no р (U+0440) in font cmmi10!
+Missing character: There is no е (U+0435) in font cmmi10!
+Missing character: There is no е (U+0435) in font cmmi10!
+Missing character: There is no ч (U+0447) in font cmmi10!
+Missing character: There is no ч (U+0447) in font cmmi10!
+Missing character: There is no е (U+0435) in font cmmi10!
+Missing character: There is no е (U+0435) in font cmmi10!
+Missing character: There is no в (U+0432) in font cmmi10!
+Missing character: There is no в (U+0432) in font cmmi10!
+Missing character: There is no о (U+043E) in font cmmi10!
+Missing character: There is no о (U+043E) in font cmmi10!
+Missing character: There is no й (U+0439) in font cmmi10!
+Missing character: There is no й (U+0439) in font cmmi10!
+Missing character: There is no с (U+0441) in font cmmi10!
+Missing character: There is no с (U+0441) in font cmmi10!
+Missing character: There is no и (U+0438) in font cmmi10!
+Missing character: There is no и (U+0438) in font cmmi10!
+Missing character: There is no г (U+0433) in font cmmi10!
+Missing character: There is no г (U+0433) in font cmmi10!
+Missing character: There is no н (U+043D) in font cmmi10!
+Missing character: There is no н (U+043D) in font cmmi10!
+Missing character: There is no а (U+0430) in font cmmi10!
+Missing character: There is no а (U+0430) in font cmmi10!
+Missing character: There is no л (U+043B) in font cmmi10!
+! Missing } inserted.
+<inserted text> 
+                }
+l.10 \end{figure}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 6--11
+[][h]
+ []
+
+
+Overfull \hbox (19.43985pt too wide) in paragraph at lines 6--11
+[width=.9]png/исходный$[][]\OML/cmm/m/it/10 :png[][]$ 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.12 Д
+       ля выявления голосовой активности был...
+
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Undefined control sequence.
+<write> ...g: Reference `VAD.py' on page \thepage 
+                                                  \space undefined\on@line .
+l.12 ...ная на листинге \ref{VAD.py}
+                                                  . Первые 0.4 секу...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `VAD.py' on page  undefined on input line 12.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 12--13
+[]Для
+ []
+
+
+Overfull \hbox (10.85999pt too wide) in paragraph at lines 12--13
+[].
+ []
+
+
+Overfull \hbox (63.08041pt too wide) detected at line 15
+\OML/cmm/m/it/10 E \OT1/cmr/m/n/10 = [] [] \OML/cmm/m/it/10 s[];
+ []
+
+
+Overfull \hbox (9.60767pt too wide) in paragraph at lines 15--17
+\OML/cmm/m/it/10 s[]$
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 Д
+       ля шума было получено пороговое значе...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Undefined control sequence.
+l.18 ...ороговое значение $E_\text
+                                                  {пор} = \max{\b{E}} = \...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Command \b invalid in math mode on input line 18.
+
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 1
+8.
+(E:/Programs/MikTex/tex/latex/lm/ot1lmr.fd
+File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+
+LaTeX Warning: Command \b invalid in math mode on input line 18.
+
+LaTeX Font Info:    Trying to load font information for +lmr on input line 18.
+LaTeX Font Info:    No file lmr.fd. on input line 18.
+LaTeX Font Info:    Trying to load font information for +cmr on input line 18.
+LaTeX Font Info:    No file cmr.fd. on input line 18.
+
+LaTeX Font Warning: Font shape `/lmr/m/n' undefined
+(Font)              using `/cmr/m/n' instead on input line 18.
+
+
+LaTeX Font Warning: Font shape `/cmr/m/n' undefined
+(Font)              using `/cmr/m/n' instead on input line 18.
+
+! Corrupted NFSS tables.
+wrong@fontshape ...message {Corrupted NFSS tables}
+                                                  error@fontshape else let f...
+l.18 ...ачение $E_\text{пор} = \max{\b{E}
+                                                  } = \max{\begin{pmatrix*}E...
+This error message was generated by an \errmessage
+command, so I can't give any explicit help.
+Pretend that you're Hercule Poirot: Examine all clues,
+and deduce the truth by order and method.
+
+
+LaTeX Font Warning: Font shape `/cmr/m/n' undefined
+(Font)              using `OT1/cmr/m/n' instead on input line 18.
+
+
+! LaTeX Error: Environment pmatrix* undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 ...р} = \max{\b{E}} = \max{\begin{pmatrix*}
+                                                  E_1\;\dots\;E_M\end{pmatri...
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: \begin{document} ended by \end{pmatrix*}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 ...gin{pmatrix*}E_1\;\dots\;E_M\end{pmatrix*}
+                                                  }$, где значение...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+Missing character: There is no п (U+043F) in font cmmi10!
+Missing character: There is no п (U+043F) in font cmmi7!
+Missing character: There is no п (U+043F) in font cmmi7!
+Missing character: There is no о (U+043E) in font cmmi7!
+Missing character: There is no о (U+043E) in font cmmi7!
+Missing character: There is no р (U+0440) in font cmmi7!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 18--19
+[]Для
+ []
+
+
+Overfull \hbox (18.43745pt too wide) in paragraph at lines 18--19
+\OML/cmm/m/it/10 E[] \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (37.63889pt too wide) in paragraph at lines 18--19
+[] [] \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (68.9595pt too wide) in paragraph at lines 18--19
+[] []$,
+ []
+
+
+Overfull \hbox (10.79166pt too wide) in paragraph at lines 18--19
+\OML/cmm/m/it/10 M$
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.20 Э
+       то значение будет использоваться для ...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Undefined control sequence.
+l.20 ...адры, для которых $E<E_\text
+                                                  {пор}$ будут счи...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no п (U+043F) in font cmmi10!
+Missing character: There is no п (U+043F) in font cmmi7!
+Missing character: There is no п (U+043F) in font cmmi7!
+Missing character: There is no о (U+043E) in font cmmi7!
+Missing character: There is no о (U+043E) in font cmmi7!
+Missing character: There is no р (U+0440) in font cmmi7!
+! Undefined control sequence.
+l.20 ...получено значение $E_\text
+                                                  {пор} = 1,63\cdot10^{-3...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no п (U+043F) in font cmmi10!
+Missing character: There is no п (U+043F) in font cmmi7!
+Missing character: There is no п (U+043F) in font cmmi7!
+Missing character: There is no о (U+043E) in font cmmi7!
+Missing character: There is no о (U+043E) in font cmmi7!
+Missing character: There is no р (U+0440) in font cmmi7!
+! Undefined control sequence.
+<write> ...ning: Reference `VAD' on page \thepage 
+                                                  \space undefined\on@line .
+l.20 ...дставлены на рис. \ref{VAD}
+                                                  .
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `VAD' on page  undefined on input line 20.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 20--21
+[]Это
+ []
+
+
+Overfull \hbox (18.51382pt too wide) in paragraph at lines 20--21
+\OML/cmm/m/it/10 E <
+ []
+
+
+Overfull \hbox (7.88194pt too wide) in paragraph at lines 20--21
+\OML/cmm/m/it/10 E[]$
+ []
+
+
+Overfull \hbox (18.43745pt too wide) in paragraph at lines 20--21
+\OML/cmm/m/it/10 E[] \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (22.22224pt too wide) in paragraph at lines 20--21
+\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 63 \OMS/cmsy/m/n/10 
+ []
+
+
+Overfull \hbox (20.73618pt too wide) in paragraph at lines 20--21
+\OT1/cmr/m/n/10 10[]$\nullfont .
+ []
+
+
+Overfull \hbox (10.85999pt too wide) in paragraph at lines 20--21
+[]. 
+ []
+
+
+! LaTeX Error: Environment figure undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.22 \begin{figure}
+                   [h]
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.22 \begin{figure}[
+                    h]
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Undefined control sequence.
+l.23 	\centering\includegraphics
+                                [width=.9\textwidth]{png/VAD.png}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   ]
+l.23 ...tering\includegraphics[width=.9\textwidth]
+                                                  {png/VAD.png}
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   ]
+l.23 ...tering\includegraphics[width=.9\textwidth]
+                                                  {png/VAD.png}
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+
+! LaTeX Error: \caption outside float.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.24 	\caption
+              {Результат работы алгоритма выявл...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: \begin{document} ended by \end{figure}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.26 \end{figure}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 22--27
+[][h]
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.28 Т
+       акже этот алгоритм будет использован ...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 28--29
+[]Также
+ []
+
+! Undefined control sequence.
+l.30 \subsection
+                { Фильтрация шумов }
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.30 \subsection{ Ф
+                    ильтрация шумов }
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 30--31
+[]Фильтрация
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.32 Д
+       ля фильтрации шумов было рассмотрено ...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Undefined control sequence.
+<write> ... `noice_reduction.py' on page \thepage 
+                                                  \space undefined\on@line .
+l.32 ... листинге \ref{noice_reduction.py}
+                                                  .
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `noice_reduction.py' on page  undefined on input line 
+32.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 32--33
+[]Для
+ []
+
+
+Overfull \hbox (10.85999pt too wide) in paragraph at lines 32--33
+[]. 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.34 П
+       ервый подход основан на функции \textit{re...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 34--35
+[]Первый
+ []
+
+
+Overfull \hbox (11.89001pt too wide) in paragraph at lines 34--35
+\TU/lmr/m/it/10 re-
+ []
+
+
+Overfull \hbox (49.09001pt too wide) in paragraph at lines 34--35
+\TU/lmr/m/it/10 duce_noise
+ []
+
+
+Overfull \hbox (23.7pt too wide) in paragraph at lines 34--35
+\TU/lmr/bx/n/10 nois-
+ []
+
+
+Overfull \hbox (19.11002pt too wide) in paragraph at lines 34--35
+\TU/lmr/bx/n/10 ere-
+ []
+
+
+Overfull \hbox (23.16pt too wide) in paragraph at lines 34--35
+\TU/lmr/bx/n/10 duce\nullfont .
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.36 Е
+       сли подбирать параметры так, чтобы шум...
+
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 36--37
+[]Если
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.38 В
+        этой модификации на фильтрацию влияю...
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 38--39
+[]В
+ []
+
+
+Overfull \hbox (47.45001pt too wide) in paragraph at lines 40--41
+\TU/lmr/bx/n/10 prop_de-
+ []
+
+
+Overfull \hbox (45.21pt too wide) in paragraph at lines 40--41
+\TU/lmr/bx/n/10 crease=1
+ []
+
+
+Overfull \hbox (7.50002pt too wide) in paragraph at lines 40--41
+\OML/cmm/m/it/10 A$
+ []
+
+
+Overfull \hbox (109.93001pt too wide) in paragraph at lines 41--42
+\TU/lmr/bx/n/10 thresh_n_mult_non-
+ []
+
+
+Overfull \hbox (18.43pt too wide) in paragraph at lines 41--42
+\TU/lmr/bx/n/10 sta-
+ []
+
+
+Overfull \hbox (23.63pt too wide) in paragraph at lines 41--42
+\TU/lmr/bx/n/10 tion-
+ []
+
+
+Overfull \hbox (40.03001pt too wide) in paragraph at lines 41--42
+\TU/lmr/bx/n/10 ary=1.5
+ []
+
+
+Overfull \hbox (8.0868pt too wide) in paragraph at lines 41--42
+\OML/cmm/m/it/10 B$
+ []
+
+! Undefined control sequence.
+<write> ...erence `reduce_noise' on page \thepage 
+                                                  \space undefined\on@line .
+l.44 ...енный на рис. \ref{reduce_noise}
+                                                  .
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `reduce_noise' on page  undefined on input line 44.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 44--45
+[]В
+ []
+
+
+Overfull \hbox (10.85999pt too wide) in paragraph at lines 44--45
+[]. 
+ []
+
+
+! LaTeX Error: Environment figure undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.46 \begin{figure}
+                   [h]
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Undefined control sequence.
+l.47 	\centering\includegraphics
+                                [width=.9\textwidth]{png/reduce_noise.png}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   ]
+l.47 ...tering\includegraphics[width=.9\textwidth]
+                                                  {png/reduce_noise.png}
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   ]
+l.47 ...tering\includegraphics[width=.9\textwidth]
+                                                  {png/reduce_noise.png}
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.47 ...degraphics[width=.9\textwidth]{png/reduce_
+                                                  noise.png}
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+l.47 ...[width=.9\textwidth]{png/reduce_noise.png}
+                                                  
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+! LaTeX Error: \caption outside float.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.48 	\caption
+              {Фильтрация шумов через reduce\_noise}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: \begin{document} ended by \end{figure}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.50 \end{figure}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.50 \end{figure}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+Missing character: There is no Ф (U+0424) in font cmmi10!
+Missing character: There is no Ф (U+0424) in font cmmi10!
+Missing character: There is no и (U+0438) in font cmmi10!
+Missing character: There is no и (U+0438) in font cmmi10!
+Missing character: There is no л (U+043B) in font cmmi10!
+Missing character: There is no л (U+043B) in font cmmi10!
+Missing character: There is no ь (U+044C) in font cmmi10!
+Missing character: There is no ь (U+044C) in font cmmi10!
+Missing character: There is no т (U+0442) in font cmmi10!
+Missing character: There is no т (U+0442) in font cmmi10!
+Missing character: There is no р (U+0440) in font cmmi10!
+Missing character: There is no р (U+0440) in font cmmi10!
+Missing character: There is no а (U+0430) in font cmmi10!
+Missing character: There is no а (U+0430) in font cmmi10!
+Missing character: There is no ц (U+0446) in font cmmi10!
+Missing character: There is no ц (U+0446) in font cmmi10!
+Missing character: There is no и (U+0438) in font cmmi10!
+Missing character: There is no и (U+0438) in font cmmi10!
+Missing character: There is no я (U+044F) in font cmmi10!
+Missing character: There is no я (U+044F) in font cmmi10!
+Missing character: There is no ш (U+0448) in font cmmi10!
+Missing character: There is no ш (U+0448) in font cmmi10!
+Missing character: There is no у (U+0443) in font cmmi10!
+Missing character: There is no у (U+0443) in font cmmi10!
+Missing character: There is no м (U+043C) in font cmmi10!
+Missing character: There is no м (U+043C) in font cmmi10!
+Missing character: There is no о (U+043E) in font cmmi10!
+Missing character: There is no о (U+043E) in font cmmi10!
+Missing character: There is no в (U+0432) in font cmmi10!
+Missing character: There is no в (U+0432) in font cmmi10!
+Missing character: There is no ч (U+0447) in font cmmi10!
+Missing character: There is no ч (U+0447) in font cmmi10!
+Missing character: There is no е (U+0435) in font cmmi10!
+Missing character: There is no е (U+0435) in font cmmi10!
+Missing character: There is no р (U+0440) in font cmmi10!
+Missing character: There is no р (U+0440) in font cmmi10!
+Missing character: There is no е (U+0435) in font cmmi10!
+Missing character: There is no е (U+0435) in font cmmi10!
+Missing character: There is no з (U+0437) in font cmmi10!
+Missing character: There is no з (U+0437) in font cmmi10!
+! Missing } inserted.
+<inserted text> 
+                }
+l.50 \end{figure}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 46--51
+[][h]
+ []
+
+
+Overfull \hbox (95.01668pt too wide) in paragraph at lines 46--51
+[width=.9]png/reduce$[][]\OML/cmm/m/it/10 oise:png[][]$ 
+ []
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 52--53
+[]Второй
+ []
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 54--55
+[]Для
+ []
+
+
+Overfull \hbox (26.3727pt too wide) in paragraph at lines 54--55
+\OML/cmm/m/it/10 y\OT1/cmr/m/n/10 [0] =
+ []
+
+
+Overfull \hbox (28.3072pt too wide) in paragraph at lines 54--55
+[]$: 
+ []
+
+
+Overfull \hbox (133.90524pt too wide) detected at line 57
+\OML/cmm/m/it/10 y\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 n\OT1/cmr/m/n/10 ] = \OML/c
+mm/m/it/10  \OMS/cmsy/m/n/10  \OML/cmm/m/it/10 y\OT1/cmr/m/n/10 [\OML/cmm/m/i
+t/10 n \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 1] + [] \OMS/cmsy/m/n/10  \OML/cmm
+/m/it/10 s\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 n\OT1/cmr/m/n/10 ]
+ []
+
+! Undefined control sequence.
+<write> ...ence `digital_filter' on page \thepage 
+                                                  \space undefined\on@line .
+l.59 ...влен на рис. \ref{digital_filter}
+                                                  . В отфильтрова...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `digital_filter' on page  undefined on input line 59.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 59--60
+[]Здесь
+ []
+
+
+Overfull \hbox (16.81952pt too wide) in paragraph at lines 59--60
+\OML/cmm/m/it/10 y\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 n\OT1/cmr/m/n/10 ]$
+ []
+
+
+Overfull \hbox (16.24542pt too wide) in paragraph at lines 59--60
+\OML/cmm/m/it/10 s\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 n\OT1/cmr/m/n/10 ]$\nullfon
+t .
+ []
+
+
+Overfull \hbox (16.98955pt too wide) in paragraph at lines 59--60
+\OML/cmm/m/it/10  \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (19.44446pt too wide) in paragraph at lines 59--60
+\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 99$
+ []
+
+
+Overfull \hbox (10.85999pt too wide) in paragraph at lines 59--60
+[].
+ []
+
+
+! LaTeX Error: Environment figure undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.61 \begin{figure}
+                   [h]
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Undefined control sequence.
+l.62 	\centering\includegraphics
+                                [width=.9\textwidth]{png/digital_filter.png}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   ]
+l.62 ...tering\includegraphics[width=.9\textwidth]
+                                                  {png/digital_filter.png}
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   ]
+l.62 ...tering\includegraphics[width=.9\textwidth]
+                                                  {png/digital_filter.png}
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.62 ...egraphics[width=.9\textwidth]{png/digital_
+                                                  filter.png}
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+l.62 ...idth=.9\textwidth]{png/digital_filter.png}
+                                                  
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+! LaTeX Error: \caption outside float.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.63 	\caption
+              {Фильтрация шумов через цифровой н...
+
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: \begin{document} ended by \end{figure}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.65 \end{figure}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.65 \end{figure}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+Missing character: There is no Ф (U+0424) in font cmmi10!
+Missing character: There is no Ф (U+0424) in font cmmi10!
+Missing character: There is no и (U+0438) in font cmmi10!
+Missing character: There is no и (U+0438) in font cmmi10!
+Missing character: There is no л (U+043B) in font cmmi10!
+Missing character: There is no л (U+043B) in font cmmi10!
+Missing character: There is no ь (U+044C) in font cmmi10!
+Missing character: There is no ь (U+044C) in font cmmi10!
+Missing character: There is no т (U+0442) in font cmmi10!
+Missing character: There is no т (U+0442) in font cmmi10!
+Missing character: There is no р (U+0440) in font cmmi10!
+Missing character: There is no р (U+0440) in font cmmi10!
+Missing character: There is no а (U+0430) in font cmmi10!
+Missing character: There is no а (U+0430) in font cmmi10!
+Missing character: There is no ц (U+0446) in font cmmi10!
+Missing character: There is no ц (U+0446) in font cmmi10!
+Missing character: There is no и (U+0438) in font cmmi10!
+Missing character: There is no и (U+0438) in font cmmi10!
+Missing character: There is no я (U+044F) in font cmmi10!
+Missing character: There is no я (U+044F) in font cmmi10!
+Missing character: There is no ш (U+0448) in font cmmi10!
+Missing character: There is no ш (U+0448) in font cmmi10!
+Missing character: There is no у (U+0443) in font cmmi10!
+Missing character: There is no у (U+0443) in font cmmi10!
+Missing character: There is no м (U+043C) in font cmmi10!
+Missing character: There is no м (U+043C) in font cmmi10!
+Missing character: There is no о (U+043E) in font cmmi10!
+Missing character: There is no о (U+043E) in font cmmi10!
+Missing character: There is no в (U+0432) in font cmmi10!
+Missing character: There is no в (U+0432) in font cmmi10!
+Missing character: There is no ч (U+0447) in font cmmi10!
+Missing character: There is no ч (U+0447) in font cmmi10!
+Missing character: There is no е (U+0435) in font cmmi10!
+Missing character: There is no е (U+0435) in font cmmi10!
+Missing character: There is no р (U+0440) in font cmmi10!
+Missing character: There is no р (U+0440) in font cmmi10!
+Missing character: There is no е (U+0435) in font cmmi10!
+Missing character: There is no е (U+0435) in font cmmi10!
+Missing character: There is no з (U+0437) in font cmmi10!
+Missing character: There is no з (U+0437) in font cmmi10!
+Missing character: There is no ц (U+0446) in font cmmi10!
+Missing character: There is no ц (U+0446) in font cmmi10!
+Missing character: There is no и (U+0438) in font cmmi10!
+Missing character: There is no и (U+0438) in font cmmi10!
+Missing character: There is no ф (U+0444) in font cmmi10!
+Missing character: There is no ф (U+0444) in font cmmi10!
+Missing character: There is no р (U+0440) in font cmmi10!
+Missing character: There is no р (U+0440) in font cmmi10!
+Missing character: There is no о (U+043E) in font cmmi10!
+Missing character: There is no о (U+043E) in font cmmi10!
+Missing character: There is no в (U+0432) in font cmmi10!
+Missing character: There is no в (U+0432) in font cmmi10!
+Missing character: There is no о (U+043E) in font cmmi10!
+Missing character: There is no о (U+043E) in font cmmi10!
+Missing character: There is no й (U+0439) in font cmmi10!
+Missing character: There is no й (U+0439) in font cmmi10!
+Missing character: There is no н (U+043D) in font cmmi10!
+Missing character: There is no н (U+043D) in font cmmi10!
+Missing character: There is no и (U+0438) in font cmmi10!
+Missing character: There is no и (U+0438) in font cmmi10!
+Missing character: There is no з (U+0437) in font cmmi10!
+Missing character: There is no з (U+0437) in font cmmi10!
+Missing character: There is no к (U+043A) in font cmmi10!
+Missing character: There is no к (U+043A) in font cmmi10!
+Missing character: There is no о (U+043E) in font cmmi10!
+Missing character: There is no о (U+043E) in font cmmi10!
+Missing character: There is no ч (U+0447) in font cmmi10!
+Missing character: There is no ч (U+0447) in font cmmi10!
+Missing character: There is no а (U+0430) in font cmmi10!
+Missing character: There is no а (U+0430) in font cmmi10!
+Missing character: There is no с (U+0441) in font cmmi10!
+Missing character: There is no с (U+0441) in font cmmi10!
+Missing character: There is no т (U+0442) in font cmmi10!
+Missing character: There is no т (U+0442) in font cmmi10!
+Missing character: There is no о (U+043E) in font cmmi10!
+Missing character: There is no о (U+043E) in font cmmi10!
+Missing character: There is no т (U+0442) in font cmmi10!
+Missing character: There is no т (U+0442) in font cmmi10!
+Missing character: There is no н (U+043D) in font cmmi10!
+Missing character: There is no н (U+043D) in font cmmi10!
+Missing character: There is no ы (U+044B) in font cmmi10!
+Missing character: There is no ы (U+044B) in font cmmi10!
+Missing character: There is no й (U+0439) in font cmmi10!
+Missing character: There is no й (U+0439) in font cmmi10!
+Missing character: There is no ф (U+0444) in font cmmi10!
+Missing character: There is no ф (U+0444) in font cmmi10!
+Missing character: There is no и (U+0438) in font cmmi10!
+Missing character: There is no и (U+0438) in font cmmi10!
+Missing character: There is no л (U+043B) in font cmmi10!
+Missing character: There is no л (U+043B) in font cmmi10!
+Missing character: There is no ь (U+044C) in font cmmi10!
+Missing character: There is no ь (U+044C) in font cmmi10!
+Missing character: There is no т (U+0442) in font cmmi10!
+Missing character: There is no т (U+0442) in font cmmi10!
+Missing character: There is no р (U+0440) in font cmmi10!
+! Missing } inserted.
+<inserted text> 
+                }
+l.65 \end{figure}
+                 
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 61--66
+[][h]
+ []
+
+
+Overfull \hbox (43.25082pt too wide) in paragraph at lines 61--66
+[width=.9]png/digital$[][]\OML/cmm/m/it/10 ilter:png[][]$ 
+ []
+
+! Undefined control sequence.
+l.67 \subsection
+                { Запись и сегментация голосовых ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 67--68
+[]Запись
+ []
+
+! Undefined control sequence.
+<write> ...erence `recording.py' on page \thepage 
+                                                  \space undefined\on@line .
+l.69 ... на листинге \ref{recording.py}
+                                                  . С помощью неё...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `recording.py' on page  undefined on input line 69.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 69--70
+[]Была
+ []
+
+
+Overfull \hbox (10.85999pt too wide) in paragraph at lines 69--70
+[].
+ []
+
+! Undefined control sequence.
+l.71 ...я для определения $E_\text
+                                                  {пор}$ шума. Все...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no п (U+043F) in font cmmi10!
+Missing character: There is no п (U+043F) in font cmmi7!
+Missing character: There is no п (U+043F) in font cmmi7!
+Missing character: There is no о (U+043E) in font cmmi7!
+Missing character: There is no о (U+043E) in font cmmi7!
+Missing character: There is no р (U+0440) in font cmmi7!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 71--72
+[]В
+ []
+
+
+Overfull \hbox (7.88194pt too wide) in paragraph at lines 71--72
+\OML/cmm/m/it/10 E[]$
+ []
+
+
+! LaTeX Error: Environment figure undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.74 \begin{figure}
+                   [h]
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Undefined control sequence.
+l.75 	\centering\includegraphics
+                                [width=.9\textwidth]{png/разворот1.png}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   ]
+l.75 ...tering\includegraphics[width=.9\textwidth]
+                                                  {png/разворот1.png}
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   ]
+l.75 ...tering\includegraphics[width=.9\textwidth]
+                                                  {png/разворот1.png}
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+
+! LaTeX Error: \caption outside float.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.76 	\caption
+              {Фильтрация шумов через цифровой н...
+
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: \begin{document} ended by \end{figure}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.78 \end{figure}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 74--79
+[][h]
+ []
+
+
+! LaTeX Error: Environment figure undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.80 \begin{figure}
+                   [h]
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Undefined control sequence.
+l.81 	\centering\includegraphics
+                                [width=.9\textwidth]{png/разворот2.png}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   ]
+l.81 ...tering\includegraphics[width=.9\textwidth]
+                                                  {png/разворот2.png}
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   ]
+l.81 ...tering\includegraphics[width=.9\textwidth]
+                                                  {png/разворот2.png}
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+
+! LaTeX Error: \caption outside float.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.82 	\caption
+              {Фильтрация шумов через цифровой н...
+
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: \begin{document} ended by \end{figure}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.84 \end{figure}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 80--85
+[][h]
+ []
+
+
+! LaTeX Error: Environment figure undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.86 \begin{figure}
+                   [h]
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Undefined control sequence.
+l.87 	\centering\includegraphics
+                                [width=.9\textwidth]{png/сканироват...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   ]
+l.87 ...tering\includegraphics[width=.9\textwidth]
+                                                  {png/сканировать...
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   ]
+l.87 ...tering\includegraphics[width=.9\textwidth]
+                                                  {png/сканировать...
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+
+! LaTeX Error: \caption outside float.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.88 	\caption
+              {Фильтрация шумов через цифровой н...
+
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: \begin{document} ended by \end{figure}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.90 \end{figure}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 86--91
+[][h]
+ []
+
+
+! LaTeX Error: Environment figure undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.92 \begin{figure}
+                   [!h]
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Undefined control sequence.
+l.93 	\centering\includegraphics
+                                [width=.9\textwidth]{png/сканироват...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   ]
+l.93 ...tering\includegraphics[width=.9\textwidth]
+                                                  {png/сканировать...
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   ]
+l.93 ...tering\includegraphics[width=.9\textwidth]
+                                                  {png/сканировать...
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+
+! LaTeX Error: \caption outside float.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.94 	\caption
+              {Фильтрация шумов через цифровой н...
+
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: \begin{document} ended by \end{figure}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.96 \end{figure}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 92--97
+[][!h]
+ []
+
+! Undefined control sequence.
+<write> ...me_classification.py' on page \thepage 
+                                                  \space undefined\on@line .
+l.99 ...тинге \ref{phoneme_classification.py}
+                                                  . Здесь сформир...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `phoneme_classification.py' on page  undefined on inpu
+t line 99.
+
+! Undefined control sequence.
+l.99 ... речевого сигнала $E_\text
+                                                  {пор}$ и числу н...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no п (U+043F) in font cmmi10!
+Missing character: There is no п (U+043F) in font cmmi7!
+Missing character: There is no п (U+043F) in font cmmi7!
+Missing character: There is no о (U+043E) in font cmmi7!
+Missing character: There is no о (U+043E) in font cmmi7!
+Missing character: There is no р (U+0440) in font cmmi7!
+! Undefined control sequence.
+l.99 ...лей интенсивности $z_\text
+                                                  {пор}$ классифи...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no п (U+043F) in font cmmi10!
+Missing character: There is no п (U+043F) in font cmmi7!
+Missing character: There is no п (U+043F) in font cmmi7!
+Missing character: There is no о (U+043E) in font cmmi7!
+Missing character: There is no о (U+043E) in font cmmi7!
+Missing character: There is no р (U+0440) in font cmmi7!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 99--100
+[]Для
+ []
+
+
+Overfull \hbox (10.85999pt too wide) in paragraph at lines 99--100
+[].
+ []
+
+
+Overfull \hbox (7.88194pt too wide) in paragraph at lines 99--100
+\OML/cmm/m/it/10 E[]$
+ []
+
+
+Overfull \hbox (5.1505pt too wide) in paragraph at lines 99--100
+\OML/cmm/m/it/10 z[]$
+ []
+
+! Undefined control sequence.
+<write> ...ng: Reference `razv1' on page \thepage 
+                                                  \space undefined\on@line .
+l.101 ...ставлены на рис. \ref{razv1}
+                                                  , \ref{scan1}. А клас...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `razv1' on page  undefined on input line 101.
+
+! Undefined control sequence.
+<write> ...ng: Reference `scan1' on page \thepage 
+                                                  \space undefined\on@line .
+l.101 ...ы на рис. \ref{razv1}, \ref{scan1}
+                                                  . А классифицир...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `scan1' on page  undefined on input line 101.
+
+! Undefined control sequence.
+<write> ...ng: Reference `razv2' on page \thepage 
+                                                  \space undefined\on@line .
+l.101 ...риведены на рис. \ref{razv2}
+                                                  , \ref{scan2}. Были в...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `razv2' on page  undefined on input line 101.
+
+! Undefined control sequence.
+<write> ...ng: Reference `scan2' on page \thepage 
+                                                  \space undefined\on@line .
+l.101 ...ы на рис. \ref{razv2}, \ref{scan2}
+                                                  . Были взяты дв...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+LaTeX Warning: Reference `scan2' on page  undefined on input line 101.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 101--102
+[]Рассчитанные
+ []
+
+
+Overfull \hbox (10.85999pt too wide) in paragraph at lines 101--102
+[],
+ []
+
+
+Overfull \hbox (10.85999pt too wide) in paragraph at lines 101--102
+[].
+ []
+
+
+Overfull \hbox (10.85999pt too wide) in paragraph at lines 101--102
+[],
+ []
+
+
+Overfull \hbox (10.85999pt too wide) in paragraph at lines 101--102
+[].
+ []
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 103--104
+[]Можно
+ []
+
+! Undefined control sequence.
+l.105 \section
+              {Выводы}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 105--106
+[]Выводы 
+ []
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 107--108
+[]В
+ []
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 109--110
+[]Был
+ []
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 111--112
+[]Были
+ []
+
+)
+! Emergency stop.
+<*> body.tex
+            
+*** (job aborted, no legal \end found)
+
+
+
+Here is how much of LuaTeX's memory you used:
+ 96 strings out of 471925
+ 100000,662416 words of node,token memory allocated 45092 words of node memory still in use:
+   248 hlist, 9 vlist, 5 rule, 8 disc, 37 local_par, 1 dir, 20 math, 1028 glue, 
+44 kern, 112 penalty, 4768 glyph, 216 attribute, 39 glue_spec, 216 attribute_lis
+t, 1 temp, 8 write nodes
+   avail lists: 2:1,3:24,4:47,5:5,8:60,10:46
+ 26796 multiletter control sequences out of 65536+600000
+ 28 fonts using 1691111 bytes
+ 25i,10n,32p,868b,128s stack positions out of 10000i,1000n,20000p,200000b,200000s
+!  ==> Fatal error occurred, no output PDF file produced!

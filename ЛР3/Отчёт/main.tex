@@ -1,0 +1,22 @@
+\documentclass[a4paper, 12pt,russian]{extarticle}
+
+\input{preamble.tex}
+\input{tikzPreamble.tex}
+\usepackage{pdfpages}
+\usepackage{microtype}
+\renewcommand\b[1]{\mathbf{#1}}
+
+\begin{document}
+	\include{title.tex}
+	
+	
+	\pagenumbering{arabic}
+	\setcounter{page}{2}
+	\tableofcontents
+	\newpage
+	
+	\input{body.tex}
+	\include{attachment.tex}
+	
+	
+\end{document}

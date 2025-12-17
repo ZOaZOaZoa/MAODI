@@ -1,0 +1,59 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{pandas}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{pd}
+\PYG{n}{pd}\PYG{o}{.}\PYG{n}{set\PYGZus{}option}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}display.expand\PYGZus{}frame\PYGZus{}repr\PYGZsq{}}\PYG{p}{,} \PYG{k+kc}{False}\PYG{p}{)}  \PYG{c+c1}{\PYGZsh{} отключить перенос строк}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{get\PYGZus{}train\PYGZus{}test}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{targets}\PYG{p}{,} \PYG{n}{test\PYGZus{}size}\PYG{o}{=}\PYG{l+m+mf}{0.2}\PYG{p}{,} \PYG{n}{random\PYGZus{}state}\PYG{o}{=}\PYG{l+m+mi}{42}\PYG{p}{):}
+	\PYG{n}{max\PYGZus{}len} \PYG{o}{=} \PYG{l+m+mi}{0}
+	\PYG{k}{for} \PYG{n}{x\PYGZus{}elem} \PYG{o+ow}{in} \PYG{n}{x}\PYG{p}{:}
+		\PYG{n}{cur\PYGZus{}len} \PYG{o}{=} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{x\PYGZus{}elem}\PYG{p}{)}
+		\PYG{k}{if} \PYG{n}{cur\PYGZus{}len} \PYG{o}{\PYGZgt{}} \PYG{n}{max\PYGZus{}len}\PYG{p}{:}
+			\PYG{n}{max\PYGZus{}len} \PYG{o}{=} \PYG{n}{cur\PYGZus{}len}
+	
+	\PYG{n}{x\PYGZus{}unified} \PYG{o}{=} \PYG{p}{[]}
+	\PYG{k}{for} \PYG{n}{x\PYGZus{}elem} \PYG{o+ow}{in} \PYG{n}{x}\PYG{p}{:}
+		\PYG{n}{need\PYGZus{}zeros} \PYG{o}{=} \PYG{n}{max\PYGZus{}len} \PYG{o}{\PYGZhy{}} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{x\PYGZus{}elem}\PYG{p}{)}
+		\PYG{k}{if} \PYG{n}{need\PYGZus{}zeros}\PYG{p}{:}
+			\PYG{n}{x\PYGZus{}unified}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{pad}\PYG{p}{(}\PYG{n}{x\PYGZus{}elem}\PYG{p}{,} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{need\PYGZus{}zeros}\PYG{p}{),} \PYG{n}{mode}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}constant\PYGZsq{}}\PYG{p}{))}
+		\PYG{k}{else}\PYG{p}{:}
+			\PYG{n}{x\PYGZus{}unified}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{x\PYGZus{}elem}\PYG{p}{)}
+	\PYG{k}{return} \PYG{n}{train\PYGZus{}test\PYGZus{}split}\PYG{p}{(}\PYG{n}{x\PYGZus{}unified}\PYG{p}{,} \PYG{n}{targets}\PYG{p}{,} \PYG{n}{test\PYGZus{}size}\PYG{o}{=}\PYG{n}{test\PYGZus{}size}\PYG{p}{,} \PYG{n}{random\PYGZus{}state}\PYG{o}{=}\PYG{n}{random\PYGZus{}state}\PYG{p}{)}
+
+\PYG{n}{x\PYGZus{}train}\PYG{p}{,} \PYG{n}{x\PYGZus{}test}\PYG{p}{,} \PYG{n}{y\PYGZus{}train}\PYG{p}{,} \PYG{n}{y\PYGZus{}test} \PYG{o}{=} \PYG{n}{get\PYGZus{}train\PYGZus{}test}\PYG{p}{(}\PYG{n}{x\PYGZus{}avg}\PYG{p}{,} \PYG{n}{targets}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Списки значений параметров}
+\PYG{n}{intersections} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mf}{0.25}\PYG{p}{,} \PYG{l+m+mf}{0.5}\PYG{p}{,} \PYG{l+m+mf}{0.75}\PYG{p}{]}   \PYG{c+c1}{\PYGZsh{} Степень перекрытия}
+\PYG{n}{n\PYGZus{}mfcc\PYGZus{}list} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mi}{6}\PYG{p}{,} \PYG{l+m+mi}{12}\PYG{p}{,} \PYG{l+m+mi}{18}\PYG{p}{]}           \PYG{c+c1}{\PYGZsh{} Кол\PYGZhy{}во признаков MFCC}
+
+\PYG{c+c1}{\PYGZsh{} Пустой список для хранения результатов}
+\PYG{n}{results} \PYG{o}{=} \PYG{p}{[]}
+
+\PYG{c+c1}{\PYGZsh{} Перебор комбинаций}
+\PYG{n}{idx} \PYG{o}{=} \PYG{l+m+mi}{1}
+\PYG{k}{for} \PYG{n}{intersection} \PYG{o+ow}{in} \PYG{n}{intersections}\PYG{p}{:}
+	\PYG{k}{for} \PYG{n}{n\PYGZus{}mfcc} \PYG{o+ow}{in} \PYG{n}{n\PYGZus{}mfcc\PYGZus{}list}\PYG{p}{:}
+		\PYG{c+c1}{\PYGZsh{} DTW}
+		\PYG{n}{pipeline\PYGZus{}dtw} \PYG{o}{=} \PYG{n}{Pipeline}\PYG{p}{(}\PYG{n}{DTWClassifier}\PYG{p}{,} \PYG{n}{intersection}\PYG{o}{=}\PYG{n}{intersection}\PYG{p}{,} \PYG{n}{n\PYGZus{}mfcc}\PYG{o}{=}\PYG{n}{n\PYGZus{}mfcc}\PYG{p}{)}
+		\PYG{n}{acc\PYGZus{}dtw}\PYG{p}{,} \PYG{n}{time\PYGZus{}dtw} \PYG{o}{=} \PYG{n}{pipeline\PYGZus{}dtw}\PYG{o}{.}\PYG{n}{generate\PYGZus{}fit\PYGZus{}score}\PYG{p}{()}
+		
+		\PYG{c+c1}{\PYGZsh{} NN}
+		\PYG{n}{pipeline\PYGZus{}nn} \PYG{o}{=} \PYG{n}{Pipeline}\PYG{p}{(}\PYG{n}{NN}\PYG{p}{,} \PYG{n}{intersection}\PYG{o}{=}\PYG{n}{intersection}\PYG{p}{,} \PYG{n}{n\PYGZus{}mfcc}\PYG{o}{=}\PYG{n}{n\PYGZus{}mfcc}\PYG{p}{)}
+		\PYG{n}{acc\PYGZus{}nn}\PYG{p}{,} \PYG{n}{time\PYGZus{}nn} \PYG{o}{=} \PYG{n}{pipeline\PYGZus{}nn}\PYG{o}{.}\PYG{n}{generate\PYGZus{}fit\PYGZus{}score}\PYG{p}{()}
+		
+		\PYG{c+c1}{\PYGZsh{} Добавляем строку в список}
+		\PYG{n}{results}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(\PYGZob{}}
+			\PYG{l+s+s2}{\PYGZdq{}№\PYGZdq{}}\PYG{p}{:} \PYG{n}{idx}\PYG{p}{,}
+			\PYG{l+s+s2}{\PYGZdq{}Степень перекрытия\PYGZdq{}}\PYG{p}{:} \PYG{n}{intersection}\PYG{p}{,}
+			\PYG{l+s+s2}{\PYGZdq{}Кол\PYGZhy{}во инф. признаков\PYGZdq{}}\PYG{p}{:} \PYG{n}{n\PYGZus{}mfcc}\PYG{p}{,}
+			\PYG{l+s+s2}{\PYGZdq{}DTW точность\PYGZdq{}}\PYG{p}{:} \PYG{n}{acc\PYGZus{}dtw}\PYG{p}{,}
+			\PYG{l+s+s2}{\PYGZdq{}NN точность\PYGZdq{}}\PYG{p}{:} \PYG{n}{acc\PYGZus{}nn}\PYG{p}{,}
+			\PYG{l+s+s2}{\PYGZdq{}DTW время, мс\PYGZdq{}}\PYG{p}{:} \PYG{n}{time\PYGZus{}dtw}\PYG{p}{,}
+			\PYG{l+s+s2}{\PYGZdq{}NN время, мс\PYGZdq{}}\PYG{p}{:} \PYG{n}{time\PYGZus{}nn}
+		\PYG{p}{\PYGZcb{})}
+		\PYG{n}{idx} \PYG{o}{+=} \PYG{l+m+mi}{1}
+
+\PYG{c+c1}{\PYGZsh{} Создаем DataFrame}
+\PYG{n}{df} \PYG{o}{=} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{DataFrame}\PYG{p}{(}\PYG{n}{results}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Смотрим результат}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{df}\PYG{p}{)}
+\end{MintedVerbatim}

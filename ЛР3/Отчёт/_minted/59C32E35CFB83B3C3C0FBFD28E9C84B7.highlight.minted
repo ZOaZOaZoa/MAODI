@@ -1,0 +1,64 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{pandas}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{pd}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{matplotlib.pyplot}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{plt}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{seaborn}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{sns}
+
+\PYG{c+c1}{\PYGZsh{} Предположим, df — твой датафрейм}
+\PYG{n}{sns}\PYG{o}{.}\PYG{n}{set}\PYG{p}{(}\PYG{n}{style}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}whitegrid\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} \PYGZhy{}\PYGZhy{}\PYGZhy{} График точности DTW \PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{(}\PYG{n}{figsize}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{8}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{))}
+	\PYG{n}{sns}\PYG{o}{.}\PYG{n}{lineplot}\PYG{p}{(}\PYG{n}{data}\PYG{o}{=}\PYG{n}{df}\PYG{p}{,}
+	\PYG{n}{x}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}Кол\PYGZhy{}во инф. признаков\PYGZdq{}}\PYG{p}{,}
+	\PYG{n}{y}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}DTW точность\PYGZdq{}}\PYG{p}{,}
+	\PYG{n}{hue}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}Степень перекрытия\PYGZdq{}}\PYG{p}{,}
+	\PYG{n}{marker}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}o\PYGZdq{}}\PYG{p}{,}
+	\PYG{n}{palette}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}viridis\PYGZdq{}}\PYG{p}{)}  \PYG{c+c1}{\PYGZsh{} разные цвета для разных степеней перекрытия}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}DTW: Точность vs Кол\PYGZhy{}во признаков\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Количество признаков\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Точность\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{(}\PYG{n}{title}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}Степень перекрытия\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+
+\PYG{c+c1}{\PYGZsh{} \PYGZhy{}\PYGZhy{}\PYGZhy{} График точности NN \PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{(}\PYG{n}{figsize}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{8}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{))}
+\PYG{n}{sns}\PYG{o}{.}\PYG{n}{lineplot}\PYG{p}{(}\PYG{n}{data}\PYG{o}{=}\PYG{n}{df}\PYG{p}{,}
+	\PYG{n}{x}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}Кол\PYGZhy{}во инф. признаков\PYGZdq{}}\PYG{p}{,}
+	\PYG{n}{y}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}NN точность\PYGZdq{}}\PYG{p}{,}
+	\PYG{n}{hue}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}Степень перекрытия\PYGZdq{}}\PYG{p}{,}
+	\PYG{n}{marker}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}s\PYGZdq{}}\PYG{p}{,}
+	\PYG{n}{palette}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}plasma\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}NN: Точность vs Кол\PYGZhy{}во признаков\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Количество признаков\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Точность\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{(}\PYG{n}{title}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}Степень перекрытия\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+
+\PYG{c+c1}{\PYGZsh{} \PYGZhy{}\PYGZhy{}\PYGZhy{} График времени DTW \PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{(}\PYG{n}{figsize}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{8}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{))}
+\PYG{n}{sns}\PYG{o}{.}\PYG{n}{lineplot}\PYG{p}{(}\PYG{n}{data}\PYG{o}{=}\PYG{n}{df}\PYG{p}{,}
+	\PYG{n}{x}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}Кол\PYGZhy{}во инф. признаков\PYGZdq{}}\PYG{p}{,}
+	\PYG{n}{y}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}DTW время, мс\PYGZdq{}}\PYG{p}{,}
+	\PYG{n}{hue}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}Степень перекрытия\PYGZdq{}}\PYG{p}{,}
+	\PYG{n}{marker}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}o\PYGZdq{}}\PYG{p}{,}
+	\PYG{n}{palette}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}viridis\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}DTW: Время выполнения vs Кол\PYGZhy{}во признаков\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Количество признаков\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Время, мс\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{(}\PYG{n}{title}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}Степень перекрытия\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+
+\PYG{c+c1}{\PYGZsh{} \PYGZhy{}\PYGZhy{}\PYGZhy{} График времени NN \PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{(}\PYG{n}{figsize}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{8}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{))}
+\PYG{n}{sns}\PYG{o}{.}\PYG{n}{lineplot}\PYG{p}{(}\PYG{n}{data}\PYG{o}{=}\PYG{n}{df}\PYG{p}{,}
+	\PYG{n}{x}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}Кол\PYGZhy{}во инф. признаков\PYGZdq{}}\PYG{p}{,}
+	\PYG{n}{y}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}NN время, мс\PYGZdq{}}\PYG{p}{,}
+	\PYG{n}{hue}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}Степень перекрытия\PYGZdq{}}\PYG{p}{,}
+	\PYG{n}{marker}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}s\PYGZdq{}}\PYG{p}{,}
+	\PYG{n}{palette}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}plasma\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}NN: Время выполнения vs Кол\PYGZhy{}во признаков\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{xlabel}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Количество признаков\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{ylabel}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Время, мс\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{(}\PYG{n}{title}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}Степень перекрытия\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{MintedVerbatim}

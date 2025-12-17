@@ -1,0 +1,40 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{sklearn.neighbors}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{KNeighborsClassifier}
+\PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{sklearn.model\PYGZus{}selection}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{train\PYGZus{}test\PYGZus{}split}
+\PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{fastdtw}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{fastdtw}
+\PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{tqdm}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{tqdm}
+
+\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{DTWClassifier}\PYG{p}{:}
+	\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+		\PYG{k}{pass}
+	
+	\PYG{n+nd}{@staticmethod}
+	\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{dtw\PYGZus{}metric}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{):}
+		\PYG{k}{return} \PYG{n}{fastdtw}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{)[}\PYG{l+m+mi}{0}\PYG{p}{]}
+	
+	\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{fit}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{train\PYGZus{}values}\PYG{p}{,} \PYG{n}{targets}\PYG{p}{):}
+		\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{train\PYGZus{}values} \PYG{o}{=} \PYG{n}{train\PYGZus{}values}
+		\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{targets} \PYG{o}{=} \PYG{n}{targets}
+	
+	\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{predict}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{value}\PYG{p}{):}
+		\PYG{n}{min\PYGZus{}metric} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{inf}
+		\PYG{n}{min\PYGZus{}metric\PYGZus{}i} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+		\PYG{k}{for} \PYG{n}{i}\PYG{p}{,} \PYG{n}{train\PYGZus{}value} \PYG{o+ow}{in} \PYG{n+nb}{enumerate}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{train\PYGZus{}values}\PYG{p}{):}
+			\PYG{n}{cur\PYGZus{}metric} \PYG{o}{=} \PYG{n}{DTWClassifier}\PYG{o}{.}\PYG{n}{dtw\PYGZus{}metric}\PYG{p}{(}\PYG{n}{train\PYGZus{}value}\PYG{p}{,} \PYG{n}{value}\PYG{p}{)}
+			\PYG{k}{if} \PYG{n}{cur\PYGZus{}metric} \PYG{o}{\PYGZlt{}} \PYG{n}{min\PYGZus{}metric}\PYG{p}{:}
+				\PYG{n}{min\PYGZus{}metric} \PYG{o}{=} \PYG{n}{cur\PYGZus{}metric}
+				\PYG{n}{min\PYGZus{}metric\PYGZus{}i} \PYG{o}{=} \PYG{n}{i}
+		
+		\PYG{k}{return} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{targets}\PYG{p}{[}\PYG{n}{min\PYGZus{}metric\PYGZus{}i}\PYG{p}{]}
+	
+	\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{score}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{values}\PYG{p}{,} \PYG{n}{targets}\PYG{p}{):}
+		\PYG{n}{total} \PYG{o}{=} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{values}\PYG{p}{)}
+		\PYG{n}{correct} \PYG{o}{=} \PYG{l+m+mi}{0}
+		\PYG{k}{for} \PYG{n}{value}\PYG{p}{,} \PYG{n}{target} \PYG{o+ow}{in} \PYG{n}{tqdm}\PYG{p}{(}\PYG{n+nb}{list}\PYG{p}{(}\PYG{n+nb}{zip}\PYG{p}{(}\PYG{n}{values}\PYG{p}{,} \PYG{n}{targets}\PYG{p}{))):}
+			\PYG{n}{predicted\PYGZus{}target} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{predict}\PYG{p}{(}\PYG{n}{value}\PYG{p}{)}
+			\PYG{k}{if} \PYG{n}{predicted\PYGZus{}target} \PYG{o}{==} \PYG{n}{target}\PYG{p}{:}
+				\PYG{n}{correct} \PYG{o}{+=} \PYG{l+m+mi}{1}
+		
+		\PYG{n}{accuracy} \PYG{o}{=} \PYG{n}{correct} \PYG{o}{/} \PYG{n}{total}
+		\PYG{k}{return} \PYG{n}{accuracy}
+\end{MintedVerbatim}

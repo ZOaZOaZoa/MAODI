@@ -1,0 +1,61 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{os}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{soundfile}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{sf}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{librosa}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{numpy}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{np}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{matplotlib.pyplot}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{plt}
+
+\PYG{n}{soundfiles\PYGZus{}path} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}./notebook/\PYGZsq{}}
+\PYG{n}{command\PYGZus{}folders} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{n}{command} \PYG{p}{:} \PYG{n}{soundfiles\PYGZus{}path} \PYG{o}{+} \PYG{n}{command} \PYG{k}{for} \PYG{n}{command} \PYG{o+ow}{in} \PYG{n}{os}\PYG{o}{.}\PYG{n}{listdir}\PYG{p}{(}\PYG{n}{soundfiles\PYGZus{}path}\PYG{p}{)\PYGZcb{}}
+\PYG{n}{individual\PYGZus{}commands\PYGZus{}folders} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+
+\PYG{k}{for} \PYG{n}{command}\PYG{p}{,} \PYG{n}{command\PYGZus{}folder} \PYG{o+ow}{in} \PYG{n}{command\PYGZus{}folders}\PYG{o}{.}\PYG{n}{items}\PYG{p}{():}
+	\PYG{n}{files} \PYG{o}{=} \PYG{n}{os}\PYG{o}{.}\PYG{n}{listdir}\PYG{p}{(}\PYG{n}{command\PYGZus{}folder}\PYG{p}{)}
+	\PYG{n}{file\PYGZus{}paths} \PYG{o}{=} \PYG{p}{[]}
+	\PYG{k}{for} \PYG{n}{file} \PYG{o+ow}{in} \PYG{n}{files}\PYG{p}{:}
+	\PYG{c+c1}{\PYGZsh{}file\PYGZus{}paths = [f\PYGZsq{}\PYGZob{}command\PYGZus{}folder\PYGZcb{}/\PYGZob{}file\PYGZcb{}\PYGZsq{} for file in files ]}
+	\PYG{n}{numbers} \PYG{o}{=} \PYG{n+nb}{set}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}1234567890\PYGZsq{}}\PYG{p}{)}
+	\PYG{n}{symbols\PYGZus{}in\PYGZus{}file} \PYG{o}{=} \PYG{n+nb}{set}\PYG{p}{(}\PYG{n}{file}\PYG{p}{)}
+	\PYG{n}{numbers\PYGZus{}in\PYGZus{}filename} \PYG{o}{=} \PYG{n+nb}{set}\PYG{o}{.}\PYG{n}{intersection}\PYG{p}{(}\PYG{n}{numbers}\PYG{p}{,} \PYG{n}{symbols\PYGZus{}in\PYGZus{}file}\PYG{p}{)}
+	
+	\PYG{k}{if} \PYG{o+ow}{not} \PYG{n}{numbers\PYGZus{}in\PYGZus{}filename}\PYG{p}{:}
+		\PYG{k}{continue}
+	
+	\PYG{n}{file\PYGZus{}path} \PYG{o}{=} \PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{command\PYGZus{}folder}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{/}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{file}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}
+	\PYG{n}{file\PYGZus{}paths}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{file\PYGZus{}path}\PYG{p}{)}
+	
+	\PYG{n}{individual\PYGZus{}commands\PYGZus{}folders}\PYG{p}{[}\PYG{n}{command}\PYG{p}{]} \PYG{o}{=} \PYG{n}{file\PYGZus{}paths}
+
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{command\PYGZus{}folders}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{individual\PYGZus{}commands\PYGZus{}folders}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} 1 график}
+\PYG{n}{back1\PYGZus{}avg} \PYG{o}{=} \PYG{n}{x\PYGZus{}avg}\PYG{p}{[}\PYG{l+m+mi}{33}\PYG{p}{]}
+\PYG{n}{back2\PYGZus{}avg} \PYG{o}{=} \PYG{n}{x\PYGZus{}avg}\PYG{p}{[}\PYG{l+m+mi}{35}\PYG{p}{]}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{back1\PYGZus{}avg}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Назад1\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{back2\PYGZus{}avg}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Назад2\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{()}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Усреднённые mfcc\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+
+\PYG{c+c1}{\PYGZsh{} 2 график}
+\PYG{n}{around\PYGZus{}avg} \PYG{o}{=} \PYG{n}{x\PYGZus{}avg}\PYG{p}{[}\PYG{l+m+mi}{75}\PYG{p}{]}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{back1\PYGZus{}avg}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Назад\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{around\PYGZus{}avg}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Разворот\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{()}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Усреднённые mfcc\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+
+\PYG{n}{vowel\PYGZus{}path} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}./vowel\PYGZus{}scan1.wav\PYGZsq{}}
+\PYG{n}{consonant\PYGZus{}path} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}./consonant\PYGZus{}scan1.wav\PYGZsq{}}
+
+\PYG{c+c1}{\PYGZsh{} 3 график}
+\PYG{n}{vowel\PYGZus{}mfcc} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{mean}\PYG{p}{(}\PYG{n}{calc\PYGZus{}mfcc}\PYG{p}{(}\PYG{n}{vowel\PYGZus{}path}\PYG{p}{),} \PYG{n}{axis}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{n}{consonant\PYGZus{}mfcc} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{mean}\PYG{p}{(}\PYG{n}{calc\PYGZus{}mfcc}\PYG{p}{(}\PYG{n}{consonant\PYGZus{}path}\PYG{p}{),} \PYG{n}{axis}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{)}
+
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{vowel\PYGZus{}mfcc}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Вокализованные\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{consonant\PYGZus{}mfcc}\PYG{p}{,} \PYG{n}{label}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}Невокализованные\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{legend}\PYG{p}{()}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{title}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Полученные mfcc\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+\end{MintedVerbatim}

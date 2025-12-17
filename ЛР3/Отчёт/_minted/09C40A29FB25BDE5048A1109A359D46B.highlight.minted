@@ -1,0 +1,33 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{time}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{perf\PYGZus{}counter}
+
+\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{Pipeline}\PYG{p}{:}
+	\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{classifier}\PYG{o}{=}\PYG{n}{DTWClassifier}\PYG{p}{,} \PYG{n}{intersection}\PYG{o}{=}\PYG{l+m+mf}{0.5}\PYG{p}{,} \PYG{n}{n\PYGZus{}mfcc}\PYG{o}{=}\PYG{l+m+mi}{12}\PYG{p}{):}
+		\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{classifier} \PYG{o}{=} \PYG{n}{classifier}\PYG{p}{()}
+		\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{intersection} \PYG{o}{=} \PYG{n}{intersection}
+		\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{n\PYGZus{}mfcc} \PYG{o}{=} \PYG{n}{n\PYGZus{}mfcc}
+		
+	\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{fit}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{x}\PYG{p}{,} \PYG{n}{targets}\PYG{p}{):}
+		\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{classifier}\PYG{o}{.}\PYG{n}{fit}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{targets}\PYG{p}{)}
+	
+	\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{predict}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{x}\PYG{p}{):}
+		\PYG{k}{return} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{classifier}\PYG{o}{.}\PYG{n}{predict}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}
+	
+	\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{score}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{x}\PYG{p}{,} \PYG{n}{targets}\PYG{p}{):}
+		\PYG{k}{return} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{classifier}\PYG{o}{.}\PYG{n}{score}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{targets}\PYG{p}{)}
+	
+	\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{generate\PYGZus{}fit\PYGZus{}score}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+		\PYG{n}{\PYGZus{}}\PYG{p}{,} \PYG{n}{targets}\PYG{p}{,} \PYG{n}{x\PYGZus{}avg} \PYG{o}{=} \PYG{n}{calc\PYGZus{}mfccs\PYGZus{}from\PYGZus{}files}\PYG{p}{(}\PYG{n}{individual\PYGZus{}commands\PYGZus{}folders}\PYG{p}{,} \PYG{n}{intersection}\PYG{o}{=}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{intersection}\PYG{p}{,} \PYG{n}{n\PYGZus{}mfcc}\PYG{o}{=}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{n\PYGZus{}mfcc}\PYG{p}{)}
+		\PYG{n}{x\PYGZus{}train}\PYG{p}{,} \PYG{n}{x\PYGZus{}test}\PYG{p}{,} \PYG{n}{y\PYGZus{}train}\PYG{p}{,} \PYG{n}{y\PYGZus{}test} \PYG{o}{=} \PYG{n}{get\PYGZus{}train\PYGZus{}test}\PYG{p}{(}\PYG{n}{x\PYGZus{}avg}\PYG{p}{,} \PYG{n}{targets}\PYG{p}{)}
+		
+		\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{fit}\PYG{p}{(}\PYG{n}{x\PYGZus{}train}\PYG{p}{,} \PYG{n}{y\PYGZus{}train}\PYG{p}{)}
+		
+		\PYG{n}{score\PYGZus{}start} \PYG{o}{=} \PYG{n}{perf\PYGZus{}counter}\PYG{p}{()}
+		\PYG{n}{accuracy} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{score}\PYG{p}{(}\PYG{n}{x\PYGZus{}test}\PYG{p}{,} \PYG{n}{y\PYGZus{}test}\PYG{p}{)}
+		\PYG{n}{score\PYGZus{}end} \PYG{o}{=} \PYG{n}{perf\PYGZus{}counter}\PYG{p}{()}
+		
+		\PYG{n}{time\PYGZus{}spent\PYGZus{}ms} \PYG{o}{=} \PYG{p}{(}\PYG{n}{score\PYGZus{}end} \PYG{o}{\PYGZhy{}} \PYG{n}{score\PYGZus{}start}\PYG{p}{)} \PYG{o}{*} \PYG{l+m+mi}{1000}
+		
+		\PYG{k}{return} \PYG{n}{accuracy}\PYG{p}{,} \PYG{n}{time\PYGZus{}spent\PYGZus{}ms}
+
+\end{MintedVerbatim}
