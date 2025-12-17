@@ -7,19 +7,19 @@ import math
 
 # image_file = "c:\\work\\miaodi\\n1.jpg"
 # image_file = "c:\\work\\miaodi\\n4.jpg" # bad
-image_file = "c:\\work\\miaodi\\all_n.jpg"
+image_file = ".\\jpg\\all_n.jpg"
 
 
-images=["c:\\work\\miaodi\\n1.jpg",
-        "c:\\work\\miaodi\\n3.jpg",
-        "c:\\work\\miaodi\\n4.jpg",
-        "c:\\work\\miaodi\\n5.jpg",
-        "c:\\work\\miaodi\\n6.jpg",
-        "c:\\work\\miaodi\\n7.jpg",
-        "c:\\work\\miaodi\\n8.jpg",
-        "c:\\work\\miaodi\\n9.jpg"]
+images=[".\\jpg\\n1.jpg",
+        ".\\jpg\\n3.jpg",
+        ".\\jpg\\n4.jpg",
+        ".\\jpg\\n5.jpg",
+        ".\\jpg\\n6.jpg",
+        ".\\jpg\\n7.jpg",
+        ".\\jpg\\n8.jpg",
+        ".\\jpg\\n9.jpg"]
 
-dict_file = "c:\\work\\miaodi\\dict__.jpg"
+dict_file = ".\\jpg\\dict__.jpg"
 
 dict=['А','В','С','Е','Н','К','М','О','Р','С','Т','У','Х','0','1','2','3','4','5','6','7','8','9']
 dict_="АВСЕНКМОРСТУХ0123456789"
