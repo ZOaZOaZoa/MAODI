@@ -1,0 +1,22 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n}{sample\PYGZus{}contours} \PYG{o}{=} \PYG{n+nb}{dict}\PYG{p}{()}
+\PYG{k}{for} \PYG{n}{character}\PYG{p}{,} \PYG{n+nb}{id} \PYG{o+ow}{in} \PYG{n}{sample\PYGZus{}contour\PYGZus{}id}\PYG{o}{.}\PYG{n}{items}\PYG{p}{():}
+\PYG{n}{sample\PYGZus{}contours}\PYG{p}{[}\PYG{n}{character}\PYG{p}{]} \PYG{o}{=} \PYG{n}{Contour}\PYG{p}{(}\PYG{n}{contours}\PYG{p}{[}\PYG{n+nb}{id}\PYG{p}{])}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{calc\PYGZus{}similaritites}\PYG{p}{(}\PYG{n}{contour}\PYG{p}{:} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{,} \PYG{n}{equalize\PYGZus{}to}\PYG{p}{:} \PYG{n+nb}{int}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{):}
+	\PYG{n}{cont} \PYG{o}{=} \PYG{n}{Contour}\PYG{p}{(}\PYG{n}{contour}\PYG{p}{)}
+	
+	\PYG{n}{similarities} \PYG{o}{=} \PYG{n+nb}{dict}\PYG{p}{()}
+	\PYG{k}{if} \PYG{n}{equalize\PYGZus{}to} \PYG{o+ow}{is} \PYG{k+kc}{None}\PYG{p}{:}
+		\PYG{n}{equalize\PYGZus{}to} \PYG{o}{=} \PYG{n}{cont}\PYG{o}{.}\PYG{n}{contour}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+	\PYG{k}{else}\PYG{p}{:}
+		\PYG{n}{cont} \PYG{o}{=} \PYG{n}{cont}\PYG{o}{.}\PYG{n}{equalize}\PYG{p}{(}\PYG{n}{equalize\PYGZus{}to}\PYG{p}{)}
+	
+	\PYG{k}{for} \PYG{n}{character}\PYG{p}{,} \PYG{n}{sample\PYGZus{}contour} \PYG{o+ow}{in} \PYG{n}{sample\PYGZus{}contours}\PYG{o}{.}\PYG{n}{items}\PYG{p}{():}
+		\PYG{n}{equalized\PYGZus{}sample\PYGZus{}contour} \PYG{o}{=} \PYG{n}{sample\PYGZus{}contour}\PYG{o}{.}\PYG{n}{equalize}\PYG{p}{(}\PYG{n}{equalize\PYGZus{}to}\PYG{p}{)}
+		
+		\PYG{n}{similarity} \PYG{o}{=} \PYG{n}{Contour}\PYG{o}{.}\PYG{n}{contours\PYGZus{}similarity}\PYG{p}{(}\PYG{n}{cont}\PYG{p}{,} \PYG{n}{equalized\PYGZus{}sample\PYGZus{}contour}\PYG{p}{)}
+		\PYG{n}{similarities}\PYG{p}{[}\PYG{n}{character}\PYG{p}{]} \PYG{o}{=} \PYG{n}{similarity}
+	
+	\PYG{k}{return} \PYG{n}{similarities}
+\end{MintedVerbatim}

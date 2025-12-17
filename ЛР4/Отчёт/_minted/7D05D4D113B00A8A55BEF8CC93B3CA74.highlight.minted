@@ -1,0 +1,94 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{os}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{cv2}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{cv}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{numpy}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{np}
+\PYG{k+kn}{import}\PYG{+w}{ }\PYG{n+nn}{matplotlib.pyplot}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n+nn}{plt}
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{imshow\PYGZus{}rgb}\PYG{p}{(}\PYG{n}{img}\PYG{p}{,} \PYG{n}{figsize} \PYG{o}{=} \PYG{k+kc}{None}\PYG{p}{):}
+	\PYG{k}{if} \PYG{n}{figsize} \PYG{o+ow}{is} \PYG{k+kc}{None}\PYG{p}{:}
+		\PYG{n}{figsize} \PYG{o}{=} \PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{,} \PYG{l+m+mi}{6}\PYG{p}{)}
+	
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{(}\PYG{n}{figsize}\PYG{o}{=}\PYG{n}{figsize}\PYG{p}{)}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{imshow}\PYG{p}{(}\PYG{n}{img}\PYG{p}{)}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{imshow\PYGZus{}hsv}\PYG{p}{(}\PYG{n}{img}\PYG{p}{):}
+	\PYG{n}{rgb\PYGZus{}img} \PYG{o}{=} \PYG{n}{cv}\PYG{o}{.}\PYG{n}{cvtColor}\PYG{p}{(}\PYG{n}{img}\PYG{p}{,} \PYG{n}{cv}\PYG{o}{.}\PYG{n}{COLOR\PYGZus{}HSV2RGB}\PYG{p}{)}
+	\PYG{n}{imshow\PYGZus{}rgb}\PYG{p}{(}\PYG{n}{rgb\PYGZus{}img}\PYG{p}{)}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{imshow\PYGZus{}grayscale}\PYG{p}{(}\PYG{n}{img}\PYG{p}{):}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{(}\PYG{n}{figsize}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{,} \PYG{l+m+mi}{6}\PYG{p}{))}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{imshow}\PYG{p}{(}\PYG{n}{img}\PYG{p}{,} \PYG{n}{cmap}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}gray\PYGZsq{}}\PYG{p}{)}
+	\PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+	
+\PYG{c+c1}{\PYGZsh{} Проверяем существование файла}
+\PYG{n}{picture\PYGZus{}files\PYGZus{}path} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}./jpg/\PYGZsq{}}
+\PYG{n}{file1} \PYG{o}{=} \PYG{n}{picture\PYGZus{}files\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}dict\PYGZus{}\PYGZus{}.jpg\PYGZsq{}}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{read\PYGZus{}binarize}\PYG{p}{(}\PYG{n}{file}\PYG{p}{,} \PYG{n}{show\PYGZus{}additional\PYGZus{}steps}\PYG{o}{=}\PYG{k+kc}{True}\PYG{p}{):}
+	\PYG{n}{dict\PYGZus{}img} \PYG{o}{=} \PYG{n}{cv}\PYG{o}{.}\PYG{n}{imread}\PYG{p}{(}\PYG{n}{file}\PYG{p}{)}
+	
+	\PYG{k}{if} \PYG{n}{dict\PYGZus{}img} \PYG{o+ow}{is} \PYG{k+kc}{None}\PYG{p}{:}
+		\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Ошибка загрузки изображения\PYGZdq{}}\PYG{p}{)}
+	\PYG{k}{else}\PYG{p}{:}
+		\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}Изображение загружено успешно. Размер: }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{dict\PYGZus{}img}\PYG{o}{.}\PYG{n}{shape}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
+		\PYG{n}{imshow\PYGZus{}rgb}\PYG{p}{(}\PYG{n}{dict\PYGZus{}img}\PYG{p}{)}
+	
+	
+	\PYG{k}{if} \PYG{n}{show\PYGZus{}additional\PYGZus{}steps}\PYG{p}{:}
+		\PYG{n}{blurred} \PYG{o}{=} \PYG{n}{cv}\PYG{o}{.}\PYG{n}{GaussianBlur}\PYG{p}{(}\PYG{n}{dict\PYGZus{}img}\PYG{p}{,} \PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{),} \PYG{l+m+mi}{0}\PYG{p}{)}
+		\PYG{n}{cv}\PYG{o}{.}\PYG{n}{GaussianBlur}\PYG{p}{(}\PYG{n}{dict\PYGZus{}img}\PYG{p}{,} \PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{),} \PYG{l+m+mi}{0}\PYG{p}{)}
+		\PYG{n}{imshow\PYGZus{}rgb}\PYG{p}{(}\PYG{n}{blurred}\PYG{p}{)}
+		
+	\PYG{n}{dict\PYGZus{}hsv} \PYG{o}{=} \PYG{n}{cv}\PYG{o}{.}\PYG{n}{blur}\PYG{p}{(}\PYG{n}{dict\PYGZus{}img}\PYG{p}{,} \PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{))}
+	\PYG{n}{dict\PYGZus{}hsv} \PYG{o}{=} \PYG{n}{cv}\PYG{o}{.}\PYG{n}{cvtColor}\PYG{p}{(}\PYG{n}{dict\PYGZus{}hsv}\PYG{p}{,} \PYG{n}{cv}\PYG{o}{.}\PYG{n}{COLOR\PYGZus{}BGR2HSV}\PYG{p}{)}
+	\PYG{n}{dict\PYGZus{}mask} \PYG{o}{=} \PYG{n}{cv}\PYG{o}{.}\PYG{n}{inRange}\PYG{p}{(}\PYG{n}{dict\PYGZus{}hsv}\PYG{p}{,} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{),} \PYG{p}{(}\PYG{l+m+mi}{255}\PYG{p}{,} \PYG{l+m+mi}{255}\PYG{p}{,} \PYG{l+m+mi}{141}\PYG{p}{))}
+	
+	\PYG{n}{imshow\PYGZus{}grayscale}\PYG{p}{(}\PYG{n}{dict\PYGZus{}mask}\PYG{p}{)}
+	
+	\PYG{n}{contours}\PYG{p}{,} \PYG{n}{hierarchy} \PYG{o}{=} \PYG{n}{cv}\PYG{o}{.}\PYG{n}{findContours}\PYG{p}{(}\PYG{n}{dict\PYGZus{}mask}\PYG{p}{,} \PYG{n}{mode}\PYG{o}{=}\PYG{n}{cv}\PYG{o}{.}\PYG{n}{RETR\PYGZus{}TREE}\PYG{p}{,} \PYG{n}{method}\PYG{o}{=}\PYG{n}{cv}\PYG{o}{.}\PYG{n}{CHAIN\PYGZus{}APPROX\PYGZus{}NONE}\PYG{p}{)}
+	\PYG{k}{return} \PYG{n}{dict\PYGZus{}img}\PYG{p}{,} \PYG{n}{dict\PYGZus{}mask}\PYG{p}{,} \PYG{n}{contours}\PYG{p}{,} \PYG{n}{hierarchy}
+
+\PYG{n}{dict\PYGZus{}img}\PYG{p}{,} \PYG{n}{dict\PYGZus{}mask}\PYG{p}{,} \PYG{n}{contours}\PYG{p}{,} \PYG{n}{hierarchy} \PYG{o}{=} \PYG{n}{read\PYGZus{}binarize}\PYG{p}{(}\PYG{n}{file1}\PYG{p}{)}
+
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{show\PYGZus{}img\PYGZus{}with\PYGZus{}contours}\PYG{p}{(}\PYG{n}{dict\PYGZus{}img}\PYG{p}{,} \PYG{n}{contours}\PYG{p}{):}
+	\PYG{n}{img} \PYG{o}{=} \PYG{n}{dict\PYGZus{}img}\PYG{o}{.}\PYG{n}{copy}\PYG{p}{()}
+	\PYG{n}{cv}\PYG{o}{.}\PYG{n}{drawContours}\PYG{p}{(}\PYG{n}{img}\PYG{p}{,} \PYG{n}{contours}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{255}\PYG{p}{,} \PYG{n}{thickness}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{)}
+	\PYG{c+c1}{\PYGZsh{} 11. Добавление информации о контурах}
+	\PYG{k}{for} \PYG{n}{i}\PYG{p}{,} \PYG{n}{cnt} \PYG{o+ow}{in} \PYG{n+nb}{enumerate}\PYG{p}{(}\PYG{n}{contours}\PYG{p}{):}
+		\PYG{n}{area} \PYG{o}{=} \PYG{n}{cv}\PYG{o}{.}\PYG{n}{contourArea}\PYG{p}{(}\PYG{n}{cnt}\PYG{p}{)}
+		\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{p}{,} \PYG{n}{w}\PYG{p}{,} \PYG{n}{h} \PYG{o}{=} \PYG{n}{cv}\PYG{o}{.}\PYG{n}{boundingRect}\PYG{p}{(}\PYG{n}{cnt}\PYG{p}{)}
+		
+		\PYG{k}{if} \PYG{n}{area} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{100}\PYG{p}{:}  \PYG{c+c1}{\PYGZsh{} Фильтрация по площади}
+			\PYG{n}{cv}\PYG{o}{.}\PYG{n}{putText}\PYG{p}{(}\PYG{n}{img}\PYG{p}{,} \PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{i}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{p}{(}\PYG{n}{x}\PYG{p}{,} \PYG{n}{y}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{5}\PYG{p}{),}
+				\PYG{n}{cv}\PYG{o}{.}\PYG{n}{FONT\PYGZus{}HERSHEY\PYGZus{}SIMPLEX}\PYG{p}{,} \PYG{l+m+mf}{0.3}\PYG{p}{,} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{255}\PYG{p}{),} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{cv}\PYG{o}{.}\PYG{n}{LINE\PYGZus{}AA}\PYG{p}{)}
+	
+	\PYG{n}{imshow\PYGZus{}rgb}\PYG{p}{(}\PYG{n}{img}\PYG{p}{,} \PYG{n}{figsize}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{20}\PYG{p}{,} \PYG{l+m+mi}{12}\PYG{p}{))}
+
+\PYG{n}{show\PYGZus{}img\PYGZus{}with\PYGZus{}contours}\PYG{p}{(}\PYG{n}{dict\PYGZus{}img}\PYG{p}{,} \PYG{n}{contours}\PYG{p}{)}
+
+\PYG{n}{sample\PYGZus{}contour\PYGZus{}id} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+	\PYG{l+s+s1}{\PYGZsq{}A\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{30}\PYG{p}{,}
+	\PYG{l+s+s1}{\PYGZsq{}B\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{27}\PYG{p}{,}
+	\PYG{l+s+s1}{\PYGZsq{}C\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{35}\PYG{p}{,}
+	\PYG{l+s+s1}{\PYGZsq{}E\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{26}\PYG{p}{,}
+	\PYG{l+s+s1}{\PYGZsq{}H\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{25}\PYG{p}{,}
+	\PYG{l+s+s1}{\PYGZsq{}K\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{24}\PYG{p}{,}
+	\PYG{l+s+s1}{\PYGZsq{}M\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{23}\PYG{p}{,}
+	\PYG{l+s+s1}{\PYGZsq{}O\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{33}\PYG{p}{,}
+	\PYG{l+s+s1}{\PYGZsq{}P\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{21}\PYG{p}{,}
+	\PYG{l+s+s1}{\PYGZsq{}T\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{20}\PYG{p}{,}
+	\PYG{l+s+s1}{\PYGZsq{}Y\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{19}\PYG{p}{,}
+	\PYG{l+s+s1}{\PYGZsq{}X\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{18}\PYG{p}{,}
+	\PYG{l+s+s1}{\PYGZsq{}0\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{16}\PYG{p}{,}
+	\PYG{l+s+s1}{\PYGZsq{}1\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{15}\PYG{p}{,}
+	\PYG{l+s+s1}{\PYGZsq{}2\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{14}\PYG{p}{,}
+	\PYG{l+s+s1}{\PYGZsq{}3\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{13}\PYG{p}{,}
+	\PYG{l+s+s1}{\PYGZsq{}4\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{4}\PYG{p}{,}
+	\PYG{l+s+s1}{\PYGZsq{}5\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{3}\PYG{p}{,}
+	\PYG{l+s+s1}{\PYGZsq{}6\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{11}\PYG{p}{,}
+	\PYG{l+s+s1}{\PYGZsq{}7\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{2}\PYG{p}{,}
+	\PYG{l+s+s1}{\PYGZsq{}8\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{8}\PYG{p}{,}
+	\PYG{l+s+s1}{\PYGZsq{}9\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{6}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

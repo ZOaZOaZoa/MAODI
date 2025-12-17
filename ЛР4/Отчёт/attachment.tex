@@ -1,0 +1,323 @@
+\appendix
+\titleformat{\section}{\normalfont\large\bfseries}{\centering Приложение \thesection. }{0pt}{\large\centering}
+\renewcommand{\thesection}{\Asbuk{section}}
+\section{Листинги}
+
+{
+	\captionof{lstlisting}{Загрузка, предобработка и выделение контуров}
+	\label{predobr}
+	\begin{minted}[frame=lines,fontsize=\footnotesize,breaklines=true,numbers=left]{python}
+import os
+import cv2 as cv
+import numpy as np
+import matplotlib.pyplot as plt
+def imshow_rgb(img, figsize = None):
+	if figsize is None:
+		figsize = (10, 6)
+	
+	plt.figure(figsize=figsize)
+	plt.imshow(img)
+	plt.show()
+
+def imshow_hsv(img):
+	rgb_img = cv.cvtColor(img, cv.COLOR_HSV2RGB)
+	imshow_rgb(rgb_img)
+
+def imshow_grayscale(img):
+	plt.figure(figsize=(10, 6))
+	plt.imshow(img, cmap='gray')
+	plt.show()
+	
+# Проверяем существование файла
+picture_files_path = './jpg/'
+file1 = picture_files_path + 'dict__.jpg'
+
+def read_binarize(file, show_additional_steps=True):
+	dict_img = cv.imread(file)
+	
+	if dict_img is None:
+		print("Ошибка загрузки изображения")
+	else:
+		print(f"Изображение загружено успешно. Размер: {dict_img.shape}")
+		imshow_rgb(dict_img)
+	
+	
+	if show_additional_steps:
+		blurred = cv.GaussianBlur(dict_img, (5, 5), 0)
+		cv.GaussianBlur(dict_img, (5,5), 0)
+		imshow_rgb(blurred)
+		
+	dict_hsv = cv.blur(dict_img, (2, 2))
+	dict_hsv = cv.cvtColor(dict_hsv, cv.COLOR_BGR2HSV)
+	dict_mask = cv.inRange(dict_hsv, (0, 0, 0), (255, 255, 141))
+	
+	imshow_grayscale(dict_mask)
+	
+	contours, hierarchy = cv.findContours(dict_mask, mode=cv.RETR_TREE, method=cv.CHAIN_APPROX_NONE)
+	return dict_img, dict_mask, contours, hierarchy
+
+dict_img, dict_mask, contours, hierarchy = read_binarize(file1)
+
+
+def show_img_with_contours(dict_img, contours):
+	img = dict_img.copy()
+	cv.drawContours(img, contours, -1, 255, thickness=2)
+	# 11. Добавление информации о контурах
+	for i, cnt in enumerate(contours):
+		area = cv.contourArea(cnt)
+		x, y, w, h = cv.boundingRect(cnt)
+		
+		if area > 100:  # Фильтрация по площади
+			cv.putText(img, f'{i}', (x, y-5),
+				cv.FONT_HERSHEY_SIMPLEX, 0.3, (0, 0, 255), 1, cv.LINE_AA)
+	
+	imshow_rgb(img, figsize=(20, 12))
+
+show_img_with_contours(dict_img, contours)
+
+sample_contour_id = {
+	'A': 30,
+	'B': 27,
+	'C': 35,
+	'E': 26,
+	'H': 25,
+	'K': 24,
+	'M': 23,
+	'O': 33,
+	'P': 21,
+	'T': 20,
+	'Y': 19,
+	'X': 18,
+	'0': 16,
+	'1': 15,
+	'2': 14,
+	'3': 13,
+	'4': 4,
+	'5': 3,
+	'6': 11,
+	'7': 2,
+	'8': 8,
+	'9': 6
+}
+	\end{minted}
+}
+
+{
+	\captionof{lstlisting}{Класс комплексного контура}
+	\label{Contour_class}
+	\begin{minted}[frame=lines,fontsize=\footnotesize,breaklines=true,numbers=left]{python}
+class Contour:
+	def __init__(self, contour, convertFromDecart = True):
+		if convertFromDecart:
+			complex_contour = self.decartToComplex(contour)
+		else:
+			complex_contour = contour
+			
+		self._set_countour(complex_contour)
+	
+	def _set_countour(self, contour):
+		self.contour = contour
+		self._contour_length = self._get_contour_length()
+	
+	@staticmethod
+	def tuple_to_complex(point: tuple) -> complex:
+		return complex(point[0][0], point[0][1])
+	
+	@staticmethod
+	def multiplyCVectors(a: np.array, b: np.array) -> np.array:
+		return a.T @ b.conjugate()
+	
+	def multiplyTo(self, other: "Contour") -> np.array:
+		return Contour.multiplyCVectors(self.contour, other)
+	
+	@staticmethod
+	def calc_contour_length(c: np.array):
+		return np.sum(np.sqrt(c * c.conjugate()))
+	
+	def _get_contour_length(self):
+		return Contour.calc_contour_length(self.contour)
+	
+	def contour_length(self):
+		return self._contour_length
+	
+	@staticmethod
+	def VKF(contour1: "Contour",contour2: "Contour"):
+		c1: np.array = contour1.contour
+		c2: np.array = contour2.contour
+	
+		res = []
+		for k in range(c1.shape[0]):
+			c2_roll = np.roll(c2, -k)
+			res.append(Contour.multiplyCVectors(c1, c2_roll))
+		
+		return np.array(res)
+		
+	@staticmethod
+	def contours_similarity(cont1: "Contour", cont2: "Contour"):
+		vkf = Contour.VKF(cont1, cont2)
+		similarity = np.max(np.abs(vkf)) / np.sqrt(cont1.contour_length().real * cont2.contour_length().real)
+		
+		return similarity
+		
+	def decartToComplex(self, contour):
+		compl_contour = [ ]
+		last_point = Contour.tuple_to_complex(contour[0])
+		for i, point_tuple in enumerate(contour):
+			if i == 0:
+				continue
+			
+			point = Contour.tuple_to_complex(point_tuple)
+			compl_contour.append(point - last_point)
+			last_point = point
+			
+		return np.array(compl_contour)
+	
+	
+	def equalize(self, p, log=False):
+		eqvec = [complex(0,0)] * p
+		eq_len = self.contour_length() / p
+		if log:
+			print(eq_len)
+		pind = 0
+		
+		def calc_norm(vec):
+			if not isinstance(vec, np.ndarray):
+				vec = np.array(vec)
+				return np.sqrt(vec * vec.conjugate())
+		
+			return np.sqrt(vec.T @ vec.conjugate())
+		
+		vec = self.contour
+		vec_ost = vec[0]
+		vec_isp = complex(0,0)
+		j = 0
+		while pind < p - 1:
+			vlen = calc_norm(vec_ost)
+			if vlen > eq_len:
+				eqvec[pind] = vec_ost * eq_len / vlen
+				vec_ost = vec_ost - eqvec[pind]
+				if log:
+				print('f: ' + str(pind) + '   ' + str(eqvec[pind]))
+				pind += 1
+			else:
+				s = calc_norm(vec_ost)
+				
+				for t in range(j + 1, len(vec)):
+					s0 = s
+					
+					s = s + calc_norm(vec[t])
+					
+					
+					if (s > eq_len):
+						vec_isp_len = eq_len - s0
+						vec_isp = vec[t] * vec_isp_len / calc_norm(vec[t])
+						
+						vecs = complex(0,0)
+						for tt in range(j+1, t - 1):
+							vecs = vecs + vec[tt]
+						
+						
+						eqvec[pind]= vec_ost + vec_isp + vecs
+						vec_ost = vec[t] - vec_isp
+						
+						if log:
+							print(str(pind) + '   ' + str(eqvec[pind]))
+						
+						pind += 1
+						j = t
+						break
+				
+				if pind >= p - 1:   
+				
+				
+				eqvec[pind] = -sum(eqvec)
+				
+				if log:
+					print(str(pind) + '   ' + str(eqvec[pind]))
+				pind += 1
+				break
+			if pind >= p  :
+				break
+		
+		return Contour(np.array(eqvec), convertFromDecart=False)
+	\end{minted}
+}
+
+
+{
+	\captionof{lstlisting}{Формирование набора эталонных контуров, определение функции схожести}
+	\label{sample_contours}
+	\begin{minted}[frame=lines,fontsize=\footnotesize,breaklines=true,numbers=left]{python}
+sample_contours = dict()
+for character, id in sample_contour_id.items():
+sample_contours[character] = Contour(contours[id])
+
+def calc_similaritites(contour: np.array, equalize_to: int=None):
+	cont = Contour(contour)
+	
+	similarities = dict()
+	if equalize_to is None:
+		equalize_to = cont.contour.shape[0]
+	else:
+		cont = cont.equalize(equalize_to)
+	
+	for character, sample_contour in sample_contours.items():
+		equalized_sample_contour = sample_contour.equalize(equalize_to)
+		
+		similarity = Contour.contours_similarity(cont, equalized_sample_contour)
+		similarities[character] = similarity
+	
+	return similarities
+	\end{minted}
+}
+
+{
+	\captionof{lstlisting}{Классификация контуров по буквам}
+	\label{Character_classification}
+	\begin{minted}[frame=lines,fontsize=\footnotesize,breaklines=true,numbers=left]{python}
+from time import perf_counter
+
+to_open = picture_files_path + 'n11.jpg'
+
+start_time = perf_counter()
+dict_img, dict_mask, contours, hierarchy = read_binarize(to_open, show_additional_steps=False)
+predobr_end_time = perf_counter()
+
+filtered_contours = []
+min_area = 1500
+max_perimeter = 2000
+for i, contour in enumerate(contours):
+	area = cv.contourArea(contour)
+	contour_length = Contour(contour).contour_length()
+	if area > min_area and contour_length < max_perimeter:
+		filtered_contours.append(contour)
+
+def first_point_x(item):
+	return item[0][0][0]
+
+filtered_contours = list(sorted(filtered_contours, key=first_point_x))
+
+contours_predobr_end_time = perf_counter()
+show_img_with_contours(dict_img, filtered_contours)
+contours_draw_end_time = perf_counter()
+
+number = ''
+for i, contour in enumerate(filtered_contours):
+	similarities = calc_similaritites(contour)
+	character, max_similarity = max(similarities.items(), key=lambda x: x[1])
+	if max_similarity < 0.5:
+		continue
+	
+	if len(number) < 6:
+		number += character
+	print(f'Контур {i:>3} наиболее похож на {character:>3} со схожестью {max_similarity:>5.2f}')
+classify_end_time = perf_counter()
+
+
+print(f'\nПолучили номер {number}')
+print(f'Чтение и предобратотка изображения: {(predobr_end_time - start_time)*1000:.0f}мс')
+print(f'Отсев лишних контуров и сортировка по координатам: {(contours_predobr_end_time - predobr_end_time)*1000:.0f}мс')
+print(f'Отрисовка контуров на изображении: {(contours_draw_end_time - contours_predobr_end_time)*1000:.0f}мс')
+print(f'Классификация контуров: {(classify_end_time - contours_draw_end_time)*1000:.0f}мс')
+	\end{minted}
+}

@@ -1,0 +1,46 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from}\PYG{+w}{ }\PYG{n+nn}{time}\PYG{+w}{ }\PYG{k+kn}{import} \PYG{n}{perf\PYGZus{}counter}
+
+\PYG{n}{to\PYGZus{}open} \PYG{o}{=} \PYG{n}{picture\PYGZus{}files\PYGZus{}path} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}n11.jpg\PYGZsq{}}
+
+\PYG{n}{start\PYGZus{}time} \PYG{o}{=} \PYG{n}{perf\PYGZus{}counter}\PYG{p}{()}
+\PYG{n}{dict\PYGZus{}img}\PYG{p}{,} \PYG{n}{dict\PYGZus{}mask}\PYG{p}{,} \PYG{n}{contours}\PYG{p}{,} \PYG{n}{hierarchy} \PYG{o}{=} \PYG{n}{read\PYGZus{}binarize}\PYG{p}{(}\PYG{n}{to\PYGZus{}open}\PYG{p}{,} \PYG{n}{show\PYGZus{}additional\PYGZus{}steps}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{)}
+\PYG{n}{predobr\PYGZus{}end\PYGZus{}time} \PYG{o}{=} \PYG{n}{perf\PYGZus{}counter}\PYG{p}{()}
+
+\PYG{n}{filtered\PYGZus{}contours} \PYG{o}{=} \PYG{p}{[]}
+\PYG{n}{min\PYGZus{}area} \PYG{o}{=} \PYG{l+m+mi}{1500}
+\PYG{n}{max\PYGZus{}perimeter} \PYG{o}{=} \PYG{l+m+mi}{2000}
+\PYG{k}{for} \PYG{n}{i}\PYG{p}{,} \PYG{n}{contour} \PYG{o+ow}{in} \PYG{n+nb}{enumerate}\PYG{p}{(}\PYG{n}{contours}\PYG{p}{):}
+	\PYG{n}{area} \PYG{o}{=} \PYG{n}{cv}\PYG{o}{.}\PYG{n}{contourArea}\PYG{p}{(}\PYG{n}{contour}\PYG{p}{)}
+	\PYG{n}{contour\PYGZus{}length} \PYG{o}{=} \PYG{n}{Contour}\PYG{p}{(}\PYG{n}{contour}\PYG{p}{)}\PYG{o}{.}\PYG{n}{contour\PYGZus{}length}\PYG{p}{()}
+	\PYG{k}{if} \PYG{n}{area} \PYG{o}{\PYGZgt{}} \PYG{n}{min\PYGZus{}area} \PYG{o+ow}{and} \PYG{n}{contour\PYGZus{}length} \PYG{o}{\PYGZlt{}} \PYG{n}{max\PYGZus{}perimeter}\PYG{p}{:}
+		\PYG{n}{filtered\PYGZus{}contours}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{contour}\PYG{p}{)}
+
+\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{first\PYGZus{}point\PYGZus{}x}\PYG{p}{(}\PYG{n}{item}\PYG{p}{):}
+	\PYG{k}{return} \PYG{n}{item}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{]}
+
+\PYG{n}{filtered\PYGZus{}contours} \PYG{o}{=} \PYG{n+nb}{list}\PYG{p}{(}\PYG{n+nb}{sorted}\PYG{p}{(}\PYG{n}{filtered\PYGZus{}contours}\PYG{p}{,} \PYG{n}{key}\PYG{o}{=}\PYG{n}{first\PYGZus{}point\PYGZus{}x}\PYG{p}{))}
+
+\PYG{n}{contours\PYGZus{}predobr\PYGZus{}end\PYGZus{}time} \PYG{o}{=} \PYG{n}{perf\PYGZus{}counter}\PYG{p}{()}
+\PYG{n}{show\PYGZus{}img\PYGZus{}with\PYGZus{}contours}\PYG{p}{(}\PYG{n}{dict\PYGZus{}img}\PYG{p}{,} \PYG{n}{filtered\PYGZus{}contours}\PYG{p}{)}
+\PYG{n}{contours\PYGZus{}draw\PYGZus{}end\PYGZus{}time} \PYG{o}{=} \PYG{n}{perf\PYGZus{}counter}\PYG{p}{()}
+
+\PYG{n}{number} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}
+\PYG{k}{for} \PYG{n}{i}\PYG{p}{,} \PYG{n}{contour} \PYG{o+ow}{in} \PYG{n+nb}{enumerate}\PYG{p}{(}\PYG{n}{filtered\PYGZus{}contours}\PYG{p}{):}
+	\PYG{n}{similarities} \PYG{o}{=} \PYG{n}{calc\PYGZus{}similaritites}\PYG{p}{(}\PYG{n}{contour}\PYG{p}{)}
+	\PYG{n}{character}\PYG{p}{,} \PYG{n}{max\PYGZus{}similarity} \PYG{o}{=} \PYG{n+nb}{max}\PYG{p}{(}\PYG{n}{similarities}\PYG{o}{.}\PYG{n}{items}\PYG{p}{(),} \PYG{n}{key}\PYG{o}{=}\PYG{k}{lambda} \PYG{n}{x}\PYG{p}{:} \PYG{n}{x}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{])}
+	\PYG{k}{if} \PYG{n}{max\PYGZus{}similarity} \PYG{o}{\PYGZlt{}} \PYG{l+m+mf}{0.5}\PYG{p}{:}
+		\PYG{k}{continue}
+	
+	\PYG{k}{if} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{number}\PYG{p}{)} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{6}\PYG{p}{:}
+		\PYG{n}{number} \PYG{o}{+=} \PYG{n}{character}
+	\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Контур }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{i}\PYG{l+s+si}{:}\PYG{l+s+s1}{\PYGZgt{}3}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{ наиболее похож на }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{character}\PYG{l+s+si}{:}\PYG{l+s+s1}{\PYGZgt{}3}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{ со схожестью }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{max\PYGZus{}similarity}\PYG{l+s+si}{:}\PYG{l+s+s1}{\PYGZgt{}5.2f}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{classify\PYGZus{}end\PYGZus{}time} \PYG{o}{=} \PYG{n}{perf\PYGZus{}counter}\PYG{p}{()}
+
+
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{Получили номер }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{number}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Чтение и предобратотка изображения: }\PYG{l+s+si}{\PYGZob{}}\PYG{p}{(}\PYG{n}{predobr\PYGZus{}end\PYGZus{}time}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{start\PYGZus{}time}\PYG{p}{)}\PYG{o}{*}\PYG{l+m+mi}{1000}\PYG{l+s+si}{:}\PYG{l+s+s1}{.0f}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{мс\PYGZsq{}}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Отсев лишних контуров и сортировка по координатам: }\PYG{l+s+si}{\PYGZob{}}\PYG{p}{(}\PYG{n}{contours\PYGZus{}predobr\PYGZus{}end\PYGZus{}time}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{predobr\PYGZus{}end\PYGZus{}time}\PYG{p}{)}\PYG{o}{*}\PYG{l+m+mi}{1000}\PYG{l+s+si}{:}\PYG{l+s+s1}{.0f}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{мс\PYGZsq{}}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Отрисовка контуров на изображении: }\PYG{l+s+si}{\PYGZob{}}\PYG{p}{(}\PYG{n}{contours\PYGZus{}draw\PYGZus{}end\PYGZus{}time}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{contours\PYGZus{}predobr\PYGZus{}end\PYGZus{}time}\PYG{p}{)}\PYG{o}{*}\PYG{l+m+mi}{1000}\PYG{l+s+si}{:}\PYG{l+s+s1}{.0f}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{мс\PYGZsq{}}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Классификация контуров: }\PYG{l+s+si}{\PYGZob{}}\PYG{p}{(}\PYG{n}{classify\PYGZus{}end\PYGZus{}time}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{contours\PYGZus{}draw\PYGZus{}end\PYGZus{}time}\PYG{p}{)}\PYG{o}{*}\PYG{l+m+mi}{1000}\PYG{l+s+si}{:}\PYG{l+s+s1}{.0f}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{мс\PYGZsq{}}\PYG{p}{)}
+\end{MintedVerbatim}

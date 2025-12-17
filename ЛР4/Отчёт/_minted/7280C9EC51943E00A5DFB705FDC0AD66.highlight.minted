@@ -1,0 +1,136 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{Contour}\PYG{p}{:}
+	\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{contour}\PYG{p}{,} \PYG{n}{convertFromDecart} \PYG{o}{=} \PYG{k+kc}{True}\PYG{p}{):}
+		\PYG{k}{if} \PYG{n}{convertFromDecart}\PYG{p}{:}
+			\PYG{n}{complex\PYGZus{}contour} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{decartToComplex}\PYG{p}{(}\PYG{n}{contour}\PYG{p}{)}
+		\PYG{k}{else}\PYG{p}{:}
+			\PYG{n}{complex\PYGZus{}contour} \PYG{o}{=} \PYG{n}{contour}
+			
+		\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}set\PYGZus{}countour}\PYG{p}{(}\PYG{n}{complex\PYGZus{}contour}\PYG{p}{)}
+	
+	\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{\PYGZus{}set\PYGZus{}countour}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{contour}\PYG{p}{):}
+		\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{contour} \PYG{o}{=} \PYG{n}{contour}
+		\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}contour\PYGZus{}length} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}get\PYGZus{}contour\PYGZus{}length}\PYG{p}{()}
+	
+	\PYG{n+nd}{@staticmethod}
+	\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{tuple\PYGZus{}to\PYGZus{}complex}\PYG{p}{(}\PYG{n}{point}\PYG{p}{:} \PYG{n+nb}{tuple}\PYG{p}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n+nb}{complex}\PYG{p}{:}
+		\PYG{k}{return} \PYG{n+nb}{complex}\PYG{p}{(}\PYG{n}{point}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{point}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{][}\PYG{l+m+mi}{1}\PYG{p}{])}
+	
+	\PYG{n+nd}{@staticmethod}
+	\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{multiplyCVectors}\PYG{p}{(}\PYG{n}{a}\PYG{p}{:} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{,} \PYG{n}{b}\PYG{p}{:} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{:}
+		\PYG{k}{return} \PYG{n}{a}\PYG{o}{.}\PYG{n}{T} \PYG{o}{@} \PYG{n}{b}\PYG{o}{.}\PYG{n}{conjugate}\PYG{p}{()}
+	
+	\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{multiplyTo}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{other}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Contour\PYGZdq{}}\PYG{p}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{:}
+		\PYG{k}{return} \PYG{n}{Contour}\PYG{o}{.}\PYG{n}{multiplyCVectors}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{contour}\PYG{p}{,} \PYG{n}{other}\PYG{p}{)}
+	
+	\PYG{n+nd}{@staticmethod}
+	\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{calc\PYGZus{}contour\PYGZus{}length}\PYG{p}{(}\PYG{n}{c}\PYG{p}{:} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{):}
+		\PYG{k}{return} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sum}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{c} \PYG{o}{*} \PYG{n}{c}\PYG{o}{.}\PYG{n}{conjugate}\PYG{p}{()))}
+	
+	\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{\PYGZus{}get\PYGZus{}contour\PYGZus{}length}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+		\PYG{k}{return} \PYG{n}{Contour}\PYG{o}{.}\PYG{n}{calc\PYGZus{}contour\PYGZus{}length}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{contour}\PYG{p}{)}
+	
+	\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{contour\PYGZus{}length}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+		\PYG{k}{return} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}contour\PYGZus{}length}
+	
+	\PYG{n+nd}{@staticmethod}
+	\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{VKF}\PYG{p}{(}\PYG{n}{contour1}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Contour\PYGZdq{}}\PYG{p}{,}\PYG{n}{contour2}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Contour\PYGZdq{}}\PYG{p}{):}
+		\PYG{n}{c1}\PYG{p}{:} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array} \PYG{o}{=} \PYG{n}{contour1}\PYG{o}{.}\PYG{n}{contour}
+		\PYG{n}{c2}\PYG{p}{:} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array} \PYG{o}{=} \PYG{n}{contour2}\PYG{o}{.}\PYG{n}{contour}
+	
+		\PYG{n}{res} \PYG{o}{=} \PYG{p}{[]}
+		\PYG{k}{for} \PYG{n}{k} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{c1}\PYG{o}{.}\PYG{n}{shape}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]):}
+			\PYG{n}{c2\PYGZus{}roll} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{roll}\PYG{p}{(}\PYG{n}{c2}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{n}{k}\PYG{p}{)}
+			\PYG{n}{res}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{Contour}\PYG{o}{.}\PYG{n}{multiplyCVectors}\PYG{p}{(}\PYG{n}{c1}\PYG{p}{,} \PYG{n}{c2\PYGZus{}roll}\PYG{p}{))}
+		
+		\PYG{k}{return} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{(}\PYG{n}{res}\PYG{p}{)}
+		
+	\PYG{n+nd}{@staticmethod}
+	\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{contours\PYGZus{}similarity}\PYG{p}{(}\PYG{n}{cont1}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Contour\PYGZdq{}}\PYG{p}{,} \PYG{n}{cont2}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}Contour\PYGZdq{}}\PYG{p}{):}
+		\PYG{n}{vkf} \PYG{o}{=} \PYG{n}{Contour}\PYG{o}{.}\PYG{n}{VKF}\PYG{p}{(}\PYG{n}{cont1}\PYG{p}{,} \PYG{n}{cont2}\PYG{p}{)}
+		\PYG{n}{similarity} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{max}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{abs}\PYG{p}{(}\PYG{n}{vkf}\PYG{p}{))} \PYG{o}{/} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{cont1}\PYG{o}{.}\PYG{n}{contour\PYGZus{}length}\PYG{p}{()}\PYG{o}{.}\PYG{n}{real} \PYG{o}{*} \PYG{n}{cont2}\PYG{o}{.}\PYG{n}{contour\PYGZus{}length}\PYG{p}{()}\PYG{o}{.}\PYG{n}{real}\PYG{p}{)}
+		
+		\PYG{k}{return} \PYG{n}{similarity}
+		
+	\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{decartToComplex}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{contour}\PYG{p}{):}
+		\PYG{n}{compl\PYGZus{}contour} \PYG{o}{=} \PYG{p}{[} \PYG{p}{]}
+		\PYG{n}{last\PYGZus{}point} \PYG{o}{=} \PYG{n}{Contour}\PYG{o}{.}\PYG{n}{tuple\PYGZus{}to\PYGZus{}complex}\PYG{p}{(}\PYG{n}{contour}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])}
+		\PYG{k}{for} \PYG{n}{i}\PYG{p}{,} \PYG{n}{point\PYGZus{}tuple} \PYG{o+ow}{in} \PYG{n+nb}{enumerate}\PYG{p}{(}\PYG{n}{contour}\PYG{p}{):}
+			\PYG{k}{if} \PYG{n}{i} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+				\PYG{k}{continue}
+			
+			\PYG{n}{point} \PYG{o}{=} \PYG{n}{Contour}\PYG{o}{.}\PYG{n}{tuple\PYGZus{}to\PYGZus{}complex}\PYG{p}{(}\PYG{n}{point\PYGZus{}tuple}\PYG{p}{)}
+			\PYG{n}{compl\PYGZus{}contour}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{point} \PYG{o}{\PYGZhy{}} \PYG{n}{last\PYGZus{}point}\PYG{p}{)}
+			\PYG{n}{last\PYGZus{}point} \PYG{o}{=} \PYG{n}{point}
+			
+		\PYG{k}{return} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{(}\PYG{n}{compl\PYGZus{}contour}\PYG{p}{)}
+	
+	
+	\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{equalize}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{p}\PYG{p}{,} \PYG{n}{log}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{):}
+		\PYG{n}{eqvec} \PYG{o}{=} \PYG{p}{[}\PYG{n+nb}{complex}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)]} \PYG{o}{*} \PYG{n}{p}
+		\PYG{n}{eq\PYGZus{}len} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{contour\PYGZus{}length}\PYG{p}{()} \PYG{o}{/} \PYG{n}{p}
+		\PYG{k}{if} \PYG{n}{log}\PYG{p}{:}
+			\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{eq\PYGZus{}len}\PYG{p}{)}
+		\PYG{n}{pind} \PYG{o}{=} \PYG{l+m+mi}{0}
+		
+		\PYG{k}{def}\PYG{+w}{ }\PYG{n+nf}{calc\PYGZus{}norm}\PYG{p}{(}\PYG{n}{vec}\PYG{p}{):}
+			\PYG{k}{if} \PYG{o+ow}{not} \PYG{n+nb}{isinstance}\PYG{p}{(}\PYG{n}{vec}\PYG{p}{,} \PYG{n}{np}\PYG{o}{.}\PYG{n}{ndarray}\PYG{p}{):}
+				\PYG{n}{vec} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{(}\PYG{n}{vec}\PYG{p}{)}
+				\PYG{k}{return} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{vec} \PYG{o}{*} \PYG{n}{vec}\PYG{o}{.}\PYG{n}{conjugate}\PYG{p}{())}
+		
+			\PYG{k}{return} \PYG{n}{np}\PYG{o}{.}\PYG{n}{sqrt}\PYG{p}{(}\PYG{n}{vec}\PYG{o}{.}\PYG{n}{T} \PYG{o}{@} \PYG{n}{vec}\PYG{o}{.}\PYG{n}{conjugate}\PYG{p}{())}
+		
+		\PYG{n}{vec} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{contour}
+		\PYG{n}{vec\PYGZus{}ost} \PYG{o}{=} \PYG{n}{vec}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+		\PYG{n}{vec\PYGZus{}isp} \PYG{o}{=} \PYG{n+nb}{complex}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)}
+		\PYG{n}{j} \PYG{o}{=} \PYG{l+m+mi}{0}
+		\PYG{k}{while} \PYG{n}{pind} \PYG{o}{\PYGZlt{}} \PYG{n}{p} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{:}
+			\PYG{n}{vlen} \PYG{o}{=} \PYG{n}{calc\PYGZus{}norm}\PYG{p}{(}\PYG{n}{vec\PYGZus{}ost}\PYG{p}{)}
+			\PYG{k}{if} \PYG{n}{vlen} \PYG{o}{\PYGZgt{}} \PYG{n}{eq\PYGZus{}len}\PYG{p}{:}
+				\PYG{n}{eqvec}\PYG{p}{[}\PYG{n}{pind}\PYG{p}{]} \PYG{o}{=} \PYG{n}{vec\PYGZus{}ost} \PYG{o}{*} \PYG{n}{eq\PYGZus{}len} \PYG{o}{/} \PYG{n}{vlen}
+				\PYG{n}{vec\PYGZus{}ost} \PYG{o}{=} \PYG{n}{vec\PYGZus{}ost} \PYG{o}{\PYGZhy{}} \PYG{n}{eqvec}\PYG{p}{[}\PYG{n}{pind}\PYG{p}{]}
+				\PYG{k}{if} \PYG{n}{log}\PYG{p}{:}
+				\PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}f: \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{pind}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}   \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{eqvec}\PYG{p}{[}\PYG{n}{pind}\PYG{p}{]))}
+				\PYG{n}{pind} \PYG{o}{+=} \PYG{l+m+mi}{1}
+			\PYG{k}{else}\PYG{p}{:}
+				\PYG{n}{s} \PYG{o}{=} \PYG{n}{calc\PYGZus{}norm}\PYG{p}{(}\PYG{n}{vec\PYGZus{}ost}\PYG{p}{)}
+				
+				\PYG{k}{for} \PYG{n}{t} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{j} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{vec}\PYG{p}{)):}
+					\PYG{n}{s0} \PYG{o}{=} \PYG{n}{s}
+					
+					\PYG{n}{s} \PYG{o}{=} \PYG{n}{s} \PYG{o}{+} \PYG{n}{calc\PYGZus{}norm}\PYG{p}{(}\PYG{n}{vec}\PYG{p}{[}\PYG{n}{t}\PYG{p}{])}
+					
+					
+					\PYG{k}{if} \PYG{p}{(}\PYG{n}{s} \PYG{o}{\PYGZgt{}} \PYG{n}{eq\PYGZus{}len}\PYG{p}{):}
+						\PYG{n}{vec\PYGZus{}isp\PYGZus{}len} \PYG{o}{=} \PYG{n}{eq\PYGZus{}len} \PYG{o}{\PYGZhy{}} \PYG{n}{s0}
+						\PYG{n}{vec\PYGZus{}isp} \PYG{o}{=} \PYG{n}{vec}\PYG{p}{[}\PYG{n}{t}\PYG{p}{]} \PYG{o}{*} \PYG{n}{vec\PYGZus{}isp\PYGZus{}len} \PYG{o}{/} \PYG{n}{calc\PYGZus{}norm}\PYG{p}{(}\PYG{n}{vec}\PYG{p}{[}\PYG{n}{t}\PYG{p}{])}
+						
+						\PYG{n}{vecs} \PYG{o}{=} \PYG{n+nb}{complex}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)}
+						\PYG{k}{for} \PYG{n}{tt} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{j}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{t} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{):}
+							\PYG{n}{vecs} \PYG{o}{=} \PYG{n}{vecs} \PYG{o}{+} \PYG{n}{vec}\PYG{p}{[}\PYG{n}{tt}\PYG{p}{]}
+						
+						
+						\PYG{n}{eqvec}\PYG{p}{[}\PYG{n}{pind}\PYG{p}{]}\PYG{o}{=} \PYG{n}{vec\PYGZus{}ost} \PYG{o}{+} \PYG{n}{vec\PYGZus{}isp} \PYG{o}{+} \PYG{n}{vecs}
+						\PYG{n}{vec\PYGZus{}ost} \PYG{o}{=} \PYG{n}{vec}\PYG{p}{[}\PYG{n}{t}\PYG{p}{]} \PYG{o}{\PYGZhy{}} \PYG{n}{vec\PYGZus{}isp}
+						
+						\PYG{k}{if} \PYG{n}{log}\PYG{p}{:}
+							\PYG{n+nb}{print}\PYG{p}{(}\PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{pind}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}   \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{eqvec}\PYG{p}{[}\PYG{n}{pind}\PYG{p}{]))}
+						
+						\PYG{n}{pind} \PYG{o}{+=} \PYG{l+m+mi}{1}
+						\PYG{n}{j} \PYG{o}{=} \PYG{n}{t}
+						\PYG{k}{break}
+				
+				\PYG{k}{if} \PYG{n}{pind} \PYG{o}{\PYGZgt{}=} \PYG{n}{p} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{:}
+				
+				
+				\PYG{n}{eqvec}\PYG{p}{[}\PYG{n}{pind}\PYG{p}{]} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{n+nb}{sum}\PYG{p}{(}\PYG{n}{eqvec}\PYG{p}{)}
+				
+				\PYG{k}{if} \PYG{n}{log}\PYG{p}{:}
+					\PYG{n+nb}{print}\PYG{p}{(}\PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{pind}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s1}{\PYGZsq{}   \PYGZsq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{eqvec}\PYG{p}{[}\PYG{n}{pind}\PYG{p}{]))}
+				\PYG{n}{pind} \PYG{o}{+=} \PYG{l+m+mi}{1}
+				\PYG{k}{break}
+			\PYG{k}{if} \PYG{n}{pind} \PYG{o}{\PYGZgt{}=} \PYG{n}{p}  \PYG{p}{:}
+				\PYG{k}{break}
+		
+		\PYG{k}{return} \PYG{n}{Contour}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{(}\PYG{n}{eqvec}\PYG{p}{),} \PYG{n}{convertFromDecart}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{)}
+\end{MintedVerbatim}
